@@ -17,5 +17,5 @@ jobs:
                 server: ${{ secrets.STAGING_SERVER }}       # FTPのサーバーアドレス
                 username: ${{ secrets.STAGING_USERNAME }}   # FTPのユーザー名名
                 password: ${{ secrets.STAGING_PASSWORD }}   # FTPのパスワード
-                local-dir: ./                           # アップロードしたいファイルのパス、この場合srcディレクトリ内をアップロード対象としている
-                server-dir: ./      # アップロード先のリモートパス
+                local-dir: ./                               # アップロードしたいファイルのパス、この場合srcディレクトリ内をアップロード対象としている
+                server-dir: ./                              # アップロード先のリモートパス

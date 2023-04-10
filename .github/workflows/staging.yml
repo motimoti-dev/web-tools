@@ -12,7 +12,7 @@ jobs:
     steps:
         - uses: actions/checkout@v2   # チェックアウトアクション（https://github.com/actions/checkout）
         - name: FTP-Deploy-Action
-            uses: SamKirkland/FTP-Deploy-Action@4.2.0     # FTPアップロードアクション（https://github.com/SamKirkland/FTP-Deploy-Action）
+            uses: SamKirkland/FTP-Deploy-Action@v4.3.4     # FTPアップロードアクション（https://github.com/SamKirkland/FTP-Deploy-Action）
             with:
                 server: ${{ secrets.STAGING_SERVER }}       # FTPのサーバーアドレス
                 username: ${{ secrets.STAGING_USERNAME }}   # FTPのユーザー名名

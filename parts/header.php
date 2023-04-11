@@ -1,0 +1,1 @@
+<header class='center'><div class='wrap'><h1 class='tac m0'><img src='https://motisan.info/i/logo1.png.webp' style='height:calc( 100% - 20px );padding: 10px 0;'height='40px' width='202px' alt='もちweb屋さん'></h1></div></header>

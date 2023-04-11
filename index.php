@@ -1,17 +1,18 @@
 <?//<!--出力する内容は変わらないのでこのコードの実行結果をそのままhtmlとして書き出して使用-->?>
+<?include( 'data.php' )//設定?>
+<?ini_set('display_errors', 1)?>
 <? ob_start();//バッファリング?>
 <!DOCTYPE html>
 <html lang="ja">
-	<?include( 'parts/head.php' );?>
+	<?=$blog_info['name']?>
+	<?//include( 'parts/head.php' );?>
 	<body style="background:#fff3e8;margin:0">
 		<?include( 'parts/header.php' )?>
 		<content>
 			<?include( 'parts/nav.php' )?>
 			<div class="wrapper center" style="margin-top:15px;padding-bottom:10px;">
-				<?
-					include( 'parts/main.php' );
-					include( 'parts/sidebar.php' );
-				?>
+				<? include( 'parts/main.php' )?>
+				<? include( 'parts/sidebar.php' )?>
 			</div>
 		</content>
 		<?include( 'parts/footer.php' )?>

@@ -1,0 +1,1 @@
+<?=$blog_info['name']?>

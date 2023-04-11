@@ -1,0 +1,12 @@
+.main-container {
+  width: 900px;
+  margin: 0 auto;
+}
+
+textarea {
+  resize: vertical;
+  width: 100%;
+  min-height: 300px;
+  padding: 0;
+  margin-top: 50px;
+}/*# sourceMappingURL=style.css.map */

@@ -4,8 +4,7 @@
 <? ob_start();//バッファリング?>
 <!DOCTYPE html>
 <html lang="ja">
-	<?=$blog_info['name']?>
-	<?//include( 'parts/head.php' );?>
+	<?include( 'parts/head.php' );?>
 	<body style="background:#fff3e8;margin:0">
 		<?include( 'parts/header.php' )?>
 		<content>

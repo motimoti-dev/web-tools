@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Web上でファイルの文字列を確認するツールです。">
+    <meta name="format-detection" content="telephone=no">
+    <title>文字置換ツール</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/replace.js"></script>
+</head>
+<body>
+    <div class="main-container">
+        <h1>文字置換ツール</h1>
+        <div class="replace-container">
+            <div class="replace-box">
+                <input type="text" id="before-replace-1"><span>→</span><input type="text" id="after-replace-1">
+            </div>
+            <div class="button-box">
+                <button type="button" id="add-button">追加</button>
+                <button type="button" id="del-button">一つ削除</button>
+            </div>
+        </div>
+        <textarea id="before-text"></textarea>
+        <textarea id="after-text" disabled></textarea>
+    </div>
+</body>
+</html>

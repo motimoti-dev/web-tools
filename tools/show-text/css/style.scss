@@ -1,0 +1,23 @@
+$main-width: 900px;
+$drop-box-color: #f0f8ff;
+
+.main-container{
+    width: $main-width;
+    margin: 0 auto;
+    #drop-box{
+        border:1px solid #000;
+    }
+}
+
+.active{ 
+    background-color: $drop-box-color;
+    transition: all  0.3s ease;
+}
+
+textarea{
+    resize: vertical;
+    width: 100%;
+    min-height: 300px;
+    padding: 0;
+    margin-top: 50px;
+}

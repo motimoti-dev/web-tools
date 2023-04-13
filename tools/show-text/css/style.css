@@ -1,0 +1,20 @@
+.main-container {
+  width: 900px;
+  margin: 0 auto;
+}
+.main-container #drop-box {
+  border: 1px solid #000;
+}
+
+.active {
+  background-color: #f0f8ff;
+  transition: all 0.3s ease;
+}
+
+textarea {
+  resize: vertical;
+  width: 100%;
+  min-height: 300px;
+  padding: 0;
+  margin-top: 50px;
+}/*# sourceMappingURL=style.css.map */

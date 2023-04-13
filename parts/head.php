@@ -1,5 +1,6 @@
 <head prefix="og: https://ogp.me/ns#">
     <?// http-equiv="Cache-Control" content="no-cache"キャッシュさせない?>
+	<meta charset="utf-8">
     <meta name="viewport" content="width=width=480,initial-scale=1">
 	<title><?=$blog_info['name']?></title>
 	<meta name="description" content="<?=$blog_info['description']?>">

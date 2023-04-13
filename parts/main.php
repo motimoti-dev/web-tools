@@ -1,18 +1,20 @@
 <main><?
-	$blocknum = 12;
+	$blocknum = count($tools);
     include( 'parts/share-pc.php' )?>
 	
 	<div class="pbox">
-		<div style="grid-column: 1/3;"><h2 class='top-h2'>うおおおおおおおおおおおお！</h2></div>
+		<div style="grid-column: 1/3;">
+			<h2 class='top-h2'><?=$blog_info['top-h2']?></h2>
+		</div>
 		<?for($i =1;$i <= $blocknum;$i++){?>
 			
 				<div class="post-b s1">
-					<a href="tool1url" aria-label=''>
+					<a href="<?=$tools[$i- 1]['url']?>" aria-label='<?=$tools[$i- 1]['title']?>'>
 						<article>
-							<div class="post-thumbnail" style="background-image:url(url);"></div>
+							<div class="post-thumbnail" style="background-image:url(<?=$tools[$i- 1]['img']?>);"></div>
 						</article>
 					</a>
-					<div class="post-t"><a href="url"><h2>ツール名</h2><p>あ</p></a></div></div>
+					<div class="post-t"><a href="url"><h2><?=$tools[$i- 1]['title']?></h2><p><?=$tools[$i- 1]['description']?></p></a></div></div>
 		<?}?>
 	</div>
 </main>

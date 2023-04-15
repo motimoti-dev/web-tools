@@ -5,6 +5,10 @@ $blog_info = [
     'home' => 'tools.motisan.info',
     'top-nav-txt' => 'もちもち便利ツール',
     'header-img'=>'./i/header.png.webp',
+    'author'=>'もちさん',
+    'twitter'=>'@motimoti_dev',
+    'theme-color'=>'#FFEAD8',
+    'og:image'=>'//motisan.info/i/ogp.png',
     'top-h2'=>'うおおおおおおおおおおおお！',
 ];
 $tools = [

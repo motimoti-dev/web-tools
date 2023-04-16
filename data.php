@@ -8,7 +8,7 @@ $blog_info = [
     'author'=>'もちさん',
     'twitter'=>'@motimoti_dev',
     'theme-color'=>'#FFEAD8',
-    'og:image'=>'//motisan.info/i/ogp.png',
+    'og:image'=>'./i/ogp.png',
     'top-h2'=>'うおおおおおおおおおおおお！',
     'privacy-policy'=>'./privacy-policy/'
 ];

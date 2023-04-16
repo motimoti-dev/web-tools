@@ -10,6 +10,7 @@ $blog_info = [
     'theme-color'=>'#FFEAD8',
     'og:image'=>'//motisan.info/i/ogp.png',
     'top-h2'=>'うおおおおおおおおおおおお！',
+    'privacy-policy'=>'./privacy-policy/'
 ];
 $tools = [
     [

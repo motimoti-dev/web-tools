@@ -2,7 +2,7 @@
 $blog_info = [
     'name' => 'もちツールズ',
     'description' => '',
-    'home' => 'tools.motisan.info',
+    'home' => 'tools.motisan.info',//base url
     'top-nav-txt' => 'もちもち便利ツール',
     'header-img'=>'./i/header.png.webp',
     'author'=>'もちさん',
@@ -12,6 +12,9 @@ $blog_info = [
     'top-h2'=>'うおおおおおおおおおおおお！',
     'privacy-policy'=>'./privacy-policy/'
 ];
+if(isset($_GET['local'])){
+    $blog_info['home'] = 'localhost/github/tools2';
+}
 $tools = [
     [
         'title'=>'テキストファイル内容確認ツール',

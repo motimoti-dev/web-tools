@@ -14,7 +14,7 @@
 	<meta property="og:locale" content="ja_JP">
 	<meta property="og:site_name" content="<?=$blog_info['name']?>"><?//<meta property="og:admins" content="">?>
 	
-	<link rel="stylesheet" href="//motisan.info/assets/themes/moti/css/index-style.css" http-equiv="Cache-Control" content="no-cache">
+	<link rel="stylesheet" href="//<?=$blog_info['home']?>/css/index-style.css" http-equiv="Cache-Control" content="no-cache">
 	<link rel="stylesheet" type="text/css" href="//unpkg.com/hint.css@2.7.0/hint.min.css" media="print" onload="this.media='all'">
 	<link rel="canonical" href="<?=$blog_info['home']?>">
 	<meta name="author" content="<?=$blog_info['author']?>">

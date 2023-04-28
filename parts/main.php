@@ -9,7 +9,7 @@
 			<div class="post-b s1">
 				<a href="<?=$tools[$i - 1]['url']?>" aria-label='<?=$tools[$i - 1]['title']?>'>
 					<article>
-						<div class="post-thumbnail" style="background-image:url(<?=$tools[$i- 1]['img']?>);"></div>
+						<div class="post-thumbnail" style="background-image:url(<?=$blog_info['base']?><?=$tools[$i - 1]['img']?>);"></div>
 					</article>
 				</a>
 				<div class="post-t">

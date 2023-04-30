@@ -37,6 +37,16 @@ $tools = [
         'var'=>'1.0',
         'id'=>'text-replace',
     ],
+    [
+        'title'=>'予定入りカレンダー生成',
+        'url'=>'./tools/calendar-generator/',
+        'user'=>'',
+        'description'=>'文字やアイコンの入ったカレンダーを生成できます！',
+        'img'=>'i/calendar-generator.png',
+        'date'=>'2023/04/30',
+        'var'=>'1.0',
+        'id'=>'calendar-generator',
+    ],
     /*[
         'title'=>'',
         'url'=>'',

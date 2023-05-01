@@ -1,0 +1,18 @@
+@media (width <= 450px) {/*450以下*/
+    .main-container{
+        width:95%;
+    }
+}
+@media (width > 450px) and (width <= 900px) {/*450以上900以下*/
+    .main-container{
+        width:95%;
+    }
+}
+body{
+    margin:0;
+}
+header{
+    height: 60px;
+    background: white;
+    box-shadow: -1px 8px 6px #769cbb0d;
+}

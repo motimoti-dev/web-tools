@@ -2,15 +2,15 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Web上でテキストファイルの文字列を確認するツールです。"> 
-    <meta name="format-detection" content="telephone=no">
     <title>テキスト内容確認ツール</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/moti.css">
     <script src="js/read_data.js"></script>
 </head>
 <body>
+    <iframe id="HeaderIframe" class="HeaderIframe" role="presentation" src="https://tools.motisan.info/static/header.html" style="display: block;width: 100%;height: 60px;border: 0;"></iframe>
     <div class="main-container">
         <h1>テキスト内容確認ツール</h1>
         <div id="drop-box">
@@ -19,5 +19,20 @@
         </div>
         <textarea id="text-content" placeholder="ここに読み込まれたテキストが表示されます。"></textarea>
     </div>
+    <script>
+        function inlineIframe(iframe) {
+          var onLoad = function () {
+            iframe.insertAdjacentHTML('afterend', iframe.contentDocument.body.innerHTML)
+            iframe.parentNode.removeChild(iframe)
+            iframe.onload = null
+          }
+          if (iframe.contentWindow.location.href === 'about:blank' || iframe.contentDocument.readyState === 'loading') {
+            iframe.onload = onLoad
+          } else {
+            onLoad()
+          }
+        }
+        inlineIframe(document.querySelector('#HeaderIframe'))
+      </script>
 </body>
 </html>

@@ -1,0 +1,125 @@
+.main-container {
+  width: 900px;
+  margin: 0 auto;
+}
+.main-container #drop-box {
+  border: 1px solid #000;
+}
+
+details {
+  transition: 0.5s;
+  margin-top: 20px;
+}
+details summary {
+  display: block;
+  cursor: pointer;
+}
+details summary::-webkit-details-marker {
+  display: none;
+}
+details .meta-accordion {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+details .meta-accordion .accordion-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+}
+details .meta-accordion .accordion-box input {
+  display: block;
+}
+details .meta-accordion .accordion-box .arrow-icon {
+  position: relative;
+  display: inline-block;
+  margin-left: auto;
+  padding: 10px 20px 20px 10px;
+}
+details .meta-accordion .accordion-box .arrow-icon::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-top: solid 2px #555;
+  border-right: solid 2px #555;
+  position: absolute;
+  left: 10px;
+  top: 8px;
+  transition: all 0.5s;
+  transform: rotate(-45deg);
+}
+details[open] .meta-accordion {
+  transition: all 0.5s;
+  border-radius: 10px 10px 0 0;
+}
+details[open] .meta-accordion .accordion-box .arrow-icon::before {
+  transition: all 0.5s;
+  transform: rotate(135deg);
+}
+details[open] .meta-set {
+  animation: FadeIn 0.5s ease;
+  border: 1px solid #ccc;
+  border-radius: 0 0 10px 10px;
+  padding: 10px 20px;
+}
+details[open] .meta-set .description-box p {
+  margin: 5px 0;
+  font-size: 18px;
+}
+details[open] .meta-set .two-columns-box {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0 0;
+  border-bottom: 1px solid #ccc;
+}
+details[open] .meta-set .two-columns-box input[type=color] {
+  display: block;
+}
+details[open] .meta-set .two-rows-box {
+  margin-top: 10px;
+}
+details[open] .meta-set .two-rows-box p {
+  margin: 0;
+}
+details[open] .meta-set .two-rows-box input[type=text] {
+  width: 100%;
+}
+details[open] .meta-set .two-rows-box .left-flex input {
+  margin: 0;
+}
+details[open] .meta-set .two-rows-box .left-flex p {
+  display: inline;
+}
+details[open] .meta-set .single-output {
+  margin-top: 10px;
+}
+details[open] .meta-set .single-output p {
+  margin: 5px 0;
+}
+details[open] .meta-set .single-output pre {
+  margin: 0;
+}
+details[open] .meta-set .single-output code {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: #777;
+  color: #fefefe;
+  padding: 10px;
+}
+
+@keyframes FadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+textarea {
+  resize: vertical;
+  width: 100%;
+  padding: 0;
+}/*# sourceMappingURL=style.css.map */

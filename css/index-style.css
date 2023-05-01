@@ -73,7 +73,7 @@
         line-height: 1;
         /*background: #f89174;*/
         /*color: #fff;*/
-         background: #ffefec;
+        background: #ffefec;
         font-weight: 700;
         color:#a05440;
     }
@@ -247,7 +247,7 @@
       display: inline-block;
     }
     /*メディアクエリ*/
-    @media screen and (max-width: 1024px) {
+    @media screen and (width < 1024px) {
       /* 1024pxまでの幅の場合に適応される */
     }
     @media screen and (max-width: 700px) {

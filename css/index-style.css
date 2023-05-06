@@ -1,306 +1,413 @@
 /*motisan.info/assets/themes/moti/css/index-style.css*/
 /*ホバーアニメーション*/
+
 :root {
-    --wid-color:#525e68;/*#6e7b85サイドバーのもちさんの部分の色*/
-    --wid-light-color:#666e75;/*#807171上の薄い版*/
-    --main-loop-a:#777272;/*gray*/
-    --color-dark-gray:#605a5a;/*darkgray*/
-    }
-        .post-b{
-            border-color: #dedede;
-        }
-        .post-b:hover{
-            box-shadow: 0 1px 4px rgb(227 43 43 / 39%), 0 0 40px rgb(128 128 128 / 10%) inset;
-        }
-    .m0{/*margin0省略用*/
-        margin:0;
-    }
-    .cg{/*color gray省略用*/
-        color:var(--main-loop-a,gray);
-    }
-    .tdn{text-decoration:none}
-    .cdg{/*color darkgray省略用*/
-        color:var(--color-dark-gray,darkgray);
-    }
-    .bgw{/*backgroundwhite省略用*/
-        background:white
-    }
-    .fw7{/*font-weight:700;省略用*/
-        font-weight:700
-    }
-    .tac{text-align: center}
-    .dib{display:inline-block}
-    span svg{
-        position:relative;top:2px
-    }
-    .side-block{
-        color:var(--main-loop-a,#6e7b85);justify-content:space-between;min-height:46px;font-size: 13.5px;display: flex;align-items: center;border-bottom:#4386b62b 1px solid;
-    }
-    .sb{
-        margin-right:5px;height: auto;flex-shrink:0;font-size: 11px;
-    }
-    .sb a{
-        margin-right: 5px;border-radius:12px;height:auto;flex-shrink: 0;font-size: 11px;box-sizing: inherit;text-decoration:none;color:var(--main-loop-a,gray)
-    }
-        /*category名*/
-        .pcat{
-        position: absolute;
-        border-radius:8px 0 3px 0;
-        z-index: 10;
-        font-size: 12px;
-        padding: 5px 6px;
-        line-height: 1;
-        background: #f89174;	
-    }
-        .pcat a{
-            font-weight: 700;
-        color:#fff;
-            background:unset!important;
-            border-radius:0!important;
-            padding:0!important;
-        }
-    figure.wp-block-image ,div.wp-block-media-text{
-        margin-bottom:20px
-    }
-    /*投稿日*/
-    .post-date{
-        position: absolute;
-        right:0;
-        border-radius:4px 8px 0 4px;
-        z-index: 10;
-        font-size: 12px;
-        padding: 5px 6px;
-        line-height: 1;
-        /*background: #f89174;*/
-        /*color: #fff;*/
-        background: #ffefec;
-        font-weight: 700;
-        color:#a05440;
-    }
-    .chtml{background:#ea0d0d}
-    .ccss{background:#146EB0}
-    .sphp{background:#7a86b8}
-    .swp{background:#30353A}
-    /*二行だけ表示*/
-    .line2{
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    font-size:15px
-    }
-    /*ページネーション*/
-    .pgn{
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    list-style: none;
-    margin-top: 20px;
-    padding:0;
-    }
-    .pgn a {
-    text-align: center;
-    color: #FFF;
-    text-decoration:none;
-    background: #666;
-    border-radius: 5px;
-    width: 35px;
-    margin: 5px;
-    font-size: 12px;
-    height: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    }
-    
-    
-    
-    /*https://motisan.info/assets/themes/moti/css/index-style.css*/
-    header{
-        height: 60px;
-        background: white;
-        box-shadow: -1px 8px 6px #769cbb0d;
-    }
-    /*shadow*/
-    .s1 {
-      box-shadow: 0 2px 4px #4385bb12;
-    }
-    /*share buttonとか*/
-    .side2 {
-      position: relative;
-      left: -15px;
-      width: 50px;
-      height: 100%;
-      float: left;
-    }
-    /*ポストエリア*/
-    .post-b {
-        width: calc(100%);
-        display: block;
-        /* padding: 10px; */
-        margin: 0;
-        cursor: pointer;
-        background: #fff;
-        border-radius: 13px;
-        float: left;
-        position: relative;
-    }
-    .post-b a {
-    display: flex;
-        position: relative;
-        margin-bottom: 20px;
-        border-radius: 12px 12px 0 0;
-        margin: 0;
-        padding-top: 53%;
-        overflow: hidden;
-        text-decoration: none;
-    }
-    .post-b a article div {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      left: 0;
-      top: 0;
-      background-size: cover;
-      background-position: center top;
-      background-repeat: no-repeat;
-    }
-    .post-t {
-        padding:10px 14px 14px 14px;
-    }
-    .post-t a{
-        padding: 0;
-        display: block;
-    }
-    .post-t h2{
-      width: 100%;
-      float: none;
-      height: auto;
-      font-size: 1em;
-      padding:0;
-        color:#6B6160;
-      margin: 0;
-    }
-    .latestlink{
-        border-radius:14px !important;
-        color:var(--main-loop-a,gray);
-        padding:10px 14px 14px 14px !important;
-        border-radius:13px !important;
-    }
-    .top-h2{
-        color:#3f66a7;border-bottom: dashed 2px #3f66a7;text-align: left;margin:0
-    }
-    .post-t p{
-        color:#6B6160;
-        margin:0;
-        font-size:12px;
-    }
-    .pbox {
-      max-width: 960px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    /*サイドバー*/
-    .summary {
-      width: 220px;
-      margin-right: 20px;
-      padding: 4px 20px;
-      background: white;
-      border-radius: 12px;
-    }
-    /*サイドバーとポストエリアの構成*/
-    
-    /*ヘッダーフッターコンテンツ部分のmargin padding*/
-    .center {
-      margin: 0 auto;
-      padding: 0 40px;
-    }
-    .wrap {
-      width: 95%;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .wrapper {
-      width: 95%;
-      max-width: 900px;
-      display: flex;
-      justify-content: space-between;
-    }
-    main {
-      width: calc(100% - 300px);
-      display: inline-block;
-    }
-    .sharesp {
-      display: none;
-    }
-    .summarys {
-      display: block;
-      width: 1px;
-      height: 15px;
-      flex-shrink: 0
-    }
-    /*spanで改行できるように*/
-    h2 span {
-      display: inline-block;
-    }
-    /*メディアクエリ*/
-    @media screen and (width < 1024px) {
-      /* 1024pxまでの幅の場合に適応される */
-    }
-    @media screen and (max-width: 700px) {
-      /* 700pxまでの幅の場合に適応される */
-      /*640px以下でサイドバーと同じになるように記事を1つ並びに*/
-    
-      .pbox {
-        grid-template-columns: 1fr 1fr;
-      }
-    
-      .side2 {
-        display: none;
-      }
-      /*サイドバーをコンテンツ下に配置する*/
-    
-      .side {
-        margin-top: 15px;
-      }
-    
-      .summary {
-        width: calc(100% - 40px);
-      }
-      /*中央のレイアウト*/
-    
-      main {
-        width: calc(100%);
-      }
-    
-      .center {
-        margin: 0 auto;
-        padding: 0
-      }
-    
-      .wrapper {
-        display: flow-root;
-        width: 95%;
-        margin: 0 auto;
-      }
-    
-      .sharesp {
-        display: block;
-      }
-    
-      .summarys {
-        display: block;
-        width: 1px;
-        height: 15px;
-        flex-shrink: 0
-      }
-    }
-    @media screen and (max-width: 480px) {
-      /* 480pxまでの幅の場合に適応される */
-    }
-    @media screen and (max-width: 320px) {
-      /* 320pxまでの幅の場合に適応される */
-    }
+  --wid-color: #525e68;
+  /*#6e7b85サイドバーのもちさんの部分の色*/
+  --wid-light-color: #666e75;
+  /*#807171上の薄い版*/
+  --main-loop-a: #777272;
+  /*gray*/
+  --color-dark-gray: #605a5a;
+  /*darkgray*/
+}
+
+.post-b {
+  border-color: #dedede;
+}
+
+.post-b:hover {
+  box-shadow: 0 1px 4px rgb(227 43 43 / 39%), 0 0 40px rgb(128 128 128 / 10%) inset;
+}
+
+.m0 {
+  /*margin0省略用*/
+  margin: 0;
+}
+
+.cg {
+  /*color gray省略用*/
+  color: var(--main-loop-a, gray);
+}
+
+.tdn {
+  text-decoration: none
+}
+
+.cdg {
+  /*color darkgray省略用*/
+  color: var(--color-dark-gray, darkgray);
+}
+
+.bgw {
+  /*backgroundwhite省略用*/
+  background: white
+}
+
+.fw7 {
+  /*font-weight:700;省略用*/
+  font-weight: 700
+}
+
+.tac {
+  text-align: center
+}
+
+.dib {
+  display: inline-block
+}
+
+span svg {
+  position: relative;
+  top: 2px
+}
+
+.side-block {
+  color: var(--main-loop-a, #6e7b85);
+  justify-content: space-between;
+  min-height: 46px;
+  font-size: 13.5px;
+  display: flex;
+  align-items: center;
+  border-bottom: #4386b62b 1px solid;
+}
+
+.sb {
+  margin-right: 5px;
+  height: auto;
+  flex-shrink: 0;
+  font-size: 11px;
+}
+
+.sb a {
+  margin-right: 5px;
+  border-radius: 12px;
+  height: auto;
+  flex-shrink: 0;
+  font-size: 11px;
+  box-sizing: inherit;
+  text-decoration: none;
+  color: var(--main-loop-a, gray)
+}
+
+
+/*category名*/
+
+.pcat {
+  position: absolute;
+  border-radius: 8px 0 3px 0;
+  z-index: 10;
+  font-size: 12px;
+  padding: 5px 6px;
+  line-height: 1;
+  background: #f89174;
+}
+
+.pcat a {
+  font-weight: 700;
+  color: #fff;
+  background: unset!important;
+  border-radius: 0!important;
+  padding: 0!important;
+}
+
+figure.wp-block-image, div.wp-block-media-text {
+  margin-bottom: 20px
+}
+
+
+/*投稿日*/
+
+.post-date {
+  position: absolute;
+  right: 0;
+  border-radius: 4px 8px 0 4px;
+  z-index: 10;
+  font-size: 12px;
+  padding: 5px 6px;
+  line-height: 1;
+  /*background: #f89174;*/
+  /*color: #fff;*/
+  background: #ffefec;
+  font-weight: 700;
+  color: #a05440;
+}
+
+.chtml {
+  background: #ea0d0d
+}
+
+.ccss {
+  background: #146EB0
+}
+
+.sphp {
+  background: #7a86b8
+}
+
+.swp {
+  background: #30353A
+}
+
+
+/*二行だけ表示*/
+
+.line2 {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-size: 15px
+}
+
+
+/*ページネーション*/
+
+.pgn {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  margin-top: 20px;
+  padding: 0;
+}
+
+.pgn a {
+  text-align: center;
+  color: #FFF;
+  text-decoration: none;
+  background: #666;
+  border-radius: 5px;
+  width: 35px;
+  margin: 5px;
+  font-size: 12px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+
+/*https://motisan.info/assets/themes/moti/css/index-style.css*/
+
+header {
+  height: 60px;
+  background: white;
+  box-shadow: -1px 8px 6px #769cbb0d;
+}
+
+
+/*shadow*/
+
+.s1 {
+  box-shadow: 0 2px 4px #4385bb12;
+}
+
+
+/*share buttonとか*/
+
+.side2 {
+  position: relative;
+  left: -15px;
+  width: 50px;
+  height: 100%;
+  float: left;
+}
+
+
+/*ポストエリア*/
+
+.post-b {
+  width: calc(100%);
+  display: block;
+  /* padding: 10px; */
+  margin: 0;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 13px;
+  float: left;
+  position: relative;
+}
+
+.post-b a {
+  display: flex;
+  position: relative;
+  margin-bottom: 20px;
+  border-radius: 12px 12px 0 0;
+  margin: 0;
+  padding-top: 53%;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.post-b a article div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+.post-t {
+  padding: 10px 14px 14px 14px;
+}
+
+.post-t a {
+  padding: 0;
+  display: block;
+}
+
+.post-t h2 {
+  width: 100%;
+  float: none;
+  height: auto;
+  font-size: 1em;
+  padding: 0;
+  color: #6B6160;
+  margin: 0;
+}
+
+.latestlink {
+  border-radius: 14px !important;
+  color: var(--main-loop-a, gray);
+  padding: 10px 14px 14px 14px !important;
+  border-radius: 13px !important;
+}
+
+.top-h2 {
+  color: #3f66a7;
+  border-bottom: dashed 2px #3f66a7;
+  text-align: left;
+  margin: 0
+}
+
+.post-t p {
+  color: #6B6160;
+  margin: 0;
+  font-size: 12px;
+}
+
+.pbox {
+  max-width: 960px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+
+/*サイドバー*/
+
+.summary {
+  width: 220px;
+  margin-right: 20px;
+  padding: 4px 20px;
+  background: white;
+  border-radius: 12px;
+}
+
+
+/*サイドバーとポストエリアの構成*/
+
+
+/*ヘッダーフッターコンテンツ部分のmargin padding*/
+
+.center {
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.wrap {
+  width: 95%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.wrapper {
+  width: 95%;
+  max-width: 900px;
+  display: flex;
+  justify-content: space-between;
+}
+
+main {
+  width: calc(100% - 300px);
+  display: inline-block;
+}
+
+.sharesp {
+  display: none;
+}
+
+.summarys {
+  display: block;
+  width: 1px;
+  height: 15px;
+  flex-shrink: 0
+}
+
+
+/*spanで改行できるように*/
+
+h2 span {
+  display: inline-block;
+}
+
+
+/*メディアクエリ*/
+
+@media screen and (width < 1024px) {
+  /* 1024pxまでの幅の場合に適応される */
+}
+
+@media screen and (max-width: 700px) {
+  /* 700pxまでの幅の場合に適応される */
+  /*640px以下でサイドバーと同じになるように記事を1つ並びに*/
+  .pbox {
+    grid-template-columns: 1fr 1fr;
+  }
+  .side2 {
+    display: none;
+  }
+  /*サイドバーをコンテンツ下に配置する*/
+  .side {
+    margin-top: 15px;
+  }
+  .summary {
+    width: calc(100% - 40px);
+  }
+  /*中央のレイアウト*/
+  main {
+    width: calc(100%);
+  }
+  .center {
+    margin: 0 auto;
+    padding: 0
+  }
+  .wrapper {
+    display: flow-root;
+    width: 95%;
+    margin: 0 auto;
+  }
+  .sharesp {
+    display: block;
+  }
+  .summarys {
+    display: block;
+    width: 1px;
+    height: 15px;
+    flex-shrink: 0
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* 480pxまでの幅の場合に適応される */
+}
+
+@media screen and (max-width: 320px) {
+  /* 320pxまでの幅の場合に適応される */
+}

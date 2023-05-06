@@ -25,7 +25,7 @@ $tools = [
         'img'=>'i/show-text.png',
         'date'=>'2023/04/14',
         'var'=>'1.0',
-        'id'=>'show-text'
+        'id'=>'show-text',
         'view'=>true
     ],
     [
@@ -48,7 +48,7 @@ $tools = [
         'date'=>'2023/04/30',
         'var'=>'1.0',
         'id'=>'calendar-generator',
-        'view'=>true
+        'view'=>false
     ],
     [
         'title'=>'もちイラスト博物館',
@@ -59,7 +59,7 @@ $tools = [
         'date'=>'2023/05/6',
         'var'=>'1.0',
         'id'=>'src-illust',
-        'view'=>false
+        'view'=>true
     ],
     /*[
         'title'=>'',

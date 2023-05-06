@@ -26,6 +26,7 @@ $tools = [
         'date'=>'2023/04/14',
         'var'=>'1.0',
         'id'=>'show-text'
+        'view'=>true
     ],
     [
         'title'=>'文字置換ツール',
@@ -36,6 +37,7 @@ $tools = [
         'date'=>'2023/04/14',
         'var'=>'1.0',
         'id'=>'text-replace',
+        'view'=>true
     ],
     [
         'title'=>'予定入りカレンダー生成',
@@ -46,6 +48,18 @@ $tools = [
         'date'=>'2023/04/30',
         'var'=>'1.0',
         'id'=>'calendar-generator',
+        'view'=>true
+    ],
+    [
+        'title'=>'もちイラスト博物館',
+        'url'=>'./tools/src-illust/',
+        'user'=>'',
+        'description'=>'イラストが検索できます！',
+        'img'=>'i/src-illust.png',
+        'date'=>'2023/05/6',
+        'var'=>'1.0',
+        'id'=>'src-illust',
+        'view'=>false
     ],
     /*[
         'title'=>'',

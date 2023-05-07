@@ -16,6 +16,19 @@ $blog_info = [
 if(isset($_GET['local'])){
     $blog_info['home'] = 'localhost/github/tools2';
 }
+$example = [
+    [
+        'title'=>'テストツール',
+        'url'=>'./tools/example/',
+        'user'=>'',
+        'description'=>'テストのツールです',
+        'img'=>'i/example.png',
+        'date'=>'2023/05/07',
+        'var'=>'1.0',
+        'id'=>'example',
+        'view'=>true
+    ]
+];
 $tools = [
     [
         'title'=>'テキストファイル内容確認ツール',

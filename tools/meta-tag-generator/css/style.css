@@ -17,26 +17,26 @@ details summary {
 details summary::-webkit-details-marker {
   display: none;
 }
-details .meta-accordion {
+details .meta-accordion, details .meta-accordion-child {
   border: 1px solid #ccc;
   border-radius: 10px;
 }
-details .meta-accordion .accordion-box {
+details .meta-accordion .accordion-box, details .meta-accordion-child .accordion-box {
   display: flex;
   justify-content: center;
   align-items: center;
   padding-left: 20px;
 }
-details .meta-accordion .accordion-box input {
+details .meta-accordion .accordion-box input, details .meta-accordion-child .accordion-box input {
   display: block;
 }
-details .meta-accordion .accordion-box .arrow-icon {
+details .meta-accordion .accordion-box .arrow-icon, details .meta-accordion-child .accordion-box .arrow-icon {
   position: relative;
   display: inline-block;
   margin-left: auto;
   padding: 10px 20px 20px 10px;
 }
-details .meta-accordion .accordion-box .arrow-icon::before {
+details .meta-accordion .accordion-box .arrow-icon::before, details .meta-accordion-child .accordion-box .arrow-icon::before {
   content: "";
   width: 10px;
   height: 10px;
@@ -53,6 +53,22 @@ details[open] .meta-accordion {
   border-radius: 10px 10px 0 0;
 }
 details[open] .meta-accordion .accordion-box .arrow-icon::before {
+  transition: all 0.5s;
+  transform: rotate(135deg);
+}
+details[open] .meta-accordion-child {
+  transition: all 0.5s;
+  border-radius: 10px;
+}
+details[open] .meta-accordion-child .accordion-box .arrow-icon::before {
+  transition: all 0.5s;
+  transform: rotate(135deg);
+}
+details[open] details[open] .meta-accordion-child {
+  transition: all 0.5s;
+  border-radius: 10px 10px 0 0;
+}
+details[open] details[open] .meta-accordion-child .accordion-box .arrow-icon::before {
   transition: all 0.5s;
   transform: rotate(135deg);
 }
@@ -89,6 +105,12 @@ details[open] .meta-set .two-rows-box .left-flex input {
 }
 details[open] .meta-set .two-rows-box .left-flex p {
   display: inline;
+}
+details[open] .meta-set .general-flex-box {
+  display: flex;
+}
+details[open] .meta-set .general-flex-box .right-elem {
+  margin-left: auto;
 }
 details[open] .meta-set .single-output {
   margin-top: 10px;

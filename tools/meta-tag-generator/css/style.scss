@@ -22,7 +22,7 @@ details{
             display: none;
         }
     }
-    .meta-accordion{
+    .meta-accordion, .meta-accordion-child{
         border: 1px solid $accordion-border-color;
         border-radius: 10px;
         .accordion-box{
@@ -66,6 +66,34 @@ details{
                 }
             }
         }
+        .meta-accordion-child{
+            transition: all .5s;
+            border-radius: 10px;
+            .accordion-box{
+                .arrow-icon{
+                    &::before{
+                        transition: all .5s;
+                        transform: rotate(135deg);
+                    }
+                }
+            }
+        }
+        details{
+            &[open]{
+                .meta-accordion-child{
+                    transition: all .5s;
+                    border-radius: 10px 10px 0 0;
+                    .accordion-box{
+                        .arrow-icon{
+                            &::before{
+                                transition: all .5s;
+                                transform: rotate(135deg);
+                            }
+                        }
+                    }
+                }
+            }
+        }
         .meta-set{
             animation: FadeIn .5s ease;
             border: 1px solid $accordion-border-color;
@@ -101,6 +129,12 @@ details{
                     p{
                         display: inline;
                     }
+                }
+            }
+            .general-flex-box{
+                display: flex;
+                .right-elem{
+                    margin-left: auto;
                 }
             }
             .single-output{

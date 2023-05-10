@@ -61,7 +61,7 @@ $tools = [
         'date'=>'2023/04/30',
         'var'=>'1.0',
         'id'=>'calendar-generator',
-        'view'=>false
+        'view'=>true
     ],
     [
         'title'=>'もちイラスト博物館',

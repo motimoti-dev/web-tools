@@ -9,14 +9,51 @@
         <title><?=$tools[2]['title']?></title>
         <link rel="stylesheet" href="https://tools.motisan.info/css/index-style.css" http-equiv="Cache-Control" content="no-cache">
         <style>
+            @font-face {
+                font-family: 'MyFont';
+                src: url(./font/anz.ttf);
+            }
             .black{
-                color:black
+                color:#444
             }
             .blue{
                 color:blue
             }
             .red{
                 color: red;
+            }
+            num,.empty{
+                user-select: none;
+                font-weight: 600;
+                font-size: 25px;
+                display: block;
+            }
+            .cal td{
+                height: 100px;
+                vertical-align: top;
+                border-bottom: 1px #eee solid;
+                font-family: MyFont;
+                color:#444
+            }
+            .cal th{
+                border-bottom: 1px #eee solid;
+                padding: 12px 1px;
+                font-size: 25px;
+                font-family: MyFont;
+                color:#444
+            }
+            <?
+            $img = 'https://motisan.info/i/れいむもち.png';
+            if(isset($_GET['bg'])){
+                $img = htmlspecialchars($_GET['bg']);
+            }
+            ?>
+            .cal{
+                background-image: url(<?=$img?>);
+                background-repeat: no-repeat;
+                background-size:100% auto;
+                background-color:rgba(255,255,255,0.8);
+                background-blend-mode:lighten;
             }
         </style>
         <script src="https://code.jquery.com/jquery-3.7.0.slim.js" integrity="sha256-7GO+jepT9gJe9LB4XFf8snVOjX3iYNb0FHYr5LI1N5c=" crossorigin="anonymous"></script>
@@ -52,16 +89,16 @@
                     <p>数字をクリックで青、赤、黒に変化</p>
                     <h2><?=date("Y m")?></h2>
                     <div>
-                        <table style='width:100%;'>
+                        <table style='width:100%;table-layout: fixed;' class='cal'>
                             <?$day_counter = date('w', strtotime(date("Y-m-01")));//最初の1日の曜日?>
                             <tr>
-                                <th>日</th>
+                                <th style='color:#fa2a31'>日</th>
                                 <th>月</th>
                                 <th>火</th>
                                 <th>水</th>
                                 <th>木</th>
                                 <th>金</th>
-                                <th>土</th>
+                                <th style='color:#0191ff'>土</th>
                             </tr>
                             <div>
                             </div>
@@ -96,12 +133,11 @@
                                 $current_day = 1;
                                 for($i = 1;$i <= 7;$i++){
                                     if(($i - 1) == $day_counter ){
-                                        ?><td><?=($i - $day_counter)?></td><?
-                                        $current_day = 1;
+                                        ?><td><num id='d<?=($current_day)?>'><?=($i - $day_counter)?></num></td><?
                                         $onetime = true;
                                     }else{
                                         if(!$onetime){
-                                            ?><td>/</td><?
+                                            ?><td><span class='empty'>/</span></td><?
                                         }else{
                                             $current_day = $i - $day_counter;
                                             ?><td><num id='d<?=($current_day)?>'><?=($current_day)?></num></td><?
@@ -118,7 +154,7 @@
                                         $current_day++;
                                         if(date('t', strtotime(date("Y-m-01"))) < $current_day){
                                             $onetime = true;
-                                            ?><td>/</td><?
+                                            ?><td><span class='empty'>/</span></td><?
                                         }else{
                                             ?><td><num id='d<?=($current_day)?>'><?=$current_day?></num></td><?
                                         }

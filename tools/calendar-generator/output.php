@@ -8,6 +8,18 @@
         <meta name="description" content="<?=$tools[2]['description']?>"> 
         <title><?=$tools[2]['title']?></title>
         <link rel="stylesheet" href="https://tools.motisan.info/css/index-style.css" http-equiv="Cache-Control" content="no-cache">
+        <style>
+            .black{
+                color:black
+            }
+            .blue{
+                color:blue
+            }
+            .red{
+                color: red;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.7.0.slim.js" integrity="sha256-7GO+jepT9gJe9LB4XFf8snVOjX3iYNb0FHYr5LI1N5c=" crossorigin="anonymous"></script>
     </head>
     <body style="background:#fff3e8;margin:0">
         <iframe id="HeaderIframe" class="HeaderIframe" src="../../static/header.html" role="presentation" style="display: block;width: 100%;height: 60px;border: 0;"></iframe>
@@ -36,8 +48,8 @@
                         <p>今日の日付:<?=date('Y/m/d')?></p>
                         <p>使用中のタイムゾーン<?=date_default_timezone_get()?></p>
                     </div>
-                    <p>数字をクリックで青、赤、黒、緑に変化</p>
-                    <p>数字をクリックで青、赤、黒、緑に変化</p>
+                    <p>数字をクリックで青、赤、黒に変化</p>
+                    <p>数字をクリックで青、赤、黒に変化</p>
                     <h2><?=date("Y m")?></h2>
                     <div>
                         <table style='width:100%;'>
@@ -52,8 +64,6 @@
                                 <th>土</th>
                             </tr>
                             <div>
-                            <button class="btn">ボタン1</button>
-                            <button class="btn">ボタン2</button>
                             </div>
 
                             <script>
@@ -63,6 +73,19 @@
                             for(let i = 0; i < btn.length; i++){ // ②
                                 btn[i].addEventListener('click',function(){ // ②
                                 console.log(`${btn[i].textContent}がクリックされました！`); // ③
+                                
+                                if( btn[i].classList.contains("red") == true ){
+                                    $("#d" + btn[i].textContent).toggleClass("black");
+                                    $("#d" + btn[i].textContent).removeClass("red");
+                                }else if(btn[i].classList.contains("blue") == true ) {
+                                    $("#d" + btn[i].textContent).toggleClass("red");
+                                    $("#d" + btn[i].textContent).removeClass("blue");
+                                }else if(btn[i].classList.contains("black") == true ){
+                                    $("#d" + btn[i].textContent).toggleClass("blue");
+                                    $("#d" + btn[i].textContent).removeClass("black");
+                                } else {
+                                    $("#d" + btn[i].textContent).toggleClass("blue");
+                                }
                                 });
                             }
                             });
@@ -81,7 +104,7 @@
                                             ?><td>/</td><?
                                         }else{
                                             $current_day = $i - $day_counter;
-                                            ?><td><num><?=($current_day)?></num></td><?
+                                            ?><td><num id='d<?=($current_day)?>'><?=($current_day)?></num></td><?
                                         }
                                     }
                                 }?>
@@ -97,7 +120,7 @@
                                             $onetime = true;
                                             ?><td>/</td><?
                                         }else{
-                                            ?><td><num><?=$current_day?></num></td><?
+                                            ?><td><num id='d<?=($current_day)?>'><?=$current_day?></num></td><?
                                         }
                                     }?>
                                 </tr>

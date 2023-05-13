@@ -7,8 +7,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="<?=$tools[2]['description']?>"> 
         <title><?=$tools[2]['title']?></title>
-        <link rel="stylesheet" href="https://tools.motisan.info/css/index-style.css" http-equiv="Cache-Control" content="no-cache">
+        <link rel="stylesheet" href="../../css/index-style-wide-main.css" http-equiv="Cache-Control" content="no-cache">
+        <script>
+        (function(d) {
+            var config = {
+            kitId: 'yvd3uol',
+            scriptTimeout: 3000,
+            async: true
+            },
+            h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+        })(document);
+        </script>
         <style>
+
             @font-face {
                 font-family: 'MyFont';
                 src: url(./font/anz.ttf);
@@ -17,19 +28,19 @@
                 color:#444
             }
             .blue{
-                color:blue
+                color:#0191ff
             }
             .red{
-                color: red;
+                color:#fa2a31;
             }
             num,.empty{
                 user-select: none;
                 font-weight: 600;
-                font-size: 25px;
+                font-size: 31px;
                 display: block;
             }
             .cal td{
-                height: 100px;
+                height: 120px;
                 vertical-align: top;
                 border-bottom: 1px #eee solid;
                 font-family: MyFont;
@@ -38,10 +49,13 @@
             .cal th{
                 border-bottom: 1px #eee solid;
                 padding: 12px 1px;
-                font-size: 25px;
+                font-size: 31px;
                 font-family: MyFont;
                 color:#444
             }
+            
+            <?//linear-gradient(45deg, #B67B03 0%, #DAAF08 45%, #FEE9A0 70%, #DAAF08 85%, #B67B03 90% 100%);金https://wk-partners.co.jp/homepage/blog/hpseisaku/htmlcss/huchidorimoji/?>
+            
             <?
             $img = 'https://motisan.info/i/れいむもち.png';
             if(isset($_GET['bg'])){
@@ -55,17 +69,84 @@
                 background-color:rgba(255,255,255,0.8);
                 background-blend-mode:lighten;
             }
+            .cal p{
+                margin:2px 0;
+                font-size:21px;
+            }
+            :root{
+                --stroke-width:6px;
+                --stroke-color:white;
+            }
+            .stroke-text{
+            color:#7dd9ff;
+            font-size: 50px;
+            font-family: "m-plus-rounded-2p", sans-serif;
+            font-weight: 700;
+            font-style: normal;
+            }
+            .smooth-16 {
+            text-shadow: calc(var(--stroke-width) * 1) calc(var(--stroke-width) * 0) 0
+                var(--stroke-color),
+            calc(var(--stroke-width) * 0.9239) calc(var(--stroke-width) * 0.3827) 0
+                var(--stroke-color),
+            calc(var(--stroke-width) * 0.7071) calc(var(--stroke-width) * 0.7071) 0
+                var(--stroke-color),
+            calc(var(--stroke-width) * 0.3827) calc(var(--stroke-width) * 0.9239) 0
+                var(--stroke-color),
+            calc(var(--stroke-width) * 0) calc(var(--stroke-width) * 1) 0
+                var(--stroke-color),
+            calc(var(--stroke-width) * -0.3827) calc(var(--stroke-width) * 0.9239) 0
+                var(--stroke-color),
+            calc(var(--stroke-width) * -0.7071) calc(var(--stroke-width) * 0.7071) 0
+                var(--stroke-color),
+            calc(var(--stroke-width) * -0.9239) calc(var(--stroke-width) * 0.3827) 0
+                var(--stroke-color),
+            calc(var(--stroke-width) * -1) calc(var(--stroke-width) * 0) 0
+                var(--stroke-color),
+            calc(var(--stroke-width) * -0.9239) calc(var(--stroke-width) * -0.3827) 0
+                var(--stroke-color),
+            calc(var(--stroke-width) * -0.7071) calc(var(--stroke-width) * -0.7071) 0
+                var(--stroke-color),
+            calc(var(--stroke-width) * -0.3827) calc(var(--stroke-width) * -0.9239) 0
+                var(--stroke-color),
+            calc(var(--stroke-width) * 0) calc(var(--stroke-width) * -1) 0
+                var(--stroke-color),
+            calc(var(--stroke-width) * 0.3827) calc(var(--stroke-width) * -0.9239) 0
+                var(--stroke-color),
+            calc(var(--stroke-width) * 0.7071) calc(var(--stroke-width) * -0.7071) 0
+                var(--stroke-color),
+            calc(var(--stroke-width) * 0.9239) calc(var(--stroke-width) * -0.3827) 0
+                var(--stroke-color);
+            }
+            .pu{
+                background:#fd292914;
+                height: 17px;
+                line-height: 17px;
+                margin: 0!important;
+            }
+            .pu2{
+                background:#29e6fd14;
+                height: 17px;
+                line-height: 17px;
+                margin: 0!important;
+            }
+            .pululu{
+                background:#fd2929db;
+            }
+            .pululu2{
+                background:#29e6fddb;
+            }
         </style>
         <script src="https://code.jquery.com/jquery-3.7.0.slim.js" integrity="sha256-7GO+jepT9gJe9LB4XFf8snVOjX3iYNb0FHYr5LI1N5c=" crossorigin="anonymous"></script>
     </head>
     <body style="background:#fff3e8;margin:0">
         <iframe id="HeaderIframe" class="HeaderIframe" src="../../static/header.html" role="presentation" style="display: block;width: 100%;height: 60px;border: 0;"></iframe>
         <content>
-            <nav class="wrapper center" style="margin-top:20px;"><p style="margin:0 auto;color:#75688a">もちもち便利ツール</p></nav>
-            <div class="wrapper center" style="margin-top:15px;padding-bottom:10px;max-width: 1350px;">
+            <nav class="wrapper center" style="margin-top:20px;"><p style="text-align:center;margin:0 auto;color:#75688a">もちもち便利ツール</p></nav>
+            <div class="wrapper center" style="margin-top:15px;padding-bottom:10px;max-width: 1200px;">
                 <main>
                     <iframe id="ShareIframe" class="ShareIframe" src="../../static/share.html" role="presentation" style="position: relative;left:-15px;width:50px;height:100%;float:left"></iframe>
-                    <section style="display: grid;max-width: 960px;background: white;padding: 1.3rem;border-radius: 12px;" class="s1">
+                    <section style="display: grid;background: white;padding: 1.3rem;border-radius: 12px;" class="s1">
                     <div class="main-container">
                         <?
                         $week = [
@@ -86,8 +167,9 @@
                         <p>使用中のタイムゾーン<?=date_default_timezone_get()?></p>
                     </div>
                     <p>数字をクリックで青、赤、黒に変化</p>
-                    <p>数字をクリックで青、赤、黒に変化</p>
-                    <h2><?=date("Y m")?></h2>
+                    <p>数字下をクリックで文字を入力可能</p>
+                    <p>文字入力欄下の薄い色部分をクリックで色を濃くできます！</p>
+                    <span class="stroke-text smooth-16"><?=date("Y m")?></span>
                     <div>
                         <table style='width:100%;table-layout: fixed;' class='cal'>
                             <?$day_counter = date('w', strtotime(date("Y-m-01")));//最初の1日の曜日?>
@@ -133,14 +215,26 @@
                                 $current_day = 1;
                                 for($i = 1;$i <= 7;$i++){
                                     if(($i - 1) == $day_counter ){
-                                        ?><td><num id='d<?=($current_day)?>'><?=($i - $day_counter)?></num></td><?
+                                        ?><td>
+                                                <div style='height:calc(120px - 34px);'>
+                                                    <num id='d<?=($current_day)?>'><?=$current_day?></num><p contenteditable="true"> </p>
+                                                </div>
+                                                <p class='pu' id='p<?=($current_day)?>' onclick="$('#p<?=($current_day)?>').toggleClass('pululu')"></p>
+                                                <p class='pu2' id='pp<?=($current_day)?>' onclick="$('#pp<?=($current_day)?>').toggleClass('pululu2')"></p>
+                                            </td><?
                                         $onetime = true;
                                     }else{
                                         if(!$onetime){
                                             ?><td><span class='empty'>/</span></td><?
                                         }else{
                                             $current_day = $i - $day_counter;
-                                            ?><td><num id='d<?=($current_day)?>'><?=($current_day)?></num></td><?
+                                            ?><td>
+                                                <div style='height:calc(120px - 34px);'>
+                                                    <num id='d<?=($current_day)?>'><?=$current_day?></num><p contenteditable="true"> </p>
+                                                </div>
+                                                <p class='pu' id='p<?=($current_day)?>' onclick="$('#p<?=($current_day)?>').toggleClass('pululu')"></p>
+                                                <p class='pu2' id='pp<?=($current_day)?>' onclick="$('#pp<?=($current_day)?>').toggleClass('pululu2')"></p>
+                                            </td><?
                                         }
                                     }
                                 }?>
@@ -156,12 +250,19 @@
                                             $onetime = true;
                                             ?><td><span class='empty'>/</span></td><?
                                         }else{
-                                            ?><td><num id='d<?=($current_day)?>'><?=$current_day?></num></td><?
+                                            ?><td>
+                                                <div style='height:calc(120px - 34px);'>
+                                                    <num id='d<?=($current_day)?>'><?=$current_day?></num><p contenteditable="true"> </p>
+                                                </div>
+                                                <p class='pu' id='p<?=($current_day)?>' onclick="$('#p<?=($current_day)?>').toggleClass('pululu')"></p>
+                                                <p class='pu2' id='pp<?=($current_day)?>' onclick="$('#pp<?=($current_day)?>').toggleClass('pululu2')"></p>
+                                            </td><?
                                         }
                                     }?>
                                 </tr>
                             <?}?>
                         </table>
+                        <span style='white-space: nowrap;'><div style='position: relative;top: 3px;display: inline-block;width:17px;height:17px;' class='pululu'></div>&nbsp;&nbsp;<p style='display:inline-block;' contenteditable="true">は予定1</p>&nbsp;&nbsp;&nbsp;<div style='position: relative;top: 3px;display: inline-block;width:17px;height:17px;' class='pululu2'></div>&nbsp;&nbsp;<p style='display:inline-block;' contenteditable="true">は予定2</p></span>
                     </div>
                     </section>
                 </main>

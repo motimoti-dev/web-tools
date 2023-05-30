@@ -158,21 +158,33 @@
                             '金', //5
                             '土', //6
                           ];
-                        ?>
-                        <h1><?=$tools[2]['title']?></h1>
-                        <h2><?=date("Y年m月")?>の情報</h2>
-                        <p>今月の日数:<?=date('t', strtotime(date("Y-m-01")))?>日</p>
-                        <p>月の開始:<?=$week[date('w', strtotime(date("Y-m-01")))] . '曜日';?></p>
-                        <p>今日の日付:<?=date('Y/m/d')?></p>
-                        <p>使用中のタイムゾーン<?=date_default_timezone_get()?></p>
+                        $default = date("Y-m-01");
+                        if(isset($_GET['date'])){
+                            $default = htmlspecialchars($_GET['date']);?>
+                            <h1><?=$tools[2]['title']?></h1>
+                            <h2><?=date("Y年m月", strtotime($default))?>の情報</h2>
+                            <p>指定された月の日数:<?=date('t', strtotime(date("Y-m-01", strtotime($default))))?>日</p>
+                            <p>指定された月の開始:<?=$week[date('w', strtotime(date("Y-m-01", strtotime($default))))] . '曜日';?></p>
+                            <p>指定された日付:<?=date('Y/m/d', strtotime($default))?></p>
+                            <p>使用中のタイムゾーン<?=date_default_timezone_get()?></p>  
+                        <?}else{?>
+                            <h1><?=$tools[2]['title']?></h1>
+                            <p>日付が指定されていないため今月の情報を取得しています。</p>
+                            <p>urlにdate=2023-06-01のような指定を含むと取得する月を変えることができます</p>
+                            <h2><?=date("Y年m月")?>の情報</h2>
+                            <p>今月の日数:<?=date('t', strtotime(date("Y-m-01")))?>日</p>
+                            <p>月の開始:<?=$week[date('w', strtotime(date("Y-m-01")))] . '曜日';?></p>
+                            <p>今日の日付:<?=date('Y/m/d')?></p>
+                            <p>使用中のタイムゾーン<?=date_default_timezone_get()?></p>
+                        <?}?>
                     </div>
                     <p>数字をクリックで青、赤、黒に変化</p>
                     <p>数字下をクリックで文字を入力可能</p>
                     <p>文字入力欄下の薄い色部分をクリックで色を濃くできます！</p>
-                    <span class="stroke-text smooth-16"><?=date("Y m")?></span>
+                    <span class="stroke-text smooth-16"><?=date("Y m", strtotime($default))?></span>
                     <div>
                         <table style='width:100%;table-layout: fixed;' class='cal'>
-                            <?$day_counter = date('w', strtotime(date("Y-m-01")));//最初の1日の曜日?>
+                            <?$day_counter = date('w', strtotime(date("Y-m-01", strtotime($default))));//最初の1日の曜日?>
                             <tr>
                                 <th style='color:#fa2a31'>日</th>
                                 <th>月</th>
@@ -246,7 +258,7 @@
                                     <?
                                     for($i = 1;$i <= 7;$i++){
                                         $current_day++;
-                                        if(date('t', strtotime(date("Y-m-01"))) < $current_day){
+                                        if(date('t', strtotime(date("Y-m-01", strtotime($default)))) < $current_day){
                                             $onetime = true;
                                             ?><td><span class='empty'>/</span></td><?
                                         }else{

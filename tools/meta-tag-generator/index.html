@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Web上でテキストファイルの文字列を確認するツールです。"> 
+        <meta name="format-detection" content="telephone=no">
+        <title>メタタグジェネレータ</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/create_data.js"></script>
+        <script src="js/copy_code.js"></script>
+    </head>
+    <body>
+        <class="main-container">
+            <h1>メタタグジェネレータ</h1>
+
+            <details>
+                <summary class="meta-accordion">
+                    <div class="accordion-box">
+                        <input type="checkbox" class="checkbox-trigger" id="charset-flag" checked>
+                        <p>charset</p>
+                        <div class="arrow-icon"></div>
+                    </div>
+                </summary>
+                <div class="meta-set">
+                    <div class="description-box">
+                        <p>文字コードを設定するメタタグです！</p>
+                    </div>
+                    <div class="two-columns-box">
+                        <p>文字コード</p>
+                        <select class="charset-elem" id="char-code">
+                            <option value="UTF-8" selected>UTF-8</option>
+                            <option value="Shift_JIS">Shift_JIS(非推奨)</option>
+                            <option value="EUC-JP">EUC-JP(非推奨)</option>
+                        </select>
+                    </div>
+                    <div class="single-output">
+                        <p>生成コード</p>
+                        <code id="charset-output">&lt;meta charset="UTF-8"&gt;</code>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary class="meta-accordion">
+                    <div class="accordion-box">
+                        <input type="checkbox" class="checkbox-trigger" id="description-flag" checked>
+                        <p>description</p>
+                        <div class="arrow-icon"></div>
+                    </div>
+                </summary>
+                <div class="meta-set">
+                    <div class="description-box">
+                        <p>検索結果の下に表示されるサイト説明の文章です！</p>
+                    </div>
+                    <div class="two-rows-box">
+                        <p>サイトの説明文</p>
+                        <input type="text" class="description-elem" id="description-sentence" value="ここに説明文を入力します！">
+                    </div>
+                    <div class="single-output">
+                        <p>生成コード</p>
+                        <code id="description-output">&lt;meta name="description" content="ここに説明文を入力します！"&gt;</code>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary class="meta-accordion">
+                    <div class="accordion-box">
+                        <input type="checkbox" class="checkbox-trigger" id="viewport-flag" checked>
+                        <p>viewport</p>
+                        <div class="arrow-icon"></div>
+                    </div>
+                </summary>
+                <div class="meta-set">
+                    <div class="description-box">
+                        <p>表示領域の幅を決めるタグです！</p>
+                    </div>
+                    <div class="two-columns-box">
+                        <p>表示幅(width)</p>
+                        <select class="viewport-elem" id="viewport-width">
+                            <option value="device-width" selected>device-width</option>
+                            <option value="480">480</option>
+                            <option value="980">980</option>
+                        </select>
+                    </div>
+                    <div class="two-columns-box">
+                        <p>初期倍率(initial-scale)</p>
+                        <select class="viewport-elem" id="viewport-initial-scale">
+                            <option value="1" selected>1</option>
+                            <option value="0.5">0.5</option>
+                        </select>
+                    </div>
+                    <div class="two-columns-box">
+                        <p>ズーム操作の許可(user-scalable)</p>
+                        <select class="viewport-elem" id="viewport-user-scalable">
+                            <option value="yes" selected>Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div class="single-output">
+                        <p>生成コード</p>
+                        <code id="viewport-output">&lt;meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"&gt;</code>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary class="meta-accordion">
+                    <div class="accordion-box">
+                        <input type="checkbox" class="checkbox-trigger" id="theme-color-flag" checked>
+                        <p>theme-color</p>
+                        <div class="arrow-icon"></div>
+                    </div>
+                </summary>
+                <div class="meta-set">
+                    <div class="description-box">
+                        <p>テーマカラーを設定するタグです！</p>
+                    </div>
+                    <p>カラーコード</p>
+                    <div class="two-columns-box">
+                        <input type="color" class="theme-color-elem" id="theme-color-picker">
+                        <p id="theme-color-result">選択：#000</p>
+                    </div>
+                    <div class="single-output">
+                        <p>生成コード</p>
+                        <code id="theme-color-output">&lt;meta name="theme-color" content="#000"&gt;</code>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary class="meta-accordion">
+                    <div class="accordion-box">
+                        <input type="checkbox" class="checkbox-trigger" id="og-flag" checked>
+                        <p>og</p>
+                        <div class="arrow-icon"></div>
+                    </div>
+                </summary>
+                <div class="meta-set">
+                    <div class="description-box">
+                        <p>OG設定するタグです！</p>
+                    </div>
+                    <div class="two-rows-box">
+                        <div class="left-flex">
+                            <input type="checkbox" class="og-child-trigger" id="og-site-name-flag" checked>
+                            <p>og:site_name</p>
+                        </div>
+                        <input type="text" class="og-elem" id="og-site-name-sentence" value="サイト名を入力します！">
+                    </div>
+                    <div class="two-rows-box">
+                        <div class="left-flex">
+                            <input type="checkbox" class="og-child-trigger" id="og-url-flag" checked>
+                            <p>og:url</p>
+                        </div>
+                        <input type="text" class="og-elem" id="og-url-sentence" value="ページのURLを入力します！">
+                    </div>
+                    <div class="two-rows-box">
+                        <div class="left-flex">
+                            <input type="checkbox" class="og-child-trigger" id="og-type-flag" checked>
+                            <p>og:type</p>
+                        </div>
+                        <input type="text" class="og-elem" id="og-type-sentence" value="ページの種類を入力します！">
+                    </div>
+                    <div class="two-rows-box">
+                        <div class="left-flex">
+                            <input type="checkbox" class="og-child-trigger" id="og-title-flag" checked>
+                            <p>og:title</p>
+                        </div>
+                        <input type="text" class="og-elem" id="og-title-sentence" value="ページのタイトルを入力します！">
+                    </div>
+                    <div class="two-rows-box">
+                        <div class="left-flex">
+                            <input type="checkbox" class="og-child-trigger" id="og-description-flag" checked>
+                            <p>og:description</p>
+                        </div>
+                        <input type="text" class="og-elem" id="og-description-sentence" value="ページの説明を入力します！">
+                    </div>
+                    <div class="two-rows-box">
+                        <div class="left-flex">
+                            <input type="checkbox" class="og-child-trigger" id="og-image-flag" checked>
+                            <p>og:image</p>
+                        </div>
+                        <input type="text" class="og-elem" id="og-image-sentence" value="ページのサムネイル画像のURLを入力します！">
+                    </div>
+                    <div class="single-output">
+                        <p>生成コード</p>
+                        <pre>
+                            <code id="og-output">&lt;meta property="og:site_name" content="サイト名を入力します！"&gt;&#010;&lt;meta property="og:url" content="ページのURLを入力します！"&gt;&#010;&lt;meta property="og:type" content="ページの種類を入力します！"&gt;&#010;&lt;meta property="og:title" content="ページのタイトルを入力します！"&gt;&#010;&lt;meta property="og:description" content="ページの説明を入力します！"&gt;&#010;&lt;meta property="og:image" content="ページのサムネイル画像のURLを入力します！"&gt;&#010;</code>
+                        </pre>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary class="meta-accordion">
+                    <div class="accordion-box">
+                        <input type="checkbox" class="checkbox-trigger" id="robots-flag" checked>
+                        <p>robots</p>
+                        <div class="arrow-icon"></div>
+                    </div>
+                </summary>
+                <div class="meta-set">
+                    <div class="description-box">
+                        <p>検索エンジンのクローラの動きを設定するメタタグです！</p>
+                    </div>
+                    <div class="two-columns-box">
+                        <p>ディレクティブ</p>
+                        <select class="robots-elem" id="robots-directive">
+                            <option value="all" selected>all(デフォルト値)</option>
+                            <option value="noindex">noindex</option>
+                            <option value="nofollow">nofollow</option>
+                            <option value="none">none</option>
+                            <option value="noarchive">noarchive</option>
+                            <option value="nosnippet">nosnippet</option>
+                            <option value="max-snippet:100">max-snippet:100</option>
+                            <option value="max-image-preview:standard">max-image-preview:standard</option>
+                            <option value="max-video-preview:10">max-video-preview:10</option>
+                            <option value="notranslate">notranslate</option>
+                            <option value="noimageindex">noimageindex</option>
+                            <option value="unavailable_after:2024-01-01T12:00:00+09:00">unavailable_after:2024-01-01T12:00:00+09:00</option>
+                        </select>
+                    </div>
+                    <div class="single-output">
+                        <p>生成コード</p>
+                        <code id="robots-output">&lt;meta name="robots" content="all"&gt;</code>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary class="meta-accordion">
+                    <div class="accordion-box">
+                        <input type="checkbox" class="checkbox-trigger" id="twitter-flag" checked>
+                        <p>twitter</p>
+                        <div class="arrow-icon"></div>
+                    </div>
+                </summary>
+                <div class="meta-set">
+                    <div class="description-box">
+                        <p>twitterカードの設定するタグです！</p>
+                    </div>
+                    <div class="general-flex-box">
+                        <input type="checkbox" class="twitter-child-trigger" id="twitter-card-flag" checked>
+                        <p>twitter:card</p>
+                        <select class="twitter-elem right-elem" id="twitter-card-sentence">
+                            <option value="summary" selected>summary</option>
+                            <option value="summary_large_image">summary_large_image</option>
+                        </select>
+                    </div>
+                    <div class="two-rows-box">
+                        <div class="left-flex">
+                            <input type="checkbox" class="twitter-child-trigger" id="twitter-site-flag" checked>
+                            <p>twitter:site</p>
+                        </div>
+                        <input type="text" class="twitter-elem" id="twitter-site-sentence" value="WebサイトのTwitterIDを入力します！">
+                    </div>
+                    <div class="two-rows-box">
+                        <div class="left-flex">
+                            <input type="checkbox" class="twitter-child-trigger" id="twitter-title-flag" checked>
+                            <p>twitter:title</p>
+                        </div>
+                        <input type="text" class="twitter-elem" id="twitter-title-sentence" value="ページのタイトルを入力します！">
+                    </div>
+                    <div class="two-rows-box">
+                        <div class="left-flex">
+                            <input type="checkbox" class="twitter-child-trigger" id="twitter-description-flag" checked>
+                            <p>twitter:description</p>
+                        </div>
+                        <input type="text" class="twitter-elem" id="twitter-description-sentence" value="ページの説明を入力します！">
+                    </div>
+                    <div class="two-rows-box">
+                        <div class="left-flex">
+                            <input type="checkbox" class="twitter-child-trigger" id="twitter-image-flag" checked>
+                            <p>twitter:image</p>
+                        </div>
+                        <input type="text" class="twitter-elem" id="twitter-image-sentence" value="画像のURLを入力します！">
+                    </div>
+                    <div class="single-output">
+                        <p>生成コード</p>
+                        <pre>
+                            <code id="twitter-output">&lt;meta name="twitter:card" content="summary"&gt;&#010;&lt;meta name="twitter:site" content="WebサイトのTwitterIDを入力します！"&gt;&#010;&lt;meta name="twitter:title" content="ページのタイトルを入力します！"&gt;&#010;&lt;meta name="twitter:description" content="ページの説明を入力します！"&gt;&#010;&lt;meta name="twitter:image" content="画像のURLを入力します！"&gt;&#010;</code>
+                        </pre>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary class="meta-accordion">
+                    <div class="accordion-box">
+                        <input type="checkbox" class="checkbox-trigger" id="msapplication-flag" checked>
+                        <p>msapplication</p>
+                        <div class="arrow-icon"></div>
+                    </div>
+                </summary>
+                <div class="meta-set">
+                    <div class="description-box">
+                        <p>ピン留め機能時の設定タグです！</p>
+                    </div>
+                    <div class="two-rows-box">
+                        <p>画像のURL</p>
+                        <input type="text" class="msapplication-elem" id="msapplication-tile-image-sentence" value="ここに画像のURLを入力します！">
+                    </div>
+                    <div class="single-output">
+                        <p>生成コード</p>
+                        <code id="msapplication-output">&lt;meta name="msapplication-TileImage" content="ここに画像のURLを入力します！"&gt;</code>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary class="meta-accordion">
+                    <div class="accordion-box">
+                        <input type="checkbox" class="checkbox-trigger" id="keywords-flag">
+                        <p>keywords</p>
+                        <div class="arrow-icon"></div>
+                    </div>
+                </summary>
+                <div class="meta-set">
+                    <div class="description-box">
+                        <p>Webページに関連する情報を伝えるタグです！</p>
+                    </div>
+                    <div class="two-rows-box">
+                        <p>キーワード設定(例:キーワード1,キーワード2,キーワード3)</p>
+                        <input type="text" class="keywords-elem" id="keywords-sentence" value="キーワード1,キーワード2,キーワード3">
+                    </div>
+                    <div class="single-output">
+                        <p>生成コード</p>
+                        <code id="keywords-output">&lt;meta name="keywords" content="キーワード1,キーワード2,キーワード3"&gt;</code>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary class="meta-accordion">
+                    <div class="accordion-box">
+                        <input type="checkbox" class="checkbox-trigger" id="author-flag">
+                        <p>author</p>
+                        <div class="arrow-icon"></div>
+                    </div>
+                </summary>
+                <div class="meta-set">
+                    <div class="description-box">
+                        <p>ホームページの著作者名を設定するタグです！</p>
+                    </div>
+                    <div class="two-rows-box">
+                        <p>キーワード設定(例:〇〇〇)</p>
+                        <input type="text" class="author-elem" id="author-sentence" value="〇〇〇">
+                    </div>
+                    <div class="single-output">
+                        <p>生成コード</p>
+                        <code id="author-output">&lt;meta name="author" content="〇〇〇"&gt;</code>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary class="meta-accordion">
+                    <div class="accordion-box">
+                        <input type="checkbox" class="checkbox-trigger" id="other-flag" checked>
+                        <p>その他</p>
+                        <div class="arrow-icon"></div>
+                    </div>
+                </summary>
+                <div class="meta-set">
+                    <div class="description-box">
+                        <p>linkやtitle等、ヘッダで利用するタグです！</p>
+                    </div>
+                    <details>
+                        <summary class="meta-accordion-child">
+                            <div class="accordion-box">
+                                <input type="checkbox" class="other-child-trigger" id="apple-touch-icon-precomposed-flag" checked>
+                                <p>apple-touch-icon-precomposed</p>
+                                <div class="arrow-icon"></div>
+                            </div>
+                        </summary>
+                        <div class="meta-set">
+                            <div class="description-box">
+                                <p>ホーム画面に表示されるアイコンの設定タグです！</p>
+                            </div>
+                            <div class="two-rows-box">
+                                <p>画像のURL</p>
+                                <input type="text" class="apple-touch-icon-precomposed-elem" id="apple-touch-icon-precomposed-sentence" value="ここに画像のURLを入力します！">
+                            </div>
+                            <div class="single-output">
+                                <p>生成コード</p>
+                                <code id="apple-touch-icon-precomposed-output">&lt;link rel="apple-touch-icon-precomposed" href="ここに画像のURLを入力します！"&gt;</code>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary class="meta-accordion-child">
+                            <div class="accordion-box">
+                                <input type="checkbox" class="other-child-trigger" id="icon-flag" checked>
+                                <p>icon</p>
+                                <div class="arrow-icon"></div>
+                            </div>
+                        </summary>
+                        <div class="meta-set">
+                            <div class="description-box">
+                                <p>ファビコンを設定するタグです！</p>
+                            </div>
+                            <div class="two-rows-box">
+                                <p>画像のURL</p>
+                                <input type="text" class="icon-elem" id="icon-sentence" value="ここに画像のURLを入力します！">
+                            </div>
+                            <div class="single-output">
+                                <p>生成コード</p>
+                                <code id="icon-output">&lt;link rel="icon" href="ここに画像のURLを入力します！"&gt;</code>
+                            </div>
+                        </div>
+                    </details>
+                    
+                    <details>
+                        <summary class="meta-accordion-child">
+                            <div class="accordion-box">
+                                <input type="checkbox" class="other-child-trigger" id="canonical-flag" checked>
+                                <p>canonical</p>
+                                <div class="arrow-icon"></div>
+                            </div>
+                        </summary>
+                        <div class="meta-set">
+                            <div class="description-box">
+                                <p>正規URLを設定するタグです！</p>
+                            </div>
+                            <div class="two-rows-box">
+                                <p>画像のURL</p>
+                                <input type="text" class="canonical-elem" id="canonical-sentence" value="ここに画像のURLを入力します！">
+                            </div>
+                            <div class="single-output">
+                                <p>生成コード</p>
+                                <code id="canonical-output">&lt;link rel="canonical" href="ここに画像のURLを入力します！"&gt;</code>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary class="meta-accordion-child">
+                            <div class="accordion-box">
+                                <input type="checkbox" class="other-child-trigger" id="title-flag" checked>
+                                <p>title</p>
+                                <div class="arrow-icon"></div>
+                            </div>
+                        </summary>
+                        <div class="meta-set">
+                            <div class="description-box">
+                                <p>ページのタイトルを設定するタグです！</p>
+                            </div>
+                            <div class="two-rows-box">
+                                <p>タイトル名</p>
+                                <input type="text" class="title-elem" id="title-sentence" value="ここにページのタイトルを入力します！">
+                            </div>
+                            <div class="single-output">
+                                <p>生成コード</p>
+                                <code id="title-output">&lt;title&gt;ここにページのタイトルを入力します！"&lt;/title&gt;</code>
+                            </div>
+                        </div>
+                    </details>
+
+                    <div class="single-output">
+                        <p>生成コード</p>
+                        <pre>
+                            <code id="other-output">&lt;link rel="apple-touch-icon-precomposed" href="ここに画像のURLを入力します！"&gt;<br>&lt;link rel="icon" href="ここに画像のURLを入力します！"&gt;<br>&lt;link rel="canonical" href="ここに画像のURLを入力します！"&gt;<br>&lt;title&gt;ここにページのタイトルを入力します！&lt;/title&gt;</code>
+                        </pre>
+                    </div>
+                </div>
+            </details>
+
+            <div class="output-box">
+                <p>最終的なコードは以下に出力されます！</p>
+                <div class="copy-box">
+                    <button type="button" id="copy-button">コピー</button>
+                    <button type="button" id="copy-button-one-row">コピー(改行なし)</button>
+                </div>
+                <textarea id="total-output" rows="20">&lt;meta charset="UTF-8"&gt;&#010;&lt;meta name="description" content="ここに説明文を入力します！"&gt;&#010;&lt;meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes"&gt;&#010;&lt;meta name="theme-color" content="#000"&gt;&#010;&lt;meta property="og:site_name" content="サイト名を入力します！"&gt;&#010;&lt;meta property="og:url" content="ページのURLを入力します！"&gt;&#010;&lt;meta property="og:type" content="ページの種類を入力します！"&gt;&#010;&lt;meta property="og:title" content="ページのタイトルを入力します！"&gt;&#010;&lt;meta property="og:description" content="ページの説明を入力します！"&gt;&#010;&lt;meta property="og:image" content="ページのサムネイル画像のURLを入力します！"&gt;&#010;&lt;meta name="robots" content="all"&gt;&#010;&lt;meta name="twitter:card" content="summary"&gt;&#010;&lt;meta name="twitter:site" content="WebサイトのTwitterIDを入力します！"&gt;&#010;&lt;meta name="twitter:title" content="ページのタイトルを入力します！"&gt;&#010;&lt;meta name="twitter:description" content="ページの説明を入力します！"&gt;&#010;&lt;meta name="twitter:image" content="画像のURLを入力します！"&gt;&#010;&lt;meta name="msapplication-TileImage" content="ここに画像のURLを入力します！"&gt;&#010;&lt;link rel="apple-touch-icon-precomposed" href="ここに画像のURLを入力します！"&gt;&#010;&lt;link rel="icon" href="ここに画像のURLを入力します！"&gt;&#010;&lt;link rel="canonical" href="ここに画像のURLを入力します！"&gt;&#010;&lt;title&gt;ここにページのタイトルを入力します！&lt;/title&gt;</textarea>
+            </div>
+        </div>
+    </body>
+</html>

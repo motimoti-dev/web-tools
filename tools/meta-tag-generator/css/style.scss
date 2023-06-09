@@ -1,0 +1,176 @@
+$main-width: 900px;
+$drop-box-color: #f0f8ff;
+$accordion-border-color: #ccc;
+$arrow-color: #555;
+$console-color: #777;
+
+.main-container{
+    width: $main-width;
+    margin: 0 auto;
+    #drop-box{
+        border:1px solid #000;
+    }
+}
+
+details{
+    transition: .5s;
+    margin-top: 20px;
+    summary {
+        display: block;
+        cursor: pointer;
+        &::-webkit-details-marker{
+            display: none;
+        }
+    }
+    .meta-accordion, .meta-accordion-child{
+        border: 1px solid $accordion-border-color;
+        border-radius: 10px;
+        .accordion-box{
+            display: flex;
+            justify-content:center;
+            align-items:center;
+            padding-left: 20px;
+            input{
+                display: block;
+            }
+            .arrow-icon{
+                position: relative;
+                display: inline-block;
+                margin-left: auto;
+                padding: 10px 20px 20px 10px;
+                &::before{
+                    content: '';
+                    width: 10px;
+                    height: 10px;
+                    border-top: solid 2px $arrow-color;
+                    border-right: solid 2px $arrow-color;
+                    position: absolute;
+                    left: 10px;
+                    top: 8px;
+                    transition: all .5s;
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+    }
+    &[open]{
+        .meta-accordion{
+            transition: all .5s;
+            border-radius: 10px 10px 0 0;
+            .accordion-box{
+                .arrow-icon{
+                    &::before{
+                        transition: all .5s;
+                        transform: rotate(135deg);
+                    }
+                }
+            }
+        }
+        .meta-accordion-child{
+            transition: all .5s;
+            border-radius: 10px;
+            .accordion-box{
+                .arrow-icon{
+                    &::before{
+                        transition: all .5s;
+                        transform: rotate(135deg);
+                    }
+                }
+            }
+        }
+        details{
+            &[open]{
+                .meta-accordion-child{
+                    transition: all .5s;
+                    border-radius: 10px 10px 0 0;
+                    .accordion-box{
+                        .arrow-icon{
+                            &::before{
+                                transition: all .5s;
+                                transform: rotate(135deg);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .meta-set{
+            animation: FadeIn .5s ease;
+            border: 1px solid $accordion-border-color;
+            border-radius: 0 0 10px 10px;
+            padding: 10px 20px;
+            .description-box{
+                p{
+                    margin: 5px 0;
+                    font-size: 18px;
+                }
+            }
+            .two-columns-box{
+                display: flex;
+                justify-content: space-around;
+                margin: 10px 0 0;
+                border-bottom: 1px solid $accordion-border-color;
+                input[type=color]{
+                    display: block;
+                }
+            }
+            .two-rows-box{
+                margin-top: 10px;
+                p{
+                    margin: 0;
+                }
+                input[type=text]{
+                    width: 100%;
+                }
+                .left-flex{
+                    input{
+                        margin: 0;
+                    }
+                    p{
+                        display: inline;
+                    }
+                }
+            }
+            .general-flex-box{
+                display: flex;
+                .right-elem{
+                    margin-left: auto;
+                }
+            }
+            .single-output{
+                margin-top: 10px;
+                p{
+                    margin: 5px 0;
+                }
+                pre{
+                    margin: 0;
+                }
+                code{
+                    display: block;
+                    box-sizing:border-box;
+                    width: 100%;
+                    background-color: $console-color;
+                    color: #fefefe;
+                    padding: 10px;
+                }
+            }
+        }
+    }
+}
+
+@keyframes FadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+textarea{
+    resize: vertical;
+    width: 100%;
+    padding: 0;
+}

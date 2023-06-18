@@ -390,7 +390,7 @@ h2 span {
   }
   .wrapper {
     display: flow-root;
-    width: 95%;
+    /*width: 95%;*/
     margin: 0 auto;
   }
   .sharesp {

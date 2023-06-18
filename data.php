@@ -72,7 +72,29 @@ $tools = [
         'date'=>'2023/05/6',
         'var'=>'1.0',
         'id'=>'src-illust',
-        'view'=>true
+        'view'=>false
+    ],
+    [
+        'title'=>'メタタグジェネレーター',
+        'url'=>'./tools/meta-tag-generator/',
+        'user'=>'',
+        'description'=>'HTMLのメタタグを作成できます',
+        'img'=>'i/meta-tag-generator.png',
+        'date'=>'2023/06/9',
+        'var'=>'1.0',
+        'id'=>'meta-tag-generator',
+        'view'=>false
+    ],
+    [
+        'title'=>'もち的コピペ集',
+        'url'=>'./tools/copy-paste/',
+        'user'=>'',
+        'description'=>'もちが個人的によく使う文字列をコピペできます',
+        'img'=>'i/copy-paste.png',
+        'date'=>'2023/06/9',
+        'var'=>'1.0',
+        'id'=>'copy-paste',
+        'view'=>false
     ],
     /*[
         'title'=>'',

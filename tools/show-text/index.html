@@ -7,7 +7,7 @@
         <script>document.documentElement.classList.remove('no-js')</script> 
         <title>テキスト内容確認ツール</title>
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="https://tools.motisan.info/css/index-style.css" http-equiv="Cache-Control" content="no-cache">
+        <link rel="stylesheet" href="../../css/index-style.css" http-equiv="Cache-Control" content="no-cache">
         <link rel="stylesheet" href="css/moti.css">
         <script src="js/read_data.js"></script>
     </head>
@@ -20,11 +20,22 @@
                     <iframe id="ShareIframe" class="ShareIframe" src="../../static/share.html" role="presentation" style="position: relative;left:-15px;width:50px;height:100%;float:left"></iframe>
                     <section style="display: grid;max-width: 960px;background: white;padding: 1.3rem;border-radius: 12px;" class="s1">
                         <h1>テキスト内容確認ツール</h1>
+                        <div style="display: table;margin-bottom: 2em;width: 100%;max-width:700px;">
+                            <div style="max-height:170px;width:20%;border: none;min-width: 60px;display: table-cell;">
+                                <img src="https://motisan-test.web.app/i/d-i1.png" style="width: 100%;" data-src="https://motisan-test.web.app/i/d-i1.png" decoding="async" class=" lazyloaded">
+                                <noscript><img src="https://motisan-test.web.app/i/d-i1.png" style="width: 100%;" data-eio="l"></noscript>
+                            </div>
+                                <div style="width:60%;display: table-cell;vertical-align:middle">
+                                    <p style="box-shadow: 1px 3px 4px #3d5e781f;width:calc(100% - 5% - 6px);border: 3px solid #eee;background-color: #fff;color: #555;padding: 2.5%;border-radius:15px;margin:auto 0;">テキスト系のファイルを確認するだけのツールです！<br>うおおおおおおおおおおおお！</p>
+                                </div>
+                            </div>
+                            <label for="file-load"><span>クリックでアップロード</span></label>
                         <div id="drop-box">
-                            <p>ここにファイルをドロップしてください。</p>
+                            <p>ここにファイルをドロップしましょう！</p>
                             <input type="file" id="file-load">
                         </div>
-                        <textarea id="text-content" placeholder="ここに読み込まれたテキストが表示されます。"></textarea>
+                        <textarea id="text-content" placeholder="ここに読み込まれたテキストが表示されます！"></textarea>
+                        <p>svg画像等の中身を見るのに使おうと思いますがブラウザに読み込んでctrl uでも見れるのでスマホでview-sourceがしにくい環境にいるときとかに使います！</p>
                     </section>
                 </main>
                 <iframe id="SidebarIframe" class="SidebarIframe" src="../../static/sidebar.html" role="presentation" style="display:block"></iframe>

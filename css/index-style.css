@@ -353,6 +353,14 @@ main {
 
 /*spanで改行できるように*/
 
+h1{
+  font-size: 26px;
+    color: #6594e0;
+    border-bottom: dashed 2px #6594e0;
+    text-align: left;
+    margin-top:0;
+}
+
 h2 span {
   display: inline-block;
 }

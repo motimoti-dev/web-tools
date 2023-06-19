@@ -9,8 +9,34 @@
 
 textarea {
   resize: vertical;
-  width: 100%;
+  width: calc(100% - 14px);
   min-height: 300px;
-  padding: 0;
-  margin-top: 50px;
-}/*# sourceMappingURL=style.css.map */
+  padding: 7px;
+  margin-top: 20px;
+  border-radius: 12px;
+}
+#drop-box{
+border-radius: 12px;
+border: #d5d5d5 1px solid;
+box-shadow: 1px 3px 4px #3d5e781f;
+padding:7px;
+}
+#drop-box:hover{
+  background:#f1feff;
+}
+label {
+max-width: fit-content;
+border-radius: 12px;
+padding: 5px 20px;
+color: #ffffff;
+background-color: #295d72;
+cursor: pointer;
+margin-bottom:12px;
+transition: .3s;
+}
+label:hover {
+opacity: 0.8;
+}
+input[type="file"] {
+display: none;
+}

@@ -1,29 +1,70 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Web上でファイルの文字列を確認するツールです。">
-    <meta name="format-detection" content="telephone=no">
-    <title>文字置換ツール</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/replace.js"></script>
-</head>
-<body>
-    <div class="main-container">
-        <h1>文字置換ツール</h1>
-        <div class="replace-container">
-            <div class="replace-box">
-                <input type="text" class="replace-trigger" id="before-replace-0"><span>→</span><input type="text" class="replace-trigger" id="after-replace-0">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Web上でファイルの文字列を確認するツールです。">
+        <script>document.documentElement.classList.remove('no-js')</script> 
+        <title>文字置換ツール</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="../../css/index-style.css" http-equiv="Cache-Control" content="no-cache">
+        <script src="js/replace.js"></script>
+    </head>
+    <body style="background:#fff3e8;margin:0">
+        <iframe id="HeaderIframe" class="HeaderIframe" src="../../static/header.html" role="presentation" style="display: block;width: 100%;height: 60px;border: 0;"></iframe>
+        <content>
+            <nav class="wrapper center" style="margin-top:20px;"><p style="margin:0 auto;color:#75688a">もちもち便利ツール</p></nav>
+            <div class="wrapper center" style="margin-top:15px;padding-bottom:10px;max-width: 1350px;">
+                <main>
+                    <iframe id="ShareIframe" class="ShareIframe" src="../../static/share.html" role="presentation" style="position: relative;left:-15px;width:50px;height:100%;float:left"></iframe>
+                    <section style="display: grid;max-width: 960px;background: white;padding: 1.3rem;border-radius: 12px;" class="s1">
+                        <h1>文字置換ツール</h1>
+                        <div style="display: table;margin-bottom: 2em;width: 100%;max-width:700px;">
+                            <div style="max-height:170px;width:20%;border: none;min-width: 60px;display: table-cell;">
+                                <img src="https://motisan-test.web.app/i/d-i1.png" style="width: 100%;" data-src="https://motisan-test.web.app/i/d-i1.png" decoding="async" class=" lazyloaded">
+                                <noscript><img src="https://motisan-test.web.app/i/d-i1.png" style="width: 100%;" data-eio="l"></noscript>
+                            </div>
+                            <div style="width:60%;display: table-cell;vertical-align:middle">
+                                <p style="box-shadow: 1px 3px 4px #3d5e781f;width:calc(100% - 5% - 6px);border: 3px solid #eee;background-color: #fff;color: #555;padding: 2.5%;border-radius:15px;margin:auto 0;">文字を入れ替えるツールです！<br>うおおおおおおおおおおおお！</p>
+                            </div>
+                        </div>
+                        <div class="replace-container">
+                            <div class="replace-box">
+                                <input type="text" class="replace-trigger" id="before-replace-0" placeholder="入れ替えたい文字">
+                                <span>→</span>
+                                <input type="text" class="replace-trigger" id="after-replace-0" placeholder="入れ替え後の文字">
+                            </div>
+                            <div class="button-box">
+                                <button type="button" id="add-button">+1個 追加</button>
+                                <button type="button" id="del-button">-1個 削除</button>
+                            </div>
+                        </div>
+                        <textarea id="before-text" placeholder="ここに文章を入力"></textarea>
+                        <textarea id="after-text" placeholder="入れ替え後の文字が表示される" disabled></textarea>
+                    </section>
+                </main>
+                <iframe id="SidebarIframe" class="SidebarIframe" src="../../static/sidebar.html" role="presentation" style="display:block"></iframe>
             </div>
-            <div class="button-box">
-                <button type="button" id="add-button">追加</button>
-                <button type="button" id="del-button">一つ削除</button>
-            </div>
-        </div>
-        <textarea id="before-text"></textarea>
-        <textarea id="after-text" disabled></textarea>
-    </div>
-</body>
+        </content>
+    <iframe id="FooterIframe" class="FooterIframe" src="../../static/footer.html" role="presentation"></iframe>
+    <script>
+    function inlineIframe(iframe) {
+        var onLoad = function () {
+            iframe.insertAdjacentHTML('afterend', iframe.contentDocument.body.innerHTML)
+            iframe.parentNode.removeChild(iframe)
+            iframe.onload = null
+        }
+        if (iframe.contentWindow.location.href === 'about:blank' || iframe.contentDocument.readyState === 'loading') {
+            iframe.onload = onLoad
+        } else {
+            onLoad()
+        }
+        }
+        inlineIframe(document.querySelector('#HeaderIframe'))
+        inlineIframe(document.querySelector('#ShareIframe'))
+        inlineIframe(document.querySelector('#SidebarIframe'))
+        inlineIframe(document.querySelector('#FooterIframe'))
+    </script>
+    </body>
 </html>

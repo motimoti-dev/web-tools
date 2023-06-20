@@ -1,1 +1,1 @@
-<header class='center'><div class='wrap'><h1 class='tac m0'><img src='<?=$blog_info['header-img']?>' style='height:calc( 100% - 20px );padding: 10px 0;'height='40px' width='202px' alt='もちweb屋さん'></h1></div></header>
+<header class='center'><div class='wrap'><h1 class='tac m0' style='border:none'><img src='<?=$blog_info['header-img']?>' style='height:calc( 100% - 20px );padding: 10px 0;'height='40px' width='202px' alt='もちweb屋さん'></h1></div></header>

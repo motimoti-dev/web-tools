@@ -54,7 +54,7 @@ $tools = [
     ],
     [
         'title'=>'予定入りカレンダー生成',
-        'url'=>'./tools/calendar-generator/',
+        'url'=>'./tools/calendar-generator/output.php',
         'user'=>'',
         'description'=>'文字やアイコンの入ったカレンダーを生成できます！',
         'img'=>'i/calendar-generator.png',
@@ -72,7 +72,7 @@ $tools = [
         'date'=>'2023/05/6',
         'var'=>'1.0',
         'id'=>'src-illust',
-        'view'=>false
+        'view'=>true
     ],
     [
         'title'=>'メタタグジェネレーター',
@@ -83,7 +83,7 @@ $tools = [
         'date'=>'2023/06/9',
         'var'=>'1.0',
         'id'=>'meta-tag-generator',
-        'view'=>false
+        'view'=>true
     ],
     [
         'title'=>'もち的コピペ集',
@@ -94,7 +94,7 @@ $tools = [
         'date'=>'2023/06/9',
         'var'=>'1.0',
         'id'=>'copy-paste',
-        'view'=>false
+        'view'=>true
     ],
     /*[
         'title'=>'',

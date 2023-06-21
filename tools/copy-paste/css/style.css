@@ -1,0 +1,26 @@
+.copy{
+    width:20px;
+    height:20px;
+    fill:none;
+    color:#2329D6;
+    stroke:#6e7b85;
+    stroke-width:2.25;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    position: relative;
+    top: 4px;
+    margin-left:4px;
+}
+copy-paste details{
+    border-bottom:1px dashed skyblue;
+    padding-bottom: 7px;
+}
+copy-paste p{
+    margin:7px 0 5px;
+}
+copy-paste h1{
+    font-size: 26px;
+    color: #6594e0;
+    border-bottom: dashed 2px #6594e0;
+    text-align: left;
+}

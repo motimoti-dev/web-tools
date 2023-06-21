@@ -28,34 +28,6 @@
                                 <polyline points="16 3 4 3 4 17"></polyline>
                             </symbol>
                         </svg>
-                        <style>
-                            .copy{
-                                width:20px;
-                                height:20px;
-                                fill:none;
-                                color:#2329D6;
-                                stroke:#6e7b85;
-                                stroke-width:2.25;
-                                stroke-linecap:round;
-                                stroke-linejoin:round;
-                                position: relative;
-                                top: 4px;
-                                margin-left:4px;
-                            }
-                            copy-paste details{
-                                border-bottom:1px dashed skyblue;
-                                padding-bottom: 7px;
-                            }
-                            copy-paste p{
-                                margin:7px 0 5px;
-                            }
-                            copy-paste h1{
-                                font-size: 26px;
-                                color: #6594e0;
-                                border-bottom: dashed 2px #6594e0;
-                                text-align: left;
-                            }
-                        </style>
                         <copy-paste>
                             <h1>もちコピペ</h1>
                             <h2>日常系</h2>
@@ -65,6 +37,7 @@
                                 <summary>例)もちパワーを送ります！</summary>
                                 <p>もちパワーは個数で表記している場合もちの元気を指し、g(グラム)表記の場合もちのグッズなどを指します！</p>
                             </details>
+                            <p>スプレッドシートから取得しています！<br>簡単に追加できるようにしてますので追加して欲しいものがあればいってください！<br>うおおおおおおおおおおおお！</p>
                         </copy-paste>
                         <!--phpをjsとして読み込み-->
                         <script type="text/javascript" src="json.php"></script>

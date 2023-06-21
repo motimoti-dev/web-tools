@@ -87,13 +87,24 @@ $tools = [
     ],
     [
         'title'=>'もち的コピペ集',
-        'url'=>'./tools/copy-paste/',
+        'url'=>'./tools/copy-paste/output.php',
         'user'=>'',
         'description'=>'もちが個人的によく使う文字列をコピペできます',
         'img'=>'i/copy-paste.png',
         'date'=>'2023/06/9',
         'var'=>'1.0',
         'id'=>'copy-paste',
+        'view'=>true
+    ],
+    [
+        'title'=>'よく使う正規表現',
+        'url'=>'',
+        'user'=>'',
+        'description'=>'まだ作っているところです！',
+        'img'=>'i/no-letter.png',
+        'date'=>'2023/06/21',
+        'var'=>'1.0',
+        'id'=>'regular-expression',
         'view'=>true
     ],
     /*[

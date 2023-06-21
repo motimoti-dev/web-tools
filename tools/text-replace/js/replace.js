@@ -33,13 +33,15 @@ window.addEventListener("DOMContentLoaded", (e) => {
         before_content.type = "text";
         before_content.classList.add("replace-trigger");
         before_content.setAttribute("id", `before-replace-${id_num}`);
+        before_content.setAttribute("placeholder","入れ替えたい文字");
         after_content.type = "text";
         after_content.classList.add("replace-trigger");
         after_content.setAttribute("id", `after-replace-${id_num}`);
+        after_content.setAttribute("placeholder", "入れ替え後の文字");
         id_num += 1;
 
         let arrow = document.createElement("span");
-        let arrow_f = document.createTextNode("→");
+        let arrow_f = document.createTextNode("\u0020→\u0020");
         arrow.appendChild(arrow_f);
 
         replace_box.appendChild(before_content);

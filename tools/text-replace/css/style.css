@@ -2,6 +2,13 @@
   width: 900px;
   margin: 0 auto;
 }
+.replace-box{
+  margin-bottom:7px;
+  display: flex;
+}
+.replace-box span{
+  padding:0 7px;
+}
 .replace-box input{
   padding:6px;
 }

@@ -129,7 +129,18 @@ details[open] .meta-set .single-output code {
   color: #fefefe;
   padding: 10px;
 }
-
+.copy-box{
+  margin-bottom:17px;
+}
+.copy-box button{
+  border: 2px solid #eee;
+    background: #ff4747;
+    font-weight: 800;
+    color: white;
+    border-radius: 40px;
+    padding: 7px 14px;
+    font-size: 15px;
+}
 @keyframes FadeIn {
   0% {
     opacity: 0;
@@ -141,6 +152,9 @@ details[open] .meta-set .single-output code {
   }
 }
 textarea {
+  border: 1px solid rgb(238, 238, 238);
+    border-radius: 12px;
+    box-shadow: rgba(61, 94, 120, 0.12) 1px 3px 4px;
   resize: vertical;
   width: 100%;
   padding: 0;

@@ -328,7 +328,7 @@ header {
 }
 
 .wrapper {
-  width: 95%;
+  /*width: 95%;*/
   max-width: 900px;
   display: flex;
   justify-content: space-between;
@@ -398,7 +398,7 @@ h2 span {
   }
   .wrapper {
     display: flow-root;
-    /*width: 95%;*/
+    width: 95%;
     margin: 0 auto;
   }
   .sharesp {

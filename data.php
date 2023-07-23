@@ -116,7 +116,7 @@ $tools = [
         'date'=>'2023/07/22',
         'var'=>'1.0',
         'id'=>'time-manage',
-        'view'=>true
+        'view'=>false
     ],
     /*[
         'title'=>'',

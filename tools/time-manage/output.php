@@ -123,28 +123,16 @@ date_default_timezone_set('Asia/Tokyo');//タイムゾーンを日本に
                                     display:none;
                                 }
                                 
-                                #non1:checked+label{
+                                .button-column input[type=checkbox]:checked+label{
                                     color:red;
                                 }
                                 
                             </style>
-                                                        <div class="wp-block-group__inner-container">
-                            <style>
-                            .example2{
-                                display: none;
-                            }
-                            .example2:checked+label{
-                                color: red;
-                            }
-                            </style>
-                            <input type="checkbox" class="example2" id="3">
-                            <label for="3">チェックボックス</label>
-</div>
                             <div class='button-column'>
-                                <label id='non'><input type='checkbox' id='non1'>対応不可</label>
-                                <label><input type='checkbox'>忙しい</label>
-                                <label><input type='checkbox'>普通</label>
-                                <label><input type='checkbox'>暇</label>
+                                <input type='checkbox' id='b1'><label for='b1'>対応不可</label>
+                                <input type='checkbox' id='b2'><label for='b2'>忙しい</label>
+                                <input type='checkbox' id='b3'><label for='b3'>普通</label>
+                                <input type='checkbox' id='b4'><label for='b4'>暇</label>
                             </div>
                             <h2>体調</h2>
                             <label><input type='checkbox'>良い</label>

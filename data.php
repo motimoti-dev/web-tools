@@ -107,6 +107,17 @@ $tools = [
         'id'=>'regular-expression',
         'view'=>true
     ],
+    [
+        'title'=>'時間管理',
+        'url'=>'./tools/time-manage/output.php',
+        'user'=>'',
+        'description'=>'まだ作っているところです！',
+        'img'=>'i/no-letter.png',
+        'date'=>'2023/07/22',
+        'var'=>'1.0',
+        'id'=>'time-manage',
+        'view'=>true
+    ],
     /*[
         'title'=>'',
         'url'=>'',

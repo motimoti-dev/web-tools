@@ -117,7 +117,45 @@ function options($button_list){
                                 <input type='time' value="<?=date('H:i')?>" required>
                             </label>
                             <h2>行動の種類(必須)</h2>
-                            <label><input type='text' name='kname' placeholder="(短縮コード)auto fill"></label>
+                            <script>
+                                function shortcode(kop){
+                                    var kid;
+                                    if(kop != ''){
+                                        if(kop.indexOf('-') != -1){//-が含まれているかどうか
+                                            kid = kop.split('-');
+                                            document.getElementById(kid[0]).checked = true;
+                                            document.getElementById(kop).checked = true;
+                                        }else{//該当ボタンをオンに
+                                            document.getElementById(kop).checked = true;
+                                        }
+                                    }
+                                }
+                                
+                            </script>
+                            <style>
+                                .shortcode{
+                                    display:flex;
+                                    margin-bottom:12px;
+                                }
+                                .shortcode label{
+                                    margin-bottom:0;
+                                }
+                                .shortcode div{
+                                    margin-left: 12px;
+                                    user-select: none;
+                                    padding: 9px 12px;
+                                    font-size: 15px;
+                                    font-weight: 700;
+                                    color: #ffffff;
+                                    border: none;
+                                    border-radius: 14px;
+                                    background: #ffd799;
+                                }
+                            </style>
+                            <div class='shortcode'>
+                                <label><input type='text' name='kname' placeholder="(短縮コード)auto fill" id="shortcode"></label>
+                                <div onclick="shortcode(document.getElementById('shortcode').value);">コードの反映</div>
+                            </div>
                             <?//トイレボタン?>
                             <?//行動履歴からオートフィル?>
                             <div class='button-column'>

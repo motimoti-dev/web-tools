@@ -251,11 +251,11 @@ function options($button_list){
                             <h2>その行動はプラスになるか</h2>
                             <p>直前に判断する自己評価を記録してください。</p>
                             <div class='button-column'>
-                                <input type='checkbox' id='l1'><label for='l1'>++</label>
-                                <input type='checkbox' id='l2'><label for='l2'>+</label>
-                                <input type='checkbox' id='l3'><label for='l3'>+-0</label>
-                                <input type='checkbox' id='l4'><label for='l4'>-</label>
-                                <input type='checkbox' id='l5'><label for='l5'>--</label>
+                                <input type='radio' name='l' value='1' id='l1'><label for='l1'>++</label>
+                                <input type='radio' name='l' value='2' id='l2'><label for='l2'>+</label>
+                                <input type='radio' name='l' value='3' id='l3'><label for='l3'>+-0</label>
+                                <input type='radio' name='l' value='4' id='l4'><label for='l4'>-</label>
+                                <input type='radio' name='l' value='5' id='l5'><label for='l5'>--</label>
                             </div>
 
                             <h2>忙しさ</h2>
@@ -300,18 +300,18 @@ function options($button_list){
                                 }
                             </style>
                             <div class='button-column'>
-                                <input type='checkbox' id='b1'><label for='b1'>対応不可</label>
-                                <input type='checkbox' id='b2'><label for='b2'>忙しい</label>
-                                <input type='checkbox' id='b3'><label for='b3'>普通</label>
-                                <input type='checkbox' id='b4'><label for='b4'>暇</label>
+                                <input type='radio' name='b' value='1' id='b1'><label for='b1'>対応不可</label>
+                                <input type='radio' name='b' value='2' id='b2'><label for='b2'>忙しい</label>
+                                <input type='radio' name='b' value='3' id='b3'><label for='b3'>普通</label>
+                                <input type='radio' name='b' value='4' id='b4'><label for='b4'>暇</label>
                             </div>
                             <h2>体調</h2>
                             <div class='button-column'>
-                                <input type='checkbox' id='c1'><label for='c1'>良い</label>
-                                <input type='checkbox' id='c2'><label for='c2'>少し良い</label>
-                                <input type='checkbox' id='c3'><label for='c3'>普通</label>
-                                <input type='checkbox' id='c4'><label for='c4'>少し悪い</label>
-                                <input type='checkbox' id='c5'><label for='c5'>悪い</label>
+                                <input type='radio' name='c' value='1' id='c1'><label for='c1'>良い</label>
+                                <input type='radio' name='c' value='2' id='c2'><label for='c2'>少し良い</label>
+                                <input type='radio' name='c' value='3' id='c3'><label for='c3'>普通</label>
+                                <input type='radio' name='c' value='4' id='c4'><label for='c4'>少し悪い</label>
+                                <input type='radio' name='c' value='5' id='c5'><label for='c5'>悪い</label>
                             </div>
                             
                             <details>

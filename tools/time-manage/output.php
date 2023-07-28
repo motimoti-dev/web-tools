@@ -272,7 +272,8 @@ function options($button_list){
                                         ['四度寝','k5-4'],
                                         ['五度寝','k5-5'],
                                         ['昼寝','k5-6'],
-                                        ['睡眠','k5-7']
+                                        ['睡眠(中途覚醒)','k5-7'],
+                                        ['睡眠','k5-8']
                                     ];
                                     options($button_list);?>
                                 </section>
@@ -389,8 +390,12 @@ function options($button_list){
                             <h2>眠気</h2>
                             <p>開始時の眠気を入力</p>
                             <label>
-                                    <span>眠気</span>
-                                    <input name='sleepiness' type='number' placeholder="">
+                                    <div class='button-column'>
+                                        <input type='radio' name='sleepiness' value='1' id='sleepiness1'><label for='sleepiness1'>眠くない</label>
+                                        <input type='radio' name='sleepiness' value='2' id='sleepiness2'><label for='sleepiness2'>少し眠い</label>
+                                        <input type='radio' name='sleepiness' value='3' id='sleepiness3'><label for='sleepiness3'>眠い</label>
+                                        <input type='radio' name='sleepiness' value='4' id='sleepiness4'><label for='sleepiness4'>かなり眠い</label>
+                                    </div>
                             </label>
                             <h2>体力値</h2>
                             <p>mi watchなどで計測可能な体力の総量</p>

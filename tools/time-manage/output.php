@@ -34,7 +34,9 @@ function options($button_list){
                                 box-shadow: 15px 15px 28px #ffbba536, -15px -15px 28px #ffecdf99;
                             }
                             .time-manage h2{
-                                color:#3c3c3c91;
+                                border-top: #cfcfcf 1px solid;
+                                color: #3c3c3c91;
+                                padding-top: 6px;
                                 margin: 0;
                             }
                             .time-manage p,.time-manage h3{
@@ -77,6 +79,7 @@ function options($button_list){
                             }
                             #kname{
                                 width: calc(100% - 18px);
+                                margin-bottom:14px;
                             }
                             input[type="time"] {
                             position: relative;
@@ -90,9 +93,22 @@ function options($button_list){
                             font-size: 14px;
                             color: #999;
                             }
+                            #login{
+                                padding: 9px 12px;
+                                font-size: 15px;
+                                font-weight: 700;
+                                color: #ffffff;
+                                border: none;
+                                border-radius: 14px;
+                                background: #ffd799;
+                            }
                         </style>
-                        <form class='time-manage'>
-                            <h2>時間管理ツール</h2>
+                        <?
+                        $login = false;
+                        if(!$login){
+                            ?>
+                            <form class='time-manage'>
+                            <h2 style='border:none;padding:0'>時間管理ツール</h2>
                             <p>時間は全て管理しましょう！</p>
                             <div>
                                 <label>
@@ -107,7 +123,14 @@ function options($button_list){
                                     <span>type</span>
                                     <input type='text' name='type' placeholder="type" required>
                                 </label>
+                                <input type="submit" value='ログイン' id='login'>
                             </div>
+                            </form>
+                        <?}else{?>
+                            <button>ログアウトする</button>
+                        <?}?>
+                        
+                        <form class='time-manage'>
                             <?//ログイン処理だけ行った場合過去の履歴が表示される
                             //最初にログインする、下のフォームとこのフォームを別々にする
                             //ログイン中のユーザーが出るようにする?>
@@ -290,9 +313,9 @@ function options($button_list){
                             <p>直前に判断する自己評価を記録してください。</p>
                             <div class='button-column'>
                                 <input type='radio' name='l' value='1' id='l1'><label for='l1'>++</label>
-                                <input type='radio' name='l' value='2' id='l2'><label for='l2'>+</label>
-                                <input type='radio' name='l' value='3' id='l3'><label for='l3'>+-0</label>
-                                <input type='radio' name='l' value='4' id='l4'><label for='l4'>-</label>
+                                <input type='radio' name='l' value='2' id='l2'><label for='l2'>&nbsp;+&nbsp;</label>
+                                <input type='radio' name='l' value='3' id='l3'><label for='l3'>±0</label>
+                                <input type='radio' name='l' value='4' id='l4'><label for='l4'>&nbsp;-&nbsp;</label>
                                 <input type='radio' name='l' value='5' id='l5'><label for='l5'>--</label>
                             </div>
 

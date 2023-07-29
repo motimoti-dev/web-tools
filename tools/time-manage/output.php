@@ -1,6 +1,108 @@
 <?include( dirname( __FILE__ , 3).'/data.php' );//設定
 //タイムゾーンを日本に
 date_default_timezone_set('Asia/Tokyo');
+
+//送信されたデータに指定されたパラメータがなければfalseを返し、あればその値を出力する
+function post_value_check($key){
+    if(isset($_POST[$key])){
+        return $_POST[$key];
+    }else{
+        return false;
+    }
+}
+
+$login = false;
+$status = "init";
+$json = "";
+$userdata = [
+    "type"=>post_value_check("type"),
+    "usernickname"=>"",
+    "username"=>post_value_check("user"),
+    "gender"=>"",
+    "birth"=>"",
+    "userlevel"=>""
+];
+$password = "";
+//ログインフォームが送信された場合
+if(isset($_POST["login"])){
+    $status = "ログインフォームが送信された場合";
+    if($userdata["type"] == "json"){//typeが有効かをチェックする
+        $status = "ログインフォームが送信されjsonは有効";
+        if($userdata["username"]){//userの値があるかチェックする
+            $status = "ログインフォームが送信されjsonは有効、userの値も存在する";
+            if(file_exists("./data/".$_POST["user"].".json")){//userが存在するかをチェックする
+                $status = "ログインフォームが送信されjsonは有効、userの値も存在し、該当ユーザーも存在";
+                $json = file_get_contents("./data/".$_POST["user"].".json");
+                $json = mb_convert_encoding($json, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
+                $json = json_decode($json,true);
+                if(post_value_check("password")){//パスワードが入力されているかチェック
+                    $status = "ログインフォームが送信されjsonは有効、userの値も存在し、該当ユーザーも存在。パスワードも送信されている";
+                    if($_POST["password"] == $json["pass"]){
+                        $status = "ログインフォームに必要な情報はすべて送信されログインユーザーのパスワードの照合も完了";
+                        $login = true;
+                    }else{
+                        $status = "ログインフォームに必要な情報はすべて送信されているがパスワードが間違っている";
+                    }
+                }else{
+                    $status = "ログインフォームが送信されjsonは有効、userの値も存在し、該当ユーザーも存在。しかしパスワードが未送信";
+                }
+            }else{
+                $status = "ログインフォームが送信されjsonは有効、userの値も存在するが該当ユーザーは存在しない";
+            }
+        }
+    }else{
+        $status = "ログインフォームが送信されtypeが無効";
+    }
+}elseif(isset($_POST["logout"])){//ログアウトボタンが押された場合
+    $status = "ログアウトボタンが押された場合";
+    // ログアウト（セッションデータを削除）する
+    session_start();
+    unset($_SESSION["user_id"]);
+    header('Location: ./output.php');
+    exit;
+}else{
+    $status = "ログインフォームが送信されていない場合(すでにログイン中の場合、ログインに成功しリダイレクトされた場合も含む)";
+}
+
+//セッション処理
+session_start();
+if($login){// 入力されたIDとパスワードに一致するユーザーが存在する場合
+    $status = "ログインに成功しセッション開始している状態";
+    // セッションにユーザーIDを保存しておく
+    $_SESSION ["user_id"] = $userdata["username"];
+
+    // ログイン中？（セッションにユーザーIDがある？）
+    if (array_key_exists("user_id", $_SESSION)) {
+        //header関数を使用し、リダイレクトされる、リロードでフォームをどうするか聞かれないために
+        header('Location: ./output.php');
+        exit;
+    }else{// ログアウト中？（セッションにユーザーIDがない？） 
+        $login = false;
+    }
+}else{
+    if(isset($_SESSION ["user_id"])){//そもそもセッションにuser idがあるか
+        if(file_exists("./data/".$_SESSION ["user_id"].".json")){//セッションがあり存在するユーザーの場合ログイン状態に変更する
+            $status = "【ログイン中】".$status;
+            $login = true;
+            //個別ユーザーのjson取得
+            $json = file_get_contents("./data/".$_SESSION ["user_id"].".json");
+            $json = mb_convert_encoding($json, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN');
+            $json = json_decode($json,true);
+            // ログイン中ユーザーなのでユーザーデータを$userdataにセットする
+            $userdata["username"] = $_SESSION ["user_id"];
+            $userdata["usernickname"] = $json["nickname"];
+            $userdata["gender"] = $json["gender"];
+            $userdata["birth"] = $json["birth"];
+            $userdata["userlevel"] = $json["userlevel"];
+        }else{
+            $login = false;
+        }
+    }else{
+        $status = "【未ログイン】".$status;
+        $login = false;
+    }
+}
+
 function options($button_list){
     foreach($button_list as $button_data){
         ?><input type='radio' name='kid' value="<?=$button_data[1]?>" id='<?=$button_data[1]?>'><label for='<?=$button_data[1]?>'><?=$button_data[0]?></label><?
@@ -93,7 +195,7 @@ function options($button_list){
                             font-size: 14px;
                             color: #999;
                             }
-                            #login{
+                            #login,#logout{
                                 padding: 9px 12px;
                                 font-size: 15px;
                                 font-weight: 700;
@@ -103,31 +205,36 @@ function options($button_list){
                                 background: #ffd799;
                             }
                         </style>
+                        <h1><?=$status?></h1>
                         <?
-                        $login = false;
                         if(!$login){
                             ?>
-                            <form class='time-manage'>
+                            <form class='time-manage' method="post" action="./output.php">
                             <h2 style='border:none;padding:0'>時間管理ツール</h2>
                             <p>時間は全て管理しましょう！</p>
                             <div>
                                 <label>
                                     <span>user</span>
-                                    <input type='text' name='user' placeholder="ユーザー名" autocomplete='user' required>
+                                    <input type='text' name='user' placeholder="ユーザー名" autocomplete='"username' required>
                                 </label>
                                 <label>
                                     <span>pass</span>
-                                    <input type='password' name='pass' placeholder="パスワード" required>
+                                    <input type='password' name='password' placeholder="パスワード" required>
                                 </label>
                                 <label>
                                     <span>type</span>
                                     <input type='text' name='type' placeholder="type" required>
                                 </label>
+                                <input type='hidden' name='login'>
                                 <input type="submit" value='ログイン' id='login'>
                             </div>
                             </form>
                         <?}else{?>
-                            <button>ログアウトする</button>
+                            <form class='time-manage' method="post" action="./output.php">
+                                <p><?=$userdata["usernickname"]?>としてログイン中です！</p>
+                                <input type='hidden' name='logout'>
+                                <input type="submit" value='ログアウトする' id='logout'>
+                            </form>
                         <?}?>
                         
                         <form class='time-manage'>
@@ -308,7 +415,8 @@ function options($button_list){
                             <p>行動の詳細を書いてください([娯楽,ゲーム]の例.マリオカート)</p>
                             <p>行動一覧に存在しない場合は種類を選んで詳細を記録</p>
                             <input type='text' name='kname' placeholder="行動の(詳細)" id='kname'>
-                            <?//ながら作業の場合?>
+                            <?//TODO:ながら作業の場合?>
+                            <?//TODO:連絡フォーム?>
                             <?//ながら作業の項目を記録?>
                             <h2>その行動はプラスになるか</h2>
                             <p>直前に判断する自己評価を記録してください。</p>

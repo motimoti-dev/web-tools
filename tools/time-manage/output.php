@@ -26,7 +26,7 @@ $password = "";
 //ログインフォームが送信された場合
 if(isset($_POST["login"])){
     $status = "ログインフォームが送信された場合";
-    if($userdata["type"] == "json"){//typeが有効かをチェックする
+    if($userdata["type"] == "json"){//typeが有効かをチェックする 今はjsonのみ
         $status = "ログインフォームが送信されjsonは有効";
         if($userdata["username"]){//userの値があるかチェックする
             $status = "ログインフォームが送信されjsonは有効、userの値も存在する";
@@ -205,7 +205,6 @@ function options($button_list){
                                 background: #ffd799;
                             }
                         </style>
-                        <h1><?=$status?></h1>
                         <?
                         if(!$login){
                             ?>
@@ -231,6 +230,8 @@ function options($button_list){
                             </form>
                         <?}else{?>
                             <form class='time-manage' method="post" action="./output.php">
+                                <h2 style='border:none;padding:0'>時間管理ツール</h2>
+                                <p>時間は全て管理しましょう！</p>
                                 <p><?=$userdata["usernickname"]?>としてログイン中です！</p>
                                 <input type='hidden' name='logout'>
                                 <input type="submit" value='ログアウトする' id='logout'>
@@ -415,6 +416,24 @@ function options($button_list){
                             <p>行動の詳細を書いてください([娯楽,ゲーム]の例.マリオカート)</p>
                             <p>行動一覧に存在しない場合は種類を選んで詳細を記録</p>
                             <input type='text' name='kname' placeholder="行動の(詳細)" id='kname'>
+                            <div class='button-column'>
+                                <section>
+                                    <?
+                                    $button_list = [
+                                        ['食べながら','a1'],
+                                        ['会話しながら','a2'],
+                                        ['動画を見ながら','a3'],
+                                        ['運動をしながら','a4'],
+                                        ['通話をしながら','a5'],
+                                        ['片付けをしながら','a6'],
+                                        ['PC作業をしながら','a7']
+                                    ];
+                                    options($button_list);
+                                    foreach($button_list as $button_data){
+                                        ?><input type='checkbox' name='<?=$button_data[1]?>' id='<?=$button_data[1]?>'><label for='<?=$button_data[1]?>'><?=$button_data[0]?></label><?
+                                    }?>
+                                </section>
+                            </div>
                             <?//TODO:ながら作業の場合?>
                             <?//TODO:連絡フォーム?>
                             <?//ながら作業の項目を記録?>
@@ -426,6 +445,13 @@ function options($button_list){
                                 <input type='radio' name='l' value='3' id='l3'><label for='l3'>±0</label>
                                 <input type='radio' name='l' value='4' id='l4'><label for='l4'>&nbsp;-&nbsp;</label>
                                 <input type='radio' name='l' value='5' id='l5'><label for='l5'>--</label>
+                            </div>
+                            <h2>その行動はやりたいことか</h2>
+                            <p>やりたい事がどのぐらい続くか、どのくらいの割合あったかを見るためデータです！</p>
+                            <div class='button-column'>
+                                <input type='radio' name='todo' value='1' id='todo1'><label for='todo1'>今やりたい事</label>
+                                <input type='radio' name='todo' value='2' id='todo2'><label for='todo2'>今日やりたい事</label>
+                                <input type='radio' name='todo' value='3' id='todo3'><label for='todo3'>いつかやりたかった事</label>
                             </div>
 
                             <h2>忙しさ</h2>

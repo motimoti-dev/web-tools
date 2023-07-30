@@ -428,7 +428,6 @@ function options($button_list){
                                         ['片付けをしながら','a6'],
                                         ['PC作業をしながら','a7']
                                     ];
-                                    options($button_list);
                                     foreach($button_list as $button_data){
                                         ?><input type='checkbox' name='<?=$button_data[1]?>' id='<?=$button_data[1]?>'><label for='<?=$button_data[1]?>'><?=$button_data[0]?></label><?
                                     }?>

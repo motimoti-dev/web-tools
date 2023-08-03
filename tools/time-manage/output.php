@@ -121,6 +121,7 @@ function options($button_list){
         <link rel="stylesheet" href="https://tools.motisan.info/css/index-style.css" http-equiv="Cache-Control" content="no-cache">
         <link rel="stylesheet" href="css/moti.css">
         <script src="js/read_data.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     </head>
     <body style="background:#fff3e8;margin:0">
         <iframe id="HeaderIframe" class="HeaderIframe" src="../../static/header.html" role="presentation" style="display: block;width: 100%;height: 60px;border: 0;"></iframe>
@@ -239,6 +240,16 @@ function options($button_list){
                         <?}?>
                         
                         <form class='time-manage'>
+                            <input type='submit' value='送信' style='position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 100px;
+    padding: 20px;
+    background: #ffd799;
+    font-weight: 700;
+    color: white;
+    border: none;
+    box-shadow: 2px 3px 6px #ff441e26;'>
                             <?//ログイン処理だけ行った場合過去の履歴が表示される
                             //最初にログインする、下のフォームとこのフォームを別々にする
                             //ログイン中のユーザーが出るようにする?>
@@ -416,22 +427,20 @@ function options($button_list){
                             <p>行動の詳細を書いてください([娯楽,ゲーム]の例.マリオカート)</p>
                             <p>行動一覧に存在しない場合は種類を選んで詳細を記録</p>
                             <input type='text' name='kname' placeholder="行動の(詳細)" id='kname'>
-                            <div class='button-column'>
-                                <section>
-                                    <?
-                                    $button_list = [
-                                        ['食べながら','a1'],
-                                        ['会話しながら','a2'],
-                                        ['動画を見ながら','a3'],
-                                        ['運動をしながら','a4'],
-                                        ['通話をしながら','a5'],
-                                        ['片付けをしながら','a6'],
-                                        ['PC作業をしながら','a7']
-                                    ];
-                                    foreach($button_list as $button_data){
-                                        ?><input type='checkbox' name='<?=$button_data[1]?>' id='<?=$button_data[1]?>'><label for='<?=$button_data[1]?>'><?=$button_data[0]?></label><?
-                                    }?>
-                                </section>
+                            <div class='button-column' id='a'>
+                                <?
+                                $button_list = [
+                                    ['食べながら','a1'],
+                                    ['会話しながら','a2'],
+                                    ['動画を見ながら','a3'],
+                                    ['運動をしながら','a4'],
+                                    ['通話をしながら','a5'],
+                                    ['片付けをしながら','a6'],
+                                    ['PC作業をしながら','a7']
+                                ];
+                                foreach($button_list as $button_data){
+                                    ?><input type='checkbox' name='<?=$button_data[1]?>' id='<?=$button_data[1]?>'><label for='<?=$button_data[1]?>'><?=$button_data[0]?></label><?
+                                }?>
                             </div>
                             <?//TODO:ながら作業の場合?>
                             <?//TODO:連絡フォーム?>
@@ -471,7 +480,10 @@ function options($button_list){
                                     color: #ffa653;
                                     background: #ffe6b7;
                                 }
-                                
+                                #a.button-column input[type=checkbox]:checked+label{
+                                    color:#f9fff8;
+                                    background:#90d09f;
+                                }
                                 .options{
                                     display:none;
                                     padding-top:8px;
@@ -513,11 +525,14 @@ function options($button_list){
                                 <summary style='color: #3c3c3c91;font-weight:700;'>体調オプション</summary>
                                 <div class='button-column'>
                                     <input type='checkbox' id='co1'><label for='co1'>生理中</label>
-                                    <input type='checkbox' id='co2'><label for='co2'>頭痛(軽度)</label>
-                                    <input type='checkbox' id='co3'><label for='co3'>頭痛</label>
-                                    <input type='checkbox' id='co4'><label for='co4'>腹痛(軽度)</label>
-                                    <input type='checkbox' id='co5'><label for='co5'>腹痛</label>
-                                    <input type='checkbox' id='co6'><label for='co6'>倦怠感</label>
+
+                                    <input type='radio' name='co2' value='1' id='co2-1'><label for='co2-1'>頭痛(軽度)</label>
+                                    <input type='radio' name='co2' value='2' id='co2-2'><label for='co2-2'>頭痛</label>
+
+                                    <input type='radio' name='co3' value='1' id='co3-1'><label for='co3-1'>腹痛(軽度)</label>
+                                    <input type='radio' name='co3' value='2' id='co3-2'><label for='co3-2'>腹痛</label>
+
+                                    <input type='checkbox' id='co4'><label for='co4'>倦怠感</label>
                                 </div>
                             </details>
                             <h2>眠気</h2>
@@ -568,6 +583,32 @@ function options($button_list){
         inlineIframe(document.querySelector('#ShareIframe'))
         inlineIframe(document.querySelector('#SidebarIframe'))
         inlineIframe(document.querySelector('#FooterIframe'))
+        
+        // 予めチェックされているもの
+        var nowchecked = [];
+        $('input[type="radio"]:checked').each(function(){
+        nowchecked.push( $(this).attr('id') );
+        });
+
+        $('input[type="radio"]').click(function(){
+        var idx = $.inArray( $(this).attr('id'), nowchecked ); // nowcheckedにクリックされたボタンのidが含まれるか判定。なければ-1が返る。
+            if( idx >= 0 ) { // クリックしたボタンにチェックが入っていた場合
+                $(this).prop('checked', false); // チェックを外す
+                nowchecked.splice(idx,1); // nowcheckedからこのボタンのidを削除
+            } else { // チェックが入っていなかった場合
+            // 同じname属性のラジオボタンをnowcheckedから削除する
+            var name = $(this).attr('name');
+            $('input[name="' + name + '"]').each(function(){
+            var idx2 = $.inArray( $(this).attr('id'), nowchecked);
+            if( idx2 >= 0 ){
+                nowchecked.splice(idx2,1);
+            }
+            });
+            // チェックしたものをnowcheckedに追加
+                nowchecked.push( $(this).attr('id') );
+            }
+        });
+        
     </script>
     </body>
 </html>

@@ -117,10 +117,7 @@ function options($button_list){
         <meta name="description" content="<?=$example[0]['title']?>">
         <script>document.documentElement.classList.remove('no-js')</script> 
         <title><?=$example[0]['title']?></title>
-        <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://tools.motisan.info/css/index-style.css" http-equiv="Cache-Control" content="no-cache">
-        <link rel="stylesheet" href="css/moti.css">
-        <script src="js/read_data.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     </head>
     <body style="background:#fff3e8;margin:0">
@@ -239,17 +236,8 @@ function options($button_list){
                             </form>
                         <?}?>
                         
-                        <form class='time-manage'>
-                            <input type='submit' value='送信' style='position: fixed;
-    bottom: 20px;
-    right: 20px;
-    border-radius: 100px;
-    padding: 20px;
-    background: #ffd799;
-    font-weight: 700;
-    color: white;
-    border: none;
-    box-shadow: 2px 3px 6px #ff441e26;'>
+                        <form class='time-manage' method="post" action="./output.php">
+                            <input type='submit' value='送信' style='position: fixed;bottom: 20px;right:20px;border-radius:100px;padding:20px;background:#ffd799;font-weight:700;color: white;border:none;box-shadow:2px 3px 6px #ff441e26;'>
                             <?//ログイン処理だけ行った場合過去の履歴が表示される
                             //最初にログインする、下のフォームとこのフォームを別々にする
                             //ログイン中のユーザーが出るようにする?>
@@ -558,8 +546,9 @@ function options($button_list){
                                     <span>illust</span>
                                     <input name='illust' type='number' placeholder="">
                             </label>
+                            <?//TODO:シークレットとか何かしらのstatusをつけたい?>
+                            <input type='submit' value='送信' style='font-size: 20px;width:100%;border-radius:100px;padding:13px 20px;background:#ffd799;font-weight:700;color: white;border:none;box-shadow:2px 3px 6px #ff441e26;'>
                         </form>
-
                     </section>
                 </main>
                 <iframe id="SidebarIframe" class="SidebarIframe" src="../../static/sidebar.html" role="presentation" style="display:block"></iframe>

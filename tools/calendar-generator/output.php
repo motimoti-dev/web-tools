@@ -8,6 +8,7 @@
         <meta name="description" content="<?=$tools[2]['description']?>"> 
         <title><?=$tools[2]['title']?></title>
         <link rel="stylesheet" href="../../css/index-style-wide-main.css" http-equiv="Cache-Control" content="no-cache">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
         <script>
         (function(d) {
             var config = {
@@ -181,101 +182,123 @@
                     <p>数字をクリックで青、赤、黒に変化</p>
                     <p>数字下をクリックで文字を入力可能</p>
                     <p>文字入力欄下の薄い色部分をクリックで色を濃くできます！</p>
-                    <span class="stroke-text smooth-16"><?=date("Y m", strtotime($default))?></span>
-                    <div>
-                        <table style='width:100%;table-layout: fixed;' class='cal'>
-                            <?$day_counter = date('w', strtotime(date("Y-m-01", strtotime($default))));//最初の1日の曜日?>
-                            <tr>
-                                <th style='color:#fa2a31'>日</th>
-                                <th>月</th>
-                                <th>火</th>
-                                <th>水</th>
-                                <th>木</th>
-                                <th>金</th>
-                                <th style='color:#0191ff'>土</th>
-                            </tr>
+                    <div id="target">
+                        <div style='background: white;
+    padding: 20px;
+    border: 1px solid whitesmoke;
+    border-radius: 20px;'><?//background whiteがキャンバスに映らないのでdivでラップ?>
+                            <span class="stroke-text smooth-16"><?=date("Y m", strtotime($default))?></span>
                             <div>
-                            </div>
+                                <table style='width:100%;table-layout: fixed;' class='cal'>
+                                    <?$day_counter = date('w', strtotime(date("Y-m-01", strtotime($default))));//最初の1日の曜日?>
+                                    <tr>
+                                        <th style='color:#fa2a31'>日</th>
+                                        <th>月</th>
+                                        <th>火</th>
+                                        <th>水</th>
+                                        <th>木</th>
+                                        <th>金</th>
+                                        <th style='color:#0191ff'>土</th>
+                                    </tr>
+                                    <div>
+                                    </div>
 
-                            <script>
-                            window.addEventListener('DOMContentLoaded',function(){
-                            const btn = document.getElementsByTagName('num'); // ①
-                            
-                            for(let i = 0; i < btn.length; i++){ // ②
-                                btn[i].addEventListener('click',function(){ // ②
-                                console.log(`${btn[i].textContent}がクリックされました！`); // ③
-                                
-                                if( btn[i].classList.contains("red") == true ){
-                                    $("#d" + btn[i].textContent).toggleClass("black");
-                                    $("#d" + btn[i].textContent).removeClass("red");
-                                }else if(btn[i].classList.contains("blue") == true ) {
-                                    $("#d" + btn[i].textContent).toggleClass("red");
-                                    $("#d" + btn[i].textContent).removeClass("blue");
-                                }else if(btn[i].classList.contains("black") == true ){
-                                    $("#d" + btn[i].textContent).toggleClass("blue");
-                                    $("#d" + btn[i].textContent).removeClass("black");
-                                } else {
-                                    $("#d" + btn[i].textContent).toggleClass("blue");
-                                }
-                                });
-                            }
-                            });
-                            </script>
-                            <tr>
-                                <?
-                                $onetime = false;
-                                $current_day = 1;
-                                for($i = 1;$i <= 7;$i++){
-                                    if(($i - 1) == $day_counter ){
-                                        ?><td>
-                                                <div style='height:calc(120px - 34px);'>
-                                                    <num id='d<?=($current_day)?>'><?=$current_day?></num><p contenteditable="true"> </p>
-                                                </div>
-                                                <p class='pu' id='p<?=($current_day)?>' onclick="$('#p<?=($current_day)?>').toggleClass('pululu')"></p>
-                                                <p class='pu2' id='pp<?=($current_day)?>' onclick="$('#pp<?=($current_day)?>').toggleClass('pululu2')"></p>
-                                            </td><?
-                                        $onetime = true;
-                                    }else{
-                                        if(!$onetime){
-                                            ?><td><span class='empty'>/</span></td><?
-                                        }else{
-                                            $current_day = $i - $day_counter;
-                                            ?><td>
-                                                <div style='height:calc(120px - 34px);'>
-                                                    <num id='d<?=($current_day)?>'><?=$current_day?></num><p contenteditable="true"> </p>
-                                                </div>
-                                                <p class='pu' id='p<?=($current_day)?>' onclick="$('#p<?=($current_day)?>').toggleClass('pululu')"></p>
-                                                <p class='pu2' id='pp<?=($current_day)?>' onclick="$('#pp<?=($current_day)?>').toggleClass('pululu2')"></p>
-                                            </td><?
+                                    <script>
+                                    window.addEventListener('DOMContentLoaded',function(){
+                                    const btn = document.getElementsByTagName('num'); // ①
+                                    
+                                    for(let i = 0; i < btn.length; i++){ // ②
+                                        btn[i].addEventListener('click',function(){ // ②
+                                        console.log(`${btn[i].textContent}がクリックされました！`); // ③
+                                        
+                                        if( btn[i].classList.contains("red") == true ){
+                                            $("#d" + btn[i].textContent).toggleClass("black");
+                                            $("#d" + btn[i].textContent).removeClass("red");
+                                        }else if(btn[i].classList.contains("blue") == true ) {
+                                            $("#d" + btn[i].textContent).toggleClass("red");
+                                            $("#d" + btn[i].textContent).removeClass("blue");
+                                        }else if(btn[i].classList.contains("black") == true ){
+                                            $("#d" + btn[i].textContent).toggleClass("blue");
+                                            $("#d" + btn[i].textContent).removeClass("black");
+                                        } else {
+                                            $("#d" + btn[i].textContent).toggleClass("blue");
                                         }
+                                        });
                                     }
-                                }?>
-                            </tr>
-                            <?
-                            $onetime = false;
-                            for($n = 1;$n <= 5 and !$onetime;$n++){?>
-                                <tr>
+                                    });
+                                    </script>
+                                    <tr>
+                                        <?
+                                        $onetime = false;
+                                        $current_day = 1;
+                                        for($i = 1;$i <= 7;$i++){
+                                            if(($i - 1) == $day_counter ){
+                                                ?><td>
+                                                        <div style='height:calc(120px - 34px);'>
+                                                            <num id='d<?=($current_day)?>'><?=$current_day?></num><p contenteditable="true"> </p>
+                                                        </div>
+                                                        <p class='pu' id='p<?=($current_day)?>' onclick="$('#p<?=($current_day)?>').toggleClass('pululu')"></p>
+                                                        <p class='pu2' id='pp<?=($current_day)?>' onclick="$('#pp<?=($current_day)?>').toggleClass('pululu2')"></p>
+                                                    </td><?
+                                                $onetime = true;
+                                            }else{
+                                                if(!$onetime){
+                                                    ?><td><span class='empty'>/</span></td><?
+                                                }else{
+                                                    $current_day = $i - $day_counter;
+                                                    ?><td>
+                                                        <div style='height:calc(120px - 34px);'>
+                                                            <num id='d<?=($current_day)?>'><?=$current_day?></num><p contenteditable="true"> </p>
+                                                        </div>
+                                                        <p class='pu' id='p<?=($current_day)?>' onclick="$('#p<?=($current_day)?>').toggleClass('pululu')"></p>
+                                                        <p class='pu2' id='pp<?=($current_day)?>' onclick="$('#pp<?=($current_day)?>').toggleClass('pululu2')"></p>
+                                                    </td><?
+                                                }
+                                            }
+                                        }?>
+                                    </tr>
                                     <?
-                                    for($i = 1;$i <= 7;$i++){
-                                        $current_day++;
-                                        if(date('t', strtotime(date("Y-m-01", strtotime($default)))) < $current_day){
-                                            $onetime = true;
-                                            ?><td><span class='empty'>/</span></td><?
-                                        }else{
-                                            ?><td>
-                                                <div style='height:calc(120px - 34px);'>
-                                                    <num id='d<?=($current_day)?>'><?=$current_day?></num><p contenteditable="true"> </p>
-                                                </div>
-                                                <p class='pu' id='p<?=($current_day)?>' onclick="$('#p<?=($current_day)?>').toggleClass('pululu')"></p>
-                                                <p class='pu2' id='pp<?=($current_day)?>' onclick="$('#pp<?=($current_day)?>').toggleClass('pululu2')"></p>
-                                            </td><?
-                                        }
-                                    }?>
-                                </tr>
-                            <?}?>
-                        </table>
-                        <span style='white-space: nowrap;'><div style='position: relative;top: 3px;display: inline-block;width:17px;height:17px;' class='pululu'></div>&nbsp;&nbsp;<p style='display:inline-block;' contenteditable="true">は予定1</p>&nbsp;&nbsp;&nbsp;<div style='position: relative;top: 3px;display: inline-block;width:17px;height:17px;' class='pululu2'></div>&nbsp;&nbsp;<p style='display:inline-block;' contenteditable="true">は予定2</p></span>
+                                    $onetime = false;
+                                    for($n = 1;$n <= 5 and !$onetime;$n++){?>
+                                        <tr>
+                                            <?
+                                            for($i = 1;$i <= 7;$i++){
+                                                $current_day++;
+                                                if(date('t', strtotime(date("Y-m-01", strtotime($default)))) < $current_day){
+                                                    $onetime = true;
+                                                    ?><td><span class='empty'>/</span></td><?
+                                                }else{
+                                                    ?><td>
+                                                        <div style='height:calc(120px - 34px);'>
+                                                            <num id='d<?=($current_day)?>'><?=$current_day?></num><p contenteditable="true"> </p>
+                                                        </div>
+                                                        <p class='pu' id='p<?=($current_day)?>' onclick="$('#p<?=($current_day)?>').toggleClass('pululu')"></p>
+                                                        <p class='pu2' id='pp<?=($current_day)?>' onclick="$('#pp<?=($current_day)?>').toggleClass('pululu2')"></p>
+                                                    </td><?
+                                                }
+                                            }?>
+                                        </tr>
+                                    <?}?>
+                                </table>
+                                <span style='white-space: nowrap;'><div style='position: relative;top: 3px;display: inline-block;width:17px;height:17px;' class='pululu'></div>&nbsp;&nbsp;<p style='display:inline-block;' contenteditable="true">は予定1</p>&nbsp;&nbsp;&nbsp;<div style='position: relative;top: 3px;display: inline-block;width:17px;height:17px;' class='pululu2'></div>&nbsp;&nbsp;<p style='display:inline-block;' contenteditable="true">は予定2</p></span>
+                            </div>
+                        </div>
                     </div>
+                    <a href="" id="ss" download="html_ss.png">画像でダウンロード</a>
+                    <script>
+                        window.onload = function(){
+
+                            //ボタンを押下した際にダウンロードする画像を作る
+                            html2canvas(document.getElementById("target"),{
+                                onrendered: function(canvas){
+                                //aタグのhrefにキャプチャ画像のURLを設定
+                                var imgData = canvas.toDataURL();
+                                document.getElementById("ss").href = imgData;
+                                }
+                            });
+
+                        }
+                    </script>
                     </section>
                 </main>
                 <iframe id="SidebarIframe" class="SidebarIframe" src="../../static/sidebar.html" role="presentation" style="display:block"></iframe>

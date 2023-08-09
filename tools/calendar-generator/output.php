@@ -1,4 +1,5 @@
-<?include( dirname( __FILE__ , 3).'/data.php' )//設定?>
+<?include( dirname( __FILE__ , 3).'/data.php' );//設定
+header("Access-Control-Allow-Origin: *");?>
 <?date_default_timezone_set('Asia/Tokyo');?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -8,7 +9,7 @@
         <meta name="description" content="<?=$tools[2]['description']?>"> 
         <title><?=$tools[2]['title']?></title>
         <link rel="stylesheet" href="../../css/index-style-wide-main.css" http-equiv="Cache-Control" content="no-cache">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+        <script src="./js/html2canvas.js"></script>
         <script>
         (function(d) {
             var config = {
@@ -40,14 +41,14 @@
                 font-size: 31px;
                 display: block;
             }
-            .cal td{
+            table td{
                 height: 120px;
                 vertical-align: top;
                 border-bottom: 1px #eee solid;
                 font-family: MyFont;
                 color:#444
             }
-            .cal th{
+            table th{
                 border-bottom: 1px #eee solid;
                 padding: 12px 1px;
                 font-size: 31px;
@@ -57,20 +58,7 @@
             
             <?//linear-gradient(45deg, #B67B03 0%, #DAAF08 45%, #FEE9A0 70%, #DAAF08 85%, #B67B03 90% 100%);金https://wk-partners.co.jp/homepage/blog/hpseisaku/htmlcss/huchidorimoji/?>
             
-            <?
-            $img = 'https://motisan.info/i/れいむもち.png';
-            if(isset($_GET['bg'])){
-                $img = htmlspecialchars($_GET['bg']);
-            }
-            ?>
-            .cal{
-                background-image: url(<?=$img?>);
-                background-repeat: no-repeat;
-                background-size:100% auto;
-                background-color:rgba(255,255,255,0.8);
-                background-blend-mode:lighten;
-            }
-            .cal p{
+            table p{
                 margin:2px 0;
                 font-size:21px;
             }
@@ -81,43 +69,20 @@
             .stroke-text{
             color:#7dd9ff;
             font-size: 50px;
-            font-family: "m-plus-rounded-2p", sans-serif;
+            font-family: MyFont, sans-serif;
             font-weight: 700;
             font-style: normal;
             }
-            .smooth-16 {
-            text-shadow: calc(var(--stroke-width) * 1) calc(var(--stroke-width) * 0) 0
-                var(--stroke-color),
-            calc(var(--stroke-width) * 0.9239) calc(var(--stroke-width) * 0.3827) 0
-                var(--stroke-color),
-            calc(var(--stroke-width) * 0.7071) calc(var(--stroke-width) * 0.7071) 0
-                var(--stroke-color),
-            calc(var(--stroke-width) * 0.3827) calc(var(--stroke-width) * 0.9239) 0
-                var(--stroke-color),
-            calc(var(--stroke-width) * 0) calc(var(--stroke-width) * 1) 0
-                var(--stroke-color),
-            calc(var(--stroke-width) * -0.3827) calc(var(--stroke-width) * 0.9239) 0
-                var(--stroke-color),
-            calc(var(--stroke-width) * -0.7071) calc(var(--stroke-width) * 0.7071) 0
-                var(--stroke-color),
-            calc(var(--stroke-width) * -0.9239) calc(var(--stroke-width) * 0.3827) 0
-                var(--stroke-color),
-            calc(var(--stroke-width) * -1) calc(var(--stroke-width) * 0) 0
-                var(--stroke-color),
-            calc(var(--stroke-width) * -0.9239) calc(var(--stroke-width) * -0.3827) 0
-                var(--stroke-color),
-            calc(var(--stroke-width) * -0.7071) calc(var(--stroke-width) * -0.7071) 0
-                var(--stroke-color),
-            calc(var(--stroke-width) * -0.3827) calc(var(--stroke-width) * -0.9239) 0
-                var(--stroke-color),
-            calc(var(--stroke-width) * 0) calc(var(--stroke-width) * -1) 0
-                var(--stroke-color),
-            calc(var(--stroke-width) * 0.3827) calc(var(--stroke-width) * -0.9239) 0
-                var(--stroke-color),
-            calc(var(--stroke-width) * 0.7071) calc(var(--stroke-width) * -0.7071) 0
-                var(--stroke-color),
-            calc(var(--stroke-width) * 0.9239) calc(var(--stroke-width) * -0.3827) 0
-                var(--stroke-color);
+            <?
+            $img = './i/reimu.webp';
+            if(isset($_GET['bg'])){
+                $img = htmlspecialchars($_GET['bg']);
+            }
+            ?>
+            .canvas-renderer-bg{
+                background-image: url(<?=$img?>);
+                background-repeat: no-repeat;
+                background-size: 100% auto;
             }
             .pu{
                 background:#fd292914;
@@ -183,113 +148,140 @@
                     <p>数字下をクリックで文字を入力可能</p>
                     <p>文字入力欄下の薄い色部分をクリックで色を濃くできます！</p>
                     <div id="target">
-                        <div style='background: white;
-    padding: 20px;
-    border: 1px solid whitesmoke;
-    border-radius: 20px;'><?//background whiteがキャンバスに映らないのでdivでラップ?>
-                            <span class="stroke-text smooth-16"><?=date("Y m", strtotime($default))?></span>
-                            <div>
-                                <table style='width:100%;table-layout: fixed;' class='cal'>
-                                    <?$day_counter = date('w', strtotime(date("Y-m-01", strtotime($default))));//最初の1日の曜日?>
-                                    <tr>
-                                        <th style='color:#fa2a31'>日</th>
-                                        <th>月</th>
-                                        <th>火</th>
-                                        <th>水</th>
-                                        <th>木</th>
-                                        <th>金</th>
-                                        <th style='color:#0191ff'>土</th>
-                                    </tr>
-                                    <div>
-                                    </div>
+                        <div style='background: white;padding: 20px;border: 1px solid whitesmoke;border-radius: 20px;'>
+                            <div class='canvas-renderer-bg'><?//background whiteがキャンバスに映らないのでdivでラップ?> 
+                                <div style='background-color: rgba(255,255,255,0.8);background-blend-mode: lighten;'>  
+                                    <span class="stroke-text"><?=date("Y m", strtotime($default))?></span>    
+                                    <table style='width:100%;table-layout: fixed;'>
+                                        <?$day_counter = date('w', strtotime(date("Y-m-01", strtotime($default))));//最初の1日の曜日?>
+                                        <tr>
+                                            <th style='color:#fa2a31'>日</th>
+                                            <th>月</th>
+                                            <th>火</th>
+                                            <th>水</th>
+                                            <th>木</th>
+                                            <th>金</th>
+                                            <th style='color:#0191ff'>土</th>
+                                        </tr>
+                                        <div>
+                                        </div>
 
-                                    <script>
-                                    window.addEventListener('DOMContentLoaded',function(){
-                                    const btn = document.getElementsByTagName('num'); // ①
-                                    
-                                    for(let i = 0; i < btn.length; i++){ // ②
-                                        btn[i].addEventListener('click',function(){ // ②
-                                        console.log(`${btn[i].textContent}がクリックされました！`); // ③
+                                        <script>
+                                        window.addEventListener('DOMContentLoaded',function(){
+                                        const btn = document.getElementsByTagName('num'); // ①
                                         
-                                        if( btn[i].classList.contains("red") == true ){
-                                            $("#d" + btn[i].textContent).toggleClass("black");
-                                            $("#d" + btn[i].textContent).removeClass("red");
-                                        }else if(btn[i].classList.contains("blue") == true ) {
-                                            $("#d" + btn[i].textContent).toggleClass("red");
-                                            $("#d" + btn[i].textContent).removeClass("blue");
-                                        }else if(btn[i].classList.contains("black") == true ){
-                                            $("#d" + btn[i].textContent).toggleClass("blue");
-                                            $("#d" + btn[i].textContent).removeClass("black");
-                                        } else {
-                                            $("#d" + btn[i].textContent).toggleClass("blue");
+                                        for(let i = 0; i < btn.length; i++){ // ②
+                                            btn[i].addEventListener('click',function(){ // ②
+                                            console.log(`${btn[i].textContent}がクリックされました！`); // ③
+                                            
+                                            if( btn[i].classList.contains("red") == true ){
+                                                $("#d" + btn[i].textContent).toggleClass("black");
+                                                $("#d" + btn[i].textContent).removeClass("red");
+                                            }else if(btn[i].classList.contains("blue") == true ) {
+                                                $("#d" + btn[i].textContent).toggleClass("red");
+                                                $("#d" + btn[i].textContent).removeClass("blue");
+                                            }else if(btn[i].classList.contains("black") == true ){
+                                                $("#d" + btn[i].textContent).toggleClass("blue");
+                                                $("#d" + btn[i].textContent).removeClass("black");
+                                            } else {
+                                                $("#d" + btn[i].textContent).toggleClass("blue");
+                                            }
+                                            });
                                         }
                                         });
-                                    }
-                                    });
-                                    </script>
-                                    <tr>
-                                        <?
-                                        $onetime = false;
-                                        $current_day = 1;
-                                        for($i = 1;$i <= 7;$i++){
-                                            if(($i - 1) == $day_counter ){
-                                                ?><td>
-                                                        <div style='height:calc(120px - 34px);'>
-                                                            <num id='d<?=($current_day)?>'><?=$current_day?></num><p contenteditable="true"> </p>
-                                                        </div>
-                                                        <p class='pu' id='p<?=($current_day)?>' onclick="$('#p<?=($current_day)?>').toggleClass('pululu')"></p>
-                                                        <p class='pu2' id='pp<?=($current_day)?>' onclick="$('#pp<?=($current_day)?>').toggleClass('pululu2')"></p>
-                                                    </td><?
-                                                $onetime = true;
-                                            }else{
-                                                if(!$onetime){
-                                                    ?><td><span class='empty'>/</span></td><?
-                                                }else{
-                                                    $current_day = $i - $day_counter;
-                                                    ?><td>
-                                                        <div style='height:calc(120px - 34px);'>
-                                                            <num id='d<?=($current_day)?>'><?=$current_day?></num><p contenteditable="true"> </p>
-                                                        </div>
-                                                        <p class='pu' id='p<?=($current_day)?>' onclick="$('#p<?=($current_day)?>').toggleClass('pululu')"></p>
-                                                        <p class='pu2' id='pp<?=($current_day)?>' onclick="$('#pp<?=($current_day)?>').toggleClass('pululu2')"></p>
-                                                    </td><?
-                                                }
-                                            }
-                                        }?>
-                                    </tr>
-                                    <?
-                                    $onetime = false;
-                                    for($n = 1;$n <= 5 and !$onetime;$n++){?>
+                                        </script>
                                         <tr>
                                             <?
+                                            $onetime = false;
+                                            $current_day = 1;
                                             for($i = 1;$i <= 7;$i++){
-                                                $current_day++;
-                                                if(date('t', strtotime(date("Y-m-01", strtotime($default)))) < $current_day){
-                                                    $onetime = true;
-                                                    ?><td><span class='empty'>/</span></td><?
-                                                }else{
+                                                if(($i - 1) == $day_counter ){
                                                     ?><td>
-                                                        <div style='height:calc(120px - 34px);'>
-                                                            <num id='d<?=($current_day)?>'><?=$current_day?></num><p contenteditable="true"> </p>
-                                                        </div>
-                                                        <p class='pu' id='p<?=($current_day)?>' onclick="$('#p<?=($current_day)?>').toggleClass('pululu')"></p>
-                                                        <p class='pu2' id='pp<?=($current_day)?>' onclick="$('#pp<?=($current_day)?>').toggleClass('pululu2')"></p>
-                                                    </td><?
+                                                            <div style='height:calc(120px - 34px);'>
+                                                                <num id='d<?=($current_day)?>'><?=$current_day?></num><p contenteditable="true"> </p>
+                                                            </div>
+                                                            <p class='pu' id='p<?=($current_day)?>' onclick="$('#p<?=($current_day)?>').toggleClass('pululu')"></p>
+                                                            <p class='pu2' id='pp<?=($current_day)?>' onclick="$('#pp<?=($current_day)?>').toggleClass('pululu2')"></p>
+                                                        </td><?
+                                                    $onetime = true;
+                                                }else{
+                                                    if(!$onetime){
+                                                        ?><td><span class='empty'>/</span></td><?
+                                                    }else{
+                                                        $current_day = $i - $day_counter;
+                                                        ?><td>
+                                                            <div style='height:calc(120px - 34px);'>
+                                                                <num id='d<?=($current_day)?>'><?=$current_day?></num><p contenteditable="true"> </p>
+                                                            </div>
+                                                            <p class='pu' id='p<?=($current_day)?>' onclick="$('#p<?=($current_day)?>').toggleClass('pululu')"></p>
+                                                            <p class='pu2' id='pp<?=($current_day)?>' onclick="$('#pp<?=($current_day)?>').toggleClass('pululu2')"></p>
+                                                        </td><?
+                                                    }
                                                 }
                                             }?>
                                         </tr>
-                                    <?}?>
-                                </table>
-                                <span style='white-space: nowrap;'><div style='position: relative;top: 3px;display: inline-block;width:17px;height:17px;' class='pululu'></div>&nbsp;&nbsp;<p style='display:inline-block;' contenteditable="true">は予定1</p>&nbsp;&nbsp;&nbsp;<div style='position: relative;top: 3px;display: inline-block;width:17px;height:17px;' class='pululu2'></div>&nbsp;&nbsp;<p style='display:inline-block;' contenteditable="true">は予定2</p></span>
+                                        <?
+                                        $onetime = false;
+                                        for($n = 1;$n <= 5 and !$onetime;$n++){?>
+                                            <tr>
+                                                <?
+                                                for($i = 1;$i <= 7;$i++){
+                                                    $current_day++;
+                                                    if(date('t', strtotime(date("Y-m-01", strtotime($default)))) < $current_day){
+                                                        $onetime = true;
+                                                        ?><td><span class='empty'>/</span></td><?
+                                                    }else{
+                                                        ?><td>
+                                                            <div style='height:calc(120px - 34px);'>
+                                                                <num id='d<?=($current_day)?>'><?=$current_day?></num><p contenteditable="true"> </p>
+                                                            </div>
+                                                            <p class='pu' id='p<?=($current_day)?>' onclick="$('#p<?=($current_day)?>').toggleClass('pululu')"></p>
+                                                            <p class='pu2' id='pp<?=($current_day)?>' onclick="$('#pp<?=($current_day)?>').toggleClass('pululu2')"></p>
+                                                        </td><?
+                                                    }
+                                                }?>
+                                            </tr>
+                                        <?}?>
+                                    </table>
+                                    <span style='white-space: nowrap;'><div style='position: relative;top: 3px;display: inline-block;width:17px;height:17px;' class='pululu'></div>&nbsp;&nbsp;<p style='display:inline-block;margin-bottom:0' contenteditable="true">は予定1</p>&nbsp;&nbsp;&nbsp;<div style='position: relative;top: 3px;display: inline-block;width:17px;height:17px;' class='pululu2'></div>&nbsp;&nbsp;<p style='display:inline-block;margin-bottom:0' contenteditable="true">は予定2</p></span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <a href="" id="ss" download="html_ss.png">画像でダウンロード</a>
+                    
+                    
+                    <!-- 画像変換 -->
+                    <div onclick="html2image('#target', '#image');">画像化してダウンロード</div>
+                    <img id="image" name="image" src="" />
+                    <a id="download" href="#" download="<?=date("Y-m", strtotime($default))?>.png"></a>
                     <script>
-                        window.onload = function(){
+                        function html2image(html) {
+                            var capture = document.querySelector(html);
+                            html2canvas(
+                                capture, 
+                                {
+                                    backgroundColor:null,
+                                    allowTaint: true,
+                                    useCORS: true
+                                }
+                            ).then(
+                                canvas => {
+                                    var base64 = canvas.toDataURL('image/png');
+                                    //$('#image').attr("src", base64);		//画面に画像表示
+                                    $('#download').attr('href', base64);
+                                    $('#download')[0].click();				//自動ダウンロード
+                                }
+                            );
+}
+                    </script>
+                    <?// allowTaint: true,
+                            //    useCORS: true,  
+                            /*window.onload = function(){
 
                             //ボタンを押下した際にダウンロードする画像を作る
-                            html2canvas(document.getElementById("target"),{
+                            html2canvas(document.getElementById("target"),
+                            {
+                               
                                 onrendered: function(canvas){
                                 //aタグのhrefにキャプチャ画像のURLを設定
                                 var imgData = canvas.toDataURL();
@@ -297,11 +289,10 @@
                                 }
                             });
 
-                        }
-                    </script>
+                        }*/?>
                     </section>
                 </main>
-                <iframe id="SidebarIframe" class="SidebarIframe" src="../../static/sidebar.html" role="presentation" style="display:block"></iframe>
+                <iframe id="SidebarIframe" class="SidebarIframe" src="../../static/sidebar.html?date=2023/8/10" role="presentation" style="display:block"></iframe>
             </div>
         </content>
     <iframe id="FooterIframe" class="FooterIframe" src="../../static/footer.html" role="presentation"></iframe>

@@ -21,7 +21,12 @@ header("Access-Control-Allow-Origin: *");?>
         })(document);
         </script>
         <style>
-
+            h1{
+                font-size: 26px;
+                color: #ff8f40;
+                border-bottom: dashed 2px #ff8f40;
+                text-align: left;
+            }
             @font-face {
                 font-family: 'MyFont';
                 src: url(./font/anz.ttf);
@@ -67,14 +72,15 @@ header("Access-Control-Allow-Origin: *");?>
                 --stroke-color:white;
             }
             .stroke-text{
-            color:#7dd9ff;
+            color:#a58165;
             font-size: 50px;
             font-family: MyFont, sans-serif;
             font-weight: 700;
             font-style: normal;
             }
             <?
-            $img = './i/reimu.webp';
+
+            $img = './i/'.rand(1, 10).'.png';
             if(isset($_GET['bg'])){
                 $img = htmlspecialchars($_GET['bg']);
             }
@@ -83,6 +89,7 @@ header("Access-Control-Allow-Origin: *");?>
                 background-image: url(<?=$img?>);
                 background-repeat: no-repeat;
                 background-size: 100% auto;
+                border-radius: 20px;
             }
             .pu{
                 background:#fd292914;
@@ -101,6 +108,15 @@ header("Access-Control-Allow-Origin: *");?>
             }
             .pululu2{
                 background:#29e6fddb;
+            }
+            .h2-info{
+                border-bottom: 6px solid #ffc860;
+                text-align: left;
+                color: #ff8f40;
+                background: #fff3dd;
+                margin-top: 50px;
+                border-radius: 6px;
+                padding: 9px;
             }
         </style>
         <script src="https://code.jquery.com/jquery-3.7.0.slim.js" integrity="sha256-7GO+jepT9gJe9LB4XFf8snVOjX3iYNb0FHYr5LI1N5c=" crossorigin="anonymous"></script>
@@ -134,23 +150,69 @@ header("Access-Control-Allow-Origin: *");?>
                             <p>指定された日付:<?=date('Y/m/d', strtotime($default))?></p>
                             <p>使用中のタイムゾーン<?=date_default_timezone_get()?></p>  
                         <?}else{?>
+                            <?//パンくずいれる?>
+                            <div style="display:flex;justify-content:start;align-items: center;">
+                                <svg class="home-svg" viewBox="0 0 16 16" fill="silver" style="line-height:24px;float:left;padding: 0 0.5em 0 .2em;position:">
+                                    <path d="M15.45,7L14,5.551V2c0-0.55-0.45-1-1-1h-1c-0.55,0-1,0.45-1,1v0.553L9,0.555C8.727,0.297,8.477,0,8,0S7.273,0.297,7,0.555  L0.55,7C0.238,7.325,0,7.562,0,8c0,0.563,0.432,1,1,1h1v6c0,0.55,0.45,1,1,1h3v-5c0-0.55,0.45-1,1-1h2c0.55,0,1,0.45,1,1v5h3  c0.55,0,1-0.45,1-1V9h1c0.568,0,1-0.437,1-1C16,7.562,15.762,7.325,15.45,7z">
+
+                                    </path>
+                                </svg>
+                                <ol class="breadcrumb" typeof="BreadcrumbList" vocab="https://schema.org/" style="background:transparent;box-shadow:none;border:none">
+                                    <li>
+                                        <a property="item" typeof="WebPage" title="もちtools | もちが得するwebツール" href="https://tools.motisan.info" class="home">
+                                        <span property="name">ツール一覧</span>
+                                        </a>
+                                        <meta property="position" content="1">
+                                    </li>
+                                    <li>
+                                        <span property="name" class="post post-page current-item">ツール</span>
+                                        <meta property="url" content="https://tools.motisan.info/calendar-generator/output.php">
+                                        <meta property="position" content="2">
+                                    </li>
+                                </ol>
+                            </div>
+                            <style>
+                                .home-svg{
+                                    height: 17px;
+                                    width: 17px;
+                                }
+                                .breadcrumb li a {
+                                    text-decoration: none;
+                                    color: #888;
+                                }
+                                .breadcrumb li {
+                                    display: inline;
+                                    list-style: none;
+                                    font-weight: bold;
+                                }
+                                .breadcrumb li:after {
+                                    content: '▶';
+                                    padding: 0 0.2em;
+                                    color: silver;
+                                }
+                                .breadcrumb {
+                                    margin: 0;
+                                    padding: 0;
+                                    list-style: none;
+                                }
+                                .current-item {
+                                    color: #888;
+                                }
+                            </style>
                             <h1><?=$tools[2]['title']?></h1>
-                            <p>日付が指定されていないため今月の情報を取得しています。</p>
-                            <p>urlにdate=2023-06-01のような指定を含むと取得する月を変えることができます</p>
-                            <h2><?=date("Y年m月")?>の情報</h2>
+                            <p>日付が指定されていないため今月の情報を取得しています。<br>urlにdate=2023-06-01のような指定を含むと取得する月を変えることができます</p>
+                            <h2 class='h2-info'><?=date("Y年m月")?>の情報</h2>
                             <p>今月の日数:<?=date('t', strtotime(date("Y-m-01")))?>日</p>
                             <p>月の開始:<?=$week[date('w', strtotime(date("Y-m-01")))] . '曜日';?></p>
                             <p>今日の日付:<?=date('Y/m/d')?></p>
                             <p>使用中のタイムゾーン<?=date_default_timezone_get()?></p>
                         <?}?>
                     </div>
-                    <p>数字をクリックで青、赤、黒に変化</p>
-                    <p>数字下をクリックで文字を入力可能</p>
-                    <p>文字入力欄下の薄い色部分をクリックで色を濃くできます！</p>
+                    <p style='padding: 15px;border: #ffd07b dashed 2px;background: #fefff8;color: #a7721a;border-radius: 10px;'>数字をクリックで青、赤、黒に変化<br>数字下をクリックで文字を入力可能<br>文字入力欄下の薄い色部分をクリックで色を濃くできます！</p>
                     <div id="target">
-                        <div style='background: white;padding: 20px;border: 1px solid whitesmoke;border-radius: 20px;'>
+                        <div style='background: white;border: 1px solid whitesmoke;border-radius: 20px;'>
                             <div class='canvas-renderer-bg'><?//background whiteがキャンバスに映らないのでdivでラップ?> 
-                                <div style='background-color: rgba(255,255,255,0.8);background-blend-mode: lighten;'>  
+                                <div style='background-color: rgba(255,255,255,0.8);padding: 20px;border-radius: 20px;background-blend-mode: lighten;'>  
                                     <span class="stroke-text"><?=date("Y m", strtotime($default))?></span>    
                                     <table style='width:100%;table-layout: fixed;'>
                                         <?$day_counter = date('w', strtotime(date("Y-m-01", strtotime($default))));//最初の1日の曜日?>
@@ -163,9 +225,6 @@ header("Access-Control-Allow-Origin: *");?>
                                             <th>金</th>
                                             <th style='color:#0191ff'>土</th>
                                         </tr>
-                                        <div>
-                                        </div>
-
                                         <script>
                                         window.addEventListener('DOMContentLoaded',function(){
                                         const btn = document.getElementsByTagName('num'); // ①

@@ -80,7 +80,7 @@ header("Access-Control-Allow-Origin: *");?>
             }
             <?
 
-            $img = './i/'.rand(1, 10).'.png';
+            $img = './i/'.rand(1, 20).'.png';
             if(isset($_GET['bg'])){
                 $img = htmlspecialchars($_GET['bg']);
             }

@@ -145,10 +145,10 @@ header("Access-Control-Allow-Origin: *");?>
                             $default = htmlspecialchars($_GET['date']);?>
                             <h1><?=$tools[2]['title']?></h1>
                             <h2><?=date("Y年m月", strtotime($default))?>の情報</h2>
-                            <p>指定された月の日数:<?=date('t', strtotime(date("Y-m-01", strtotime($default))))?>日</p>
-                            <p>指定された月の開始:<?=$week[date('w', strtotime(date("Y-m-01", strtotime($default))))] . '曜日';?></p>
-                            <p>指定された日付:<?=date('Y/m/d', strtotime($default))?></p>
-                            <p>使用中のタイムゾーン<?=date_default_timezone_get()?></p>  
+                            <p>指定された月の日数:<?=date('t', strtotime(date("Y-m-01", strtotime($default))))?>日<br>
+                            指定された月の開始:<?=$week[date('w', strtotime(date("Y-m-01", strtotime($default))))] . '曜日';?><br>
+                            指定された日付:<?=date('Y/m/d', strtotime($default))?><br>
+                            使用中のタイムゾーン<?=date_default_timezone_get()?></p>  
                         <?}else{?>
                             <?//パンくずいれる?>
                             <div style="display:flex;justify-content:start;align-items: center;">

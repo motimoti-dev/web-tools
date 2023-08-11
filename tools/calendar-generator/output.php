@@ -114,7 +114,7 @@ header("Access-Control-Allow-Origin: *");?>
                 text-align: left;
                 color: #ff8f40;
                 background: #fff3dd;
-                margin-top: 50px;
+                margin-top: 17px;
                 border-radius: 6px;
                 padding: 9px;
             }
@@ -198,9 +198,29 @@ header("Access-Control-Allow-Origin: *");?>
                                 .current-item {
                                     color: #888;
                                 }
+                                .button-a a{
+                                    text-decoration: none;
+                                    border-radius: 63px;
+                                    padding: 10px 20px;
+                                    color: white;
+                                    font-weight: 700;
+                                    background: #ffd78b;
+                                    display: inline-block;
+                                    margin-bottom: 10px;
+                                }
+                                #target{
+                                    padding-bottom:20px;
+                                }
                             </style>
                             <h1><?=$tools[2]['title']?></h1>
                             <p>日付が指定されていないため今月の情報を取得しています。<br>urlにdate=2023-06-01のような指定を含むと取得する月を変えることができます</p>
+                            <p>↓↓↓他の月のカレンダーのボタンです！↓↓↓</p>
+                            <div class='button-a'>
+                                <a href='<?=(empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']?>?date=<?=date('Y-m-d', strtotime('-1 month'))?>'><?=date('Y/m', strtotime('-1 month'))?></a>
+                                <a href='<?=(empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']?>?date=<?=date('Y-m-d', strtotime('+1 month'))?>'><?=date('Y/m', strtotime('+1 month'))?></a>
+                                <a href='<?=(empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']?>?date=<?=date('Y-m-d', strtotime('+2 month'))?>'><?=date('Y/m', strtotime('+2 month'))?></a>
+                                <a href='<?=(empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']?>?date=<?=date('Y-m-d', strtotime('+3 month'))?>'><?=date('Y/m', strtotime('+3 month'))?></a>
+                            </div>
                             <h2 class='h2-info'><?=date("Y年m月")?>の情報</h2>
                             <p>今月の日数:<?=date('t', strtotime(date("Y-m-01")))?>日</p>
                             <p>月の開始:<?=$week[date('w', strtotime(date("Y-m-01")))] . '曜日';?></p>
@@ -310,7 +330,7 @@ header("Access-Control-Allow-Origin: *");?>
                     
                     
                     <!-- 画像変換 -->
-                    <div onclick="html2image('#target', '#image');">画像化してダウンロード</div>
+                    <div onclick="html2image('#target', '#image');" style='font-size: 20px;width: calc(100% - 40px);border-radius: 100px;padding: 13px 20px;background: #ffd799;font-weight: 700;color: white;border: none;box-shadow: 2px 3px 6px #ff441e26;'>画像化してダウンロード</div>
                     <img id="image" name="image" src="" />
                     <a id="download" href="#" download="<?=date("Y-m", strtotime($default))?>.png"></a>
                     <script>

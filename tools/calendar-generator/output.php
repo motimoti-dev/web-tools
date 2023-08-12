@@ -120,7 +120,7 @@ header("Access-Control-Allow-Origin: *");?>
             }
             #target{
                 padding-bottom:20px;
-                /*overflow-y: scroll;*/
+                overflow-y: scroll;
                 width: 100%;
             }
             p{color:#717171;}
@@ -235,7 +235,7 @@ header("Access-Control-Allow-Origin: *");?>
                         <?}?>
                     </div>
                     <p style='padding: 15px;border: #ffd07b dashed 2px;background: #fefff8;color: #a7721a;border-radius: 10px;'>数字をクリックで青、赤、黒に変化<br>数字下をクリックで文字を入力可能<br>文字入力欄下の薄い色部分をクリックで色を濃くできます！</p>
-                    <p>PC表示推奨`です！スマホ版では使いにくいかと思います！</p>
+                    <p>PC表示推奨です！スマホ版では使いにくいかと思います！</p>
                     <div id="target">
                         <div style='background: white;border: 1px solid whitesmoke;border-radius: 20px;min-width: 1156px;'>
                             <div class='canvas-renderer-bg'><?//background whiteがキャンバスに映らないのでdivでラップ?> 
@@ -342,6 +342,7 @@ header("Access-Control-Allow-Origin: *");?>
                     <a id="download" href="#" download="<?=date("Y-m", strtotime($default))?>.png"></a>
                     <script>
                         function html2image(html) {
+                            $('#target').attr('style','overflow-y:visible');
                             var capture = document.querySelector(html);
                             html2canvas(
                                 capture, 
@@ -360,7 +361,8 @@ header("Access-Control-Allow-Origin: *");?>
                                     $('#download')[0].click();				//自動ダウンロード
                                 }
                             );
-}
+                            $('#target').removeAttr('style');
+                            }
                     </script>
                     <?// allowTaint: true,
                             //    useCORS: true,  

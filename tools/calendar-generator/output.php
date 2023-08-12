@@ -118,6 +118,12 @@ header("Access-Control-Allow-Origin: *");?>
                 border-radius: 6px;
                 padding: 9px;
             }
+            #target{
+                padding-bottom:20px;
+                overflow-y: scroll;
+                width: 100%;
+            }
+            p{color:#717171;}
         </style>
         <script src="https://code.jquery.com/jquery-3.7.0.slim.js" integrity="sha256-7GO+jepT9gJe9LB4XFf8snVOjX3iYNb0FHYr5LI1N5c=" crossorigin="anonymous"></script>
     </head>
@@ -144,7 +150,7 @@ header("Access-Control-Allow-Origin: *");?>
                         if(isset($_GET['date'])){
                             $default = htmlspecialchars($_GET['date']);?>
                             <h1><?=$tools[2]['title']?></h1>
-                            <h2><?=date("Y年m月", strtotime($default))?>の情報</h2>
+                            <h2 style='color:#717171'><?=date("Y年m月", strtotime($default))?>の情報</h2>
                             <p>指定された月の日数:<?=date('t', strtotime(date("Y-m-01", strtotime($default))))?>日<br>
                             指定された月の開始:<?=$week[date('w', strtotime(date("Y-m-01", strtotime($default))))] . '曜日';?><br>
                             指定された日付:<?=date('Y/m/d', strtotime($default))?><br>
@@ -208,18 +214,18 @@ header("Access-Control-Allow-Origin: *");?>
                                     display: inline-block;
                                     margin-bottom: 10px;
                                 }
-                                #target{
-                                    padding-bottom:20px;
-                                }
                             </style>
                             <h1><?=$tools[2]['title']?></h1>
                             <p>日付が指定されていないため今月の情報を取得しています。<br>urlにdate=2023-06-01のような指定を含むと取得する月を変えることができます</p>
                             <p>↓↓↓他の月のカレンダーのボタンです！↓↓↓</p>
                             <div class='button-a'>
+                                <a href='<?=(empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']?>?date=<?=date('Y-m-d', strtotime('-2 month'))?>'><?=date('Y/m', strtotime('-2 month'))?></a>
                                 <a href='<?=(empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']?>?date=<?=date('Y-m-d', strtotime('-1 month'))?>'><?=date('Y/m', strtotime('-1 month'))?></a>
                                 <a href='<?=(empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']?>?date=<?=date('Y-m-d', strtotime('+1 month'))?>'><?=date('Y/m', strtotime('+1 month'))?></a>
                                 <a href='<?=(empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']?>?date=<?=date('Y-m-d', strtotime('+2 month'))?>'><?=date('Y/m', strtotime('+2 month'))?></a>
                                 <a href='<?=(empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']?>?date=<?=date('Y-m-d', strtotime('+3 month'))?>'><?=date('Y/m', strtotime('+3 month'))?></a>
+                                <a href='<?=(empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']?>?date=<?=date('Y-m-d', strtotime('+4 month'))?>'><?=date('Y/m', strtotime('+4 month'))?></a>
+                                <a href='<?=(empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']?>?date=<?=date('Y-m-d', strtotime('+5 month'))?>'><?=date('Y/m', strtotime('+5 month'))?></a>
                             </div>
                             <h2 class='h2-info'><?=date("Y年m月")?>の情報</h2>
                             <p>今月の日数:<?=date('t', strtotime(date("Y-m-01")))?>日</p>
@@ -229,8 +235,9 @@ header("Access-Control-Allow-Origin: *");?>
                         <?}?>
                     </div>
                     <p style='padding: 15px;border: #ffd07b dashed 2px;background: #fefff8;color: #a7721a;border-radius: 10px;'>数字をクリックで青、赤、黒に変化<br>数字下をクリックで文字を入力可能<br>文字入力欄下の薄い色部分をクリックで色を濃くできます！</p>
+                    <p>PC表示推奨、スマホ版ではカレンダーが横スクロールになっています！</p>
                     <div id="target">
-                        <div style='background: white;border: 1px solid whitesmoke;border-radius: 20px;'>
+                        <div style='background: white;border: 1px solid whitesmoke;border-radius: 20px;min-width: 1156px;'>
                             <div class='canvas-renderer-bg'><?//background whiteがキャンバスに映らないのでdivでラップ?> 
                                 <div style='background-color: rgba(255,255,255,0.8);padding: 20px;border-radius: 20px;background-blend-mode: lighten;'>  
                                     <span class="stroke-text"><?=date("Y m", strtotime($default))?></span>    
@@ -341,6 +348,8 @@ header("Access-Control-Allow-Origin: *");?>
                                 {
                                     backgroundColor:null,
                                     allowTaint: true,
+                                    width: 1156,
+                                    windowWidth: 1156,
                                     useCORS: true
                                 }
                             ).then(

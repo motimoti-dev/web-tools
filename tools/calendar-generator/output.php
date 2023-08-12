@@ -3,12 +3,32 @@ header("Access-Control-Allow-Origin: *");?>
 <?date_default_timezone_set('Asia/Tokyo');?>
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-    <meta charset="UTF-8">
+    <head>    
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="<?=$tools[2]['description']?>"> 
         <title><?=$tools[2]['title']?></title>
         <link rel="stylesheet" href="../../css/index-style-wide-main.css" http-equiv="Cache-Control" content="no-cache">
+        <meta name='robots' content='index,follow'>
+        <meta property="og:title" content="予定入りカレンダー画像生成ツール | もちツールズ">
+        <meta property="og:type" content="blog">
+        <meta property="og:description" content="<?=$tools[2]['description']?>">
+        <meta property="og:url" content="//tools.motisan.info/tools/crender-generatior/output.php">
+        <meta property="og:image" content="//tools.motisan.info/i/calendar-generator.png">
+        <meta property="og:locale" content="ja_JP">
+        <meta property="og:site_name" content="もちツールズ">
+        <link rel="canonical" href="//tools.motisan.info/tools/crender-generatior/output.php">
+        <meta name="author" content="もちさん">
+        <meta name="theme-color" content="#FFEAD8">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@motimoti_dev">
+        <meta name="twitter:title" content="予定入りカレンダー画像生成ツール | もちツールズ">
+        <meta name="twitter:description" content="">
+        <meta name="twitter:image" content="//tools.motisan.info/i/calendar-generator.png">
+        <link rel="icon" href="//motisan.info/i/32.png" sizes="32x32">
+        <link rel="icon" href="//motisan.info/i/192.png" sizes="192x192">
+        <link rel="apple-touch-icon-precomposed" href="//motisan.info/i/apple.png">
+        <meta name="msapplication-TileImage" content="//motisan.info/i/ms.png">
         <script src="./js/html2canvas.js"></script>
         <script>
         (function(d) {
@@ -240,7 +260,7 @@ header("Access-Control-Allow-Origin: *");?>
                         <div style='background: white;border: 1px solid whitesmoke;border-radius: 20px;min-width: 1156px;'>
                             <div class='canvas-renderer-bg'><?//background whiteがキャンバスに映らないのでdivでラップ?> 
                                 <div style='background-color: rgba(255,255,255,0.8);padding: 20px;border-radius: 20px;background-blend-mode: lighten;'>  
-                                    <span class="stroke-text"><?=date("Y m", strtotime($default))?></span>    
+                                    <span class="stroke-text"><?=date("Y m", strtotime($default))?></span>
                                     <table style='width:100%;table-layout: fixed;'>
                                         <?$day_counter = date('w', strtotime(date("Y-m-01", strtotime($default))));//最初の1日の曜日?>
                                         <tr>
@@ -329,7 +349,10 @@ header("Access-Control-Allow-Origin: *");?>
                                             </tr>
                                         <?}?>
                                     </table>
-                                    <span style='white-space: nowrap;'><div style='position: relative;top: 3px;display: inline-block;width:17px;height:17px;' class='pululu'></div>&nbsp;&nbsp;<p style='display:inline-block;margin-bottom:0' contenteditable="true">は予定1</p>&nbsp;&nbsp;&nbsp;<div style='position: relative;top: 3px;display: inline-block;width:17px;height:17px;' class='pululu2'></div>&nbsp;&nbsp;<p style='display:inline-block;margin-bottom:0' contenteditable="true">は予定2</p></span>
+                                    <div>
+                                        <span style='white-space: nowrap;'><div style='position: relative;top: 3px;display: inline-block;width:17px;height:17px;' class='pululu'></div>&nbsp;&nbsp;<p style='display:inline-block;margin-bottom:0' contenteditable="true">は予定1</p>&nbsp;&nbsp;&nbsp;<div style='position: relative;top: 3px;display: inline-block;width:17px;height:17px;' class='pululu2'></div>&nbsp;&nbsp;<p style='display:inline-block;margin-bottom:0' contenteditable="true">は予定2</p></span>
+                                        <br><span>もちツールズ(tools.motisan.info)で作成</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>

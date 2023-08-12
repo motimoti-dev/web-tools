@@ -235,7 +235,7 @@ header("Access-Control-Allow-Origin: *");?>
                         <?}?>
                     </div>
                     <p style='padding: 15px;border: #ffd07b dashed 2px;background: #fefff8;color: #a7721a;border-radius: 10px;'>数字をクリックで青、赤、黒に変化<br>数字下をクリックで文字を入力可能<br>文字入力欄下の薄い色部分をクリックで色を濃くできます！</p>
-                    <p>PC表示推奨、スマホ版ではカレンダーが横スクロールになっています！</p>
+                    <p>PC表示推奨`です！スマホ版では使いにくいかと思います！</p>
                     <div id="target">
                         <div style='background: white;border: 1px solid whitesmoke;border-radius: 20px;min-width: 1156px;'>
                             <div class='canvas-renderer-bg'><?//background whiteがキャンバスに映らないのでdivでラップ?> 

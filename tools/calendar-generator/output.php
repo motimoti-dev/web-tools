@@ -120,7 +120,7 @@ header("Access-Control-Allow-Origin: *");?>
             }
             #target{
                 padding-bottom:20px;
-                overflow-y: scroll;
+                /*overflow-y: scroll;*/
                 width: 100%;
             }
             p{color:#717171;}
@@ -380,7 +380,7 @@ header("Access-Control-Allow-Origin: *");?>
                         }*/?>
                     </section>
                 </main>
-                <iframe id="SidebarIframe" class="SidebarIframe" src="../../static/sidebar.html?date=2023/8/11" role="presentation" style="display:block"></iframe>
+                <iframe id="SidebarIframe" class="SidebarIframe" src="../../static/sidebar.html?date=2023/8/12" role="presentation" style="display:block"></iframe>
             </div>
         </content>
     <iframe id="FooterIframe" class="FooterIframe" src="../../static/footer.html" role="presentation"></iframe>

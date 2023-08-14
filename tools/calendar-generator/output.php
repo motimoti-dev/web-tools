@@ -13,11 +13,11 @@ header("Access-Control-Allow-Origin: *");?>
         <meta property="og:title" content="予定入りカレンダー画像生成ツール | もちツールズ">
         <meta property="og:type" content="blog">
         <meta property="og:description" content="<?=$tools[2]['description']?>">
-        <meta property="og:url" content="//tools.motisan.info/tools/crender-generatior/output.php">
+        <meta property="og:url" content="//tools.motisan.info/tools/calendar-generator/output.php">
         <meta property="og:image" content="//tools.motisan.info/i/calendar-generator.png">
         <meta property="og:locale" content="ja_JP">
         <meta property="og:site_name" content="もちツールズ">
-        <link rel="canonical" href="//tools.motisan.info/tools/crender-generatior/output.php">
+        <link rel="canonical" href="//tools.motisan.info/tools/calendar-generator/output.php">
         <meta name="author" content="もちさん">
         <meta name="theme-color" content="#FFEAD8">
         <meta name="twitter:card" content="summary_large_image">
@@ -156,28 +156,7 @@ header("Access-Control-Allow-Origin: *");?>
                     <iframe id="ShareIframe" class="ShareIframe" src="../../static/share.html" role="presentation" style="position: relative;left:-15px;width:50px;height:100%;float:left"></iframe>
                     <section style="display: grid;background: white;padding: 1.3rem;border-radius: 12px;" class="s1">
                     <div class="main-container">
-                        <?
-                        $week = [
-                            '日', //0
-                            '月', //1
-                            '火', //2
-                            '水', //3
-                            '木', //4
-                            '金', //5
-                            '土', //6
-                          ];
-                        $default = date("Y-m-01");
-                        if(isset($_GET['date'])){
-                            $default = htmlspecialchars($_GET['date']);?>
-                            <h1><?=$tools[2]['title']?></h1>
-                            <h2 style='color:#717171'><?=date("Y年m月", strtotime($default))?>の情報</h2>
-                            <p>指定された月の日数:<?=date('t', strtotime(date("Y-m-01", strtotime($default))))?>日<br>
-                            指定された月の開始:<?=$week[date('w', strtotime(date("Y-m-01", strtotime($default))))] . '曜日';?><br>
-                            指定された日付:<?=date('Y/m/d', strtotime($default))?><br>
-                            使用中のタイムゾーン<?=date_default_timezone_get()?></p>  
-                        <?}else{?>
-                            <?//パンくずいれる?>
-                            <div style="display:flex;justify-content:start;align-items: center;">
+                    <div style="display:flex;justify-content:start;align-items: center;">
                                 <svg class="home-svg" viewBox="0 0 16 16" fill="silver" style="line-height:24px;float:left;padding: 0 0.5em 0 .2em;position:">
                                     <path d="M15.45,7L14,5.551V2c0-0.55-0.45-1-1-1h-1c-0.55,0-1,0.45-1,1v0.553L9,0.555C8.727,0.297,8.477,0,8,0S7.273,0.297,7,0.555  L0.55,7C0.238,7.325,0,7.562,0,8c0,0.563,0.432,1,1,1h1v6c0,0.55,0.45,1,1,1h3v-5c0-0.55,0.45-1,1-1h2c0.55,0,1,0.45,1,1v5h3  c0.55,0,1-0.45,1-1V9h1c0.568,0,1-0.437,1-1C16,7.562,15.762,7.325,15.45,7z">
 
@@ -235,6 +214,38 @@ header("Access-Control-Allow-Origin: *");?>
                                     margin-bottom: 10px;
                                 }
                             </style>
+                        <?
+                        $week = [
+                            '日', //0
+                            '月', //1
+                            '火', //2
+                            '水', //3
+                            '木', //4
+                            '金', //5
+                            '土', //6
+                          ];
+                        $default = date("Y-m-01");
+                        if(isset($_GET['date'])){
+                            $default = htmlspecialchars($_GET['date']);?>
+                            <h1><?=$tools[2]['title']?></h1>
+                            <p>↓↓↓他の月のカレンダーのボタンです！↓↓↓</p>
+                            <div class='button-a'>
+                                <a href='<?=(empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME']?>?date=<?=date('Y-m-d', strtotime('-2 month'))?>'><?=date('Y/m', strtotime('-2 month'))?></a>
+                                <a href='<?=(empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME']?>?date=<?=date('Y-m-d', strtotime('-1 month'))?>'><?=date('Y/m', strtotime('-1 month'))?></a>
+                                <a href='<?=(empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME']?>?date=<?=date('Y-m-d', strtotime('+1 month'))?>'><?=date('Y/m', strtotime('+1 month'))?></a>
+                                <a href='<?=(empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME']?>?date=<?=date('Y-m-d', strtotime('+2 month'))?>'><?=date('Y/m', strtotime('+2 month'))?></a>
+                                <a href='<?=(empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME']?>?date=<?=date('Y-m-d', strtotime('+3 month'))?>'><?=date('Y/m', strtotime('+3 month'))?></a>
+                                <a href='<?=(empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME']?>?date=<?=date('Y-m-d', strtotime('+4 month'))?>'><?=date('Y/m', strtotime('+4 month'))?></a>
+                                <a href='<?=(empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME']?>?date=<?=date('Y-m-d', strtotime('+5 month'))?>'><?=date('Y/m', strtotime('+5 month'))?></a>
+                            </div>
+                            <h2 style='color:#717171'><?=date("Y年m月", strtotime($default))?>の情報</h2>
+                            <p>指定された月の日数:<?=date('t', strtotime(date("Y-m-01", strtotime($default))))?>日<br>
+                            指定された月の開始:<?=$week[date('w', strtotime(date("Y-m-01", strtotime($default))))] . '曜日';?><br>
+                            指定された日付:<?=date('Y/m/d', strtotime($default))?><br>
+                            使用中のタイムゾーン<?=date_default_timezone_get()?></p>  
+                        <?}else{?>
+                            <?//パンくずいれる?>
+                            
                             <h1><?=$tools[2]['title']?></h1>
                             <p>日付が指定されていないため今月の情報を取得しています。<br>urlにdate=2023-06-01のような指定を含むと取得する月を変えることができます</p>
                             <p>↓↓↓他の月のカレンダーのボタンです！↓↓↓</p>
@@ -405,7 +416,7 @@ header("Access-Control-Allow-Origin: *");?>
                         }*/?>
                     </section>
                 </main>
-                <iframe id="SidebarIframe" class="SidebarIframe" src="../../static/sidebar.html?date=2023/8/12" role="presentation" style="display:block"></iframe>
+                <iframe id="SidebarIframe" class="SidebarIframe" src="../../static/sidebar.html?date=2023/8/15" role="presentation" style="display:block"></iframe>
             </div>
         </content>
     <iframe id="FooterIframe" class="FooterIframe" src="../../static/footer.html" role="presentation"></iframe>

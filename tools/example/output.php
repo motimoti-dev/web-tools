@@ -6,10 +6,7 @@
         <meta name="description" content="<?=$example[0]['title']?>">
         <script>document.documentElement.classList.remove('no-js')</script> 
         <title><?=$example[0]['title']?></title>
-        <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://tools.motisan.info/css/index-style.css" http-equiv="Cache-Control" content="no-cache">
-        <link rel="stylesheet" href="css/moti.css">
-        <script src="js/read_data.js"></script>
     </head>
     <body style="background:#fff3e8;margin:0">
         <iframe id="HeaderIframe" class="HeaderIframe" src="../../static/header.html" role="presentation" style="display: block;width: 100%;height: 60px;border: 0;"></iframe>

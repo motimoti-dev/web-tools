@@ -18,13 +18,13 @@ header("Access-Control-Allow-Origin: *");?>
         <meta property="og:image" content="//tools.motisan.info/i/calendar-generator.png">
         <meta property="og:locale" content="ja_JP">
         <meta property="og:site_name" content="<?=$blog_info['name']?>">
-        <link rel="canonical" href="//tools.motisan.info/tools/calendar-generator/output.php">
+        <link rel="canonical" href="<?=$tools[$tool_id]['canonical']?>">
         <meta name="author" content="<?=$blog_info['author']?>">
         <meta name="theme-color" content="<?=$blog_info['theme-color']?>">
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="<?=$blog_info['twitter']?>">
-        <meta name="twitter:title" content="<?=$tools[$tool_id]['title']?>< | <?=$blog_info['name']?>">
-        <meta name="twitter:description" content="">
+        <meta name="twitter:title" content="<?=$tools[$tool_id]['title']?> | <?=$blog_info['name']?>">
+        <meta name="twitter:description" content="<?=$tools[$tool_id]['description']?>">
         <meta name="twitter:image" content="<?=$tools[$tool_id]['img']?>">
         <link rel="icon" href="//motisan.info/i/32.png" sizes="32x32">
         <link rel="icon" href="//motisan.info/i/192.png" sizes="192x192">

@@ -7,7 +7,7 @@ $blog_info = [
     'top-nav-txt' => 'もちもち便利ツール',
     'header-img'=>'./i/header.png.webp',
     'author'=>'もちさん',
-    'twitter'=>'@motimoti_dev',
+    'twitter'=>'@motisan_info',
     'theme-color'=>'#FFEAD8',
     'og:image'=>'./i/ogp.png',
     'top-h2'=>'うおおおおおおおおおおおお！',
@@ -105,18 +105,30 @@ $tools = [
         'date'=>'2023/06/21',
         'var'=>'1.0',
         'id'=>'regular-expression',
-        'view'=>true
+        'view'=>false
     ],
     [
         'title'=>'時間管理',
         'url'=>'./tools/time-manage/output.php',
         'user'=>'',
-        'description'=>'まだ作っているところです！',
-        'img'=>'i/no-letter.png',
+        'description'=>'テスト運用中、新規登録不可、まだ作っているところです！',
+        'img'=>'i/time-manage.png',
         'date'=>'2023/07/22',
         'var'=>'1.0',
         'id'=>'time-manage',
-        'view'=>false
+        'view'=>true
+    ],
+    [
+        //8
+        'title'=>'SVGを横幅3000pxのPNGに変換するツール',
+        'url'=>'./tools/svg2img/output.php',
+        'user'=>'',
+        'description'=>'もち用',
+        'img'=>'i/svg2png.png',
+        'date'=>'2023/09/22',
+        'var'=>'1.0',
+        'id'=>'svg2img',
+        'view'=>true
     ],
     /*[
         'title'=>'',

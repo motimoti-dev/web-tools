@@ -5,17 +5,17 @@ header("Access-Control-Allow-Origin: *");?>
 <!DOCTYPE html>
 <html lang="ja">
     <head>    
+        <?//共用部分?>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="<?=$tools[$tool_id]['description']?>"> 
         <title><?=$tools[$tool_id]['title']?></title>
-        <link rel="stylesheet" href="../../css/index-style-wide-main.css" http-equiv="Cache-Control" content="no-cache">
         <meta name='robots' content='index,follow'>
         <meta property="og:title" content="<?=$tools[$tool_id]['title']?> | <?=$blog_info['name']?>">
         <meta property="og:type" content="blog">
         <meta property="og:description" content="<?=$tools[$tool_id]['description']?>">
-        <meta property="og:url" content="//tools.motisan.info/tools/calendar-generator/output.php">
-        <meta property="og:image" content="//tools.motisan.info/i/calendar-generator.png">
+        <meta property="og:url" content="<?=$tools[$tool_id]['canonical']?>">
+        <meta property="og:image" content="//tools.motisan.info/<?=$tools[$tool_id]['img']?>">
         <meta property="og:locale" content="ja_JP">
         <meta property="og:site_name" content="<?=$blog_info['name']?>">
         <link rel="canonical" href="<?=$tools[$tool_id]['canonical']?>">
@@ -25,13 +25,15 @@ header("Access-Control-Allow-Origin: *");?>
         <meta name="twitter:site" content="<?=$blog_info['twitter']?>">
         <meta name="twitter:title" content="<?=$tools[$tool_id]['title']?> | <?=$blog_info['name']?>">
         <meta name="twitter:description" content="<?=$tools[$tool_id]['description']?>">
-        <meta name="twitter:image" content="<?=$tools[$tool_id]['img']?>">
+        <meta name="twitter:image" content="//tools.motisan.info/<?=$tools[$tool_id]['img']?>">
         <link rel="icon" href="//motisan.info/i/32.png" sizes="32x32">
         <link rel="icon" href="//motisan.info/i/192.png" sizes="192x192">
         <link rel="apple-touch-icon-precomposed" href="//motisan.info/i/apple.png">
         <meta name="msapplication-TileImage" content="//motisan.info/i/ms.png">
+        <?//END共用部分?>
         <script src="./js/html2canvas.js"></script>
         <script src="./js/html2canvas.svg.js"></script>
+        <link rel="stylesheet" href="../../css/index-style-wide-main.css" http-equiv="Cache-Control" content="no-cache">
         <script>
         (function(d) {
             var config = {

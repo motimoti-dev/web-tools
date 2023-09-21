@@ -417,7 +417,7 @@ header("Access-Control-Allow-Origin: *");?>
                         }*/?>
                     </section>
                 </main>
-                <iframe id="SidebarIframe" class="SidebarIframe" src="../../static/sidebar.html?date=2023/8/15" role="presentation" style="display:block"></iframe>
+                <iframe id="SidebarIframe" class="SidebarIframe" src="../../static/sidebar.html?date=2023/9/22" role="presentation" style="display:block"></iframe>
             </div>
         </content>
     <iframe id="FooterIframe" class="FooterIframe" src="../../static/footer.html" role="presentation"></iframe>

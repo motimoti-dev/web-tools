@@ -31,6 +31,7 @@ header("Access-Control-Allow-Origin: *");?>
         <link rel="apple-touch-icon-precomposed" href="//motisan.info/i/apple.png">
         <meta name="msapplication-TileImage" content="//motisan.info/i/ms.png">
         <?//END共用部分?>
+        <link rel='stylesheet' href='../../css/index-style-wide-main.css'>
         <script src="./js/html2canvas.js"></script>
         <script>
         (function(d) {

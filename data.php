@@ -9,7 +9,7 @@ $blog_info = [
     'author'=>'もちさん',
     'twitter'=>'@motisan_info',
     'theme-color'=>'#FFEAD8',
-    'og:image'=>'./i/ogp.png',
+    'og:image'=>'https://tools.motisan.info/i/ogp.png',
     'top-h2'=>'うおおおおおおおおおおおお！',
     'privacy-policy'=>'./privacy-policy/'
 ];

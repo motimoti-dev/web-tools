@@ -1,5 +1,5 @@
 <?include( dirname( __FILE__ , 3).'/data.php' );//設定
-$tool_id = 7;
+$tool_id = 2;
 header("Access-Control-Allow-Origin: *");?>
 <?date_default_timezone_set('Asia/Tokyo');?>
 <!DOCTYPE html>
@@ -419,7 +419,7 @@ header("Access-Control-Allow-Origin: *");?>
                         }*/?>
                     </section>
                 </main>
-                <iframe id="SidebarIframe" class="SidebarIframe" src="../../static/sidebar.html?date=2023/9/22" role="presentation" style="display:block"></iframe>
+                <iframe id="SidebarIframe" class="SidebarIframe" src="../../static/sidebar.html?date=2023/10/02" role="presentation" style="display:block"></iframe>
             </div>
         </content>
     <iframe id="FooterIframe" class="FooterIframe" src="../../static/footer.html" role="presentation"></iframe>

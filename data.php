@@ -1,10 +1,10 @@
 <?
 $blog_info = [
     'name' => 'もちツールズ',
-    'description' => '',
+    'description' => 'Webブラウザ上で動作するツールをまとめています。うおおおおおおおおおおおお！',
     'home' => 'tools.motisan.info',//top
     'base' => '//tools.motisan.info/',//base url
-    'top-nav-txt' => 'もちもち便利ツール',
+    'top-nav-txt' => 'もちもち便利Webツール',
     'header-img'=>'./i/header.png.webp',
     'author'=>'もちさん',
     'twitter'=>'@motisan_info',
@@ -16,6 +16,13 @@ $blog_info = [
 if(isset($_GET['local'])){
     $blog_info['home'] = 'localhost/github/tools2';
 }
+$user = [
+    'm'=>[
+        'name' => 'もちさん',
+        'icon' => '',
+        'icon-min' => ''
+    ]
+    ];
 $example = [
     [
         'title'=>'テストツール',
@@ -140,7 +147,34 @@ $tools = [
         'id'=>'svg2img',
         'view'=>true
     ],
-    /*[
+    [
+        //9
+        'title'=>'文字暗号化ツール',
+        'url'=>'./tools/crypter/encode.php',
+        'canonical'=>'https://tools.motisan.info/tools/crypter/encode.php',
+        'user'=>'m',
+        'description'=>'テキストを暗号化するツールです(AES-256bit)！パスフレーズで復号できます！',
+        'img'=>'i/cryoter-encoder.png',
+        'date'=>'2023/10/03',
+        'var'=>'1.0',
+        'id'=>'cryoter',
+        'view'=>true
+    ],
+    [
+        //10
+        'title'=>'暗号化文字復号ツール',
+        'url'=>'./tools/crypter/decode.php',
+        'canonical'=>'https://tools.motisan.info/tools/crypter/decode.php',
+        'user'=>'m',
+        'description'=>'暗号化した文字を復号するツールです(AES-256bit)！パスフレーズで復号できます！',
+        'img'=>'i/cryoter-decoder.png',
+        'date'=>'2023/10/03',
+        'var'=>'1.0',
+        'id'=>'cryoter-decode',
+        'view'=>true
+    ],
+    /*
+    [
         'title'=>'',
         'url'=>'',
         'canonical'=>'',

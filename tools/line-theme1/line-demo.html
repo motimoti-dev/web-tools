@@ -1,0 +1,118 @@
+
+<!--  
+　　 |ヽ 
+　　 | |ﾟ*･｡ 
+　　 |ノ　　ﾟ･｡ 
+　　 ┃　　　 *｡ 
+　　｡∩∧_∧　 * 
+　 + `(･ω･`)*+ﾟ 
+　　*｡ヽ　 つ*ﾟ* 
+　　 ﾞ･+｡*･ﾟ⊃ +ﾟ 
+　　☆　∪~　｡*ﾟ 
+　　 ﾞ･+｡｡*･ﾟ
+
+-->
+<!--
+    みないでください！！！
+    覗きですか！
+--><!DOCTYPE html>
+<html lang="ja">
+    <head prefix="og: https://ogp.me/ns#"><!-- Google Tag Manager -->
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>LINE着せ替えデモ</title>
+        <meta name="description" content="">
+        <meta name="robots" content="index, follow">        
+        <meta property="og:title" content="LINE着せ替えデモ">
+        <meta property="og:type" content="article"><meta property="og:description" content="">
+        <meta property="og:url" content="https://motisan.info/wp-animation-fadein-css/"><meta property="og:image" content="https://motisan.info/i/wp-animation-fadein-css-thum.png">
+        <meta property="og:locale" content="ja_JP">
+        <meta property="og:site_name" content="もちさん | LINE着せ替えのデモ">
+        <link rel="canonical" href="">
+        <meta name="author" content="もちさん">
+        
+        <meta name="theme-color" content="#FFEAD8">
+        
+        <meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@motimoti_dev"><meta name="twitter:title" content="LINE着せ替えデモ">
+        <meta name="twitter:description" content="LINE着せ替えのデモページです！">
+        <meta name="twitter:image" content="https://motisan.info/i/wp-animation-fadein-css-thum.png">
+            
+        <link rel="icon" href="//motisan.info/i/32.png" sizes="32x32">
+        <link rel="icon" href="//motisan.info/i/192.png" sizes="192x192">
+        <link rel="apple-touch-icon-precomposed" href="//motisan.info/i/apple.png"><meta name="msapplication-TileImage" content="//motisan.info/i/ms.png">
+        <meta name="robots" content="max-image-preview:large">
+        <link rel="canonical" href="https://motisan.info/wp-animation-fadein-css/">
+        <link rel="icon" href="https://motisan.info/i/cropped-moti36-512x512-1-32x32.png" sizes="32x32">
+        <link rel="icon" href="https://motisan.info/i/cropped-moti36-512x512-1-192x192.png" sizes="192x192">
+        <link rel="apple-touch-icon" href="https://motisan.info/i/cropped-moti36-512x512-1-180x180.png">
+        <meta name="msapplication-TileImage" content="https://motisan.info/i/cropped-moti36-512x512-1-270x270.png">
+
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    </head>
+    <body>
+        <img id="pass" onclick="slideshow()" src="pass-def.jpg" style="width:100%" >
+            <script>
+            var img_src = new Array("pass-def.jpg","pass-1.jpg","pass-2.jpg","pass-3.jpg",'pass-4.jpg');
+            var num = 0;
+ 
+            function slideshow(){
+                if (num == 4) {
+                    num = 0;
+                    modalopen(0);
+                }
+                else {
+                    num ++;
+                }
+                document.getElementById("pass").src=img_src[num];
+            }
+
+            let data = Array(
+                ["どうも！","LINE着せ替えを作りました！<br>このページはデモページです！実際の動きとは多少違いがあります！下の画像を押すと次へ進みます！","icon.png","demo-top.html","いいえ！"],
+                ["","","images/","",""],
+                ["","","images/","",""],
+                ["","","images/","",""],
+                ["","","images/","",""],
+            );
+            function modalclose(){$(".modals").addClass("hide");}
+            function modalopen(row){
+                document.getElementById("modal-title").innerHTML = data[row][0];
+                document.getElementById("modal-text").innerHTML = data[row][1];
+                if(data[row][2] != ""){
+                    $("#modal-image").attr('src', data[row][2]);
+                    $("#modal-image").attr('alt', data[row][4]);
+                    $("#modal-link").attr('href', data[row][3]);
+                    $("#modal-link").attr('style', '');                    
+                }else{/*非表示*/
+                    $("#modal-link").attr('style', 'display:none;');
+                }
+                $(".modals").removeClass("hide");
+            }
+
+            </script>
+            <aside class="modal-parent modals hide">
+                <div class="modal modal-block" onclick="javascript:void(0);">
+                    <h2 style="margin:1rem 0;font-size:2rem;text-align:left;" id="modal-title"></h2>
+                    <p id="modal-text"></p>
+                    <a target="blank" id="modal-link" href="" style="">
+                        <img src="" class="moti-modal-icon" id="modal-image" alt="">
+                    </a>
+                    <div class="modal-bottom" onclick="modalclose()">戻る</div>
+                </div>
+            </aside>
+            <style>
+                body{margin:0}
+                html{font-size:62.5%}
+                p{text-align:left;font-size:1.2rem}
+                .hide{display: none;}
+.modal-parent{position:fixed;bottom:4rem;text-align: center;z-index:600;width:100%;}
+.modal-black{background-color: rgba(95, 91, 91, 0.74);z-index:500;position:fixed;top:0;left:0;height: 100vh;width:100vw;}
+.modal{background:white;width:80%;margin:0;border-radius:10px;padding:0 5%;max-width:500px;display:inline-block;}
+.modal-bottom{font-size:1.5rem;font-weight:bold;margin:1.2rem 0;text-align:center;color:#00c1e9;}
+.moti-modal-icon{width:100%;border-radius: 8px;}
+.outline-box{border:1px solid #c5c5c5;padding:5%;}
+.outline-box img{width:100%}
+h1{font-size:3rem;margin:0}
+h2{text-align:center;font-size:2.8rem}
+h3{text-align:center;font-size:2.4rem}
+            </style>
+    </body>
+</html>

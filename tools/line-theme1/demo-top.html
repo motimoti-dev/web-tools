@@ -1,0 +1,311 @@
+
+<!--  
+　　 |ヽ 
+　　 | |ﾟ*･｡ 
+　　 |ノ　　ﾟ･｡ 
+　　 ┃　　　 *｡ 
+　　｡∩∧_∧　 * 
+　 + `(･ω･`)*+ﾟ 
+　　*｡ヽ　 つ*ﾟ* 
+　　 ﾞ･+｡*･ﾟ⊃ +ﾟ 
+　　☆　∪~　｡*ﾟ 
+　　 ﾞ･+｡｡*･ﾟ
+
+-->
+<!--
+    みないでください！！！
+    覗きですか！
+--><!DOCTYPE html>
+<html lang="ja">
+    <head prefix="og: https://ogp.me/ns#"><!-- Google Tag Manager -->
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>LINE着せ替えデモ</title>
+        <meta name="description" content="全人類買いましょう！もちさんをたくさん詰め込みました！詰め込みすぎてはみ出てるかもしれません！">
+        <meta name="robots" content="index, follow">        
+        <meta property="og:title" content="LINE着せ替えデモ">
+        <meta property="og:type" content="article"><meta property="og:description" content="">
+        <meta property="og:url" content="https://motisan.info/wp-animation-fadein-css/"><meta property="og:image" content="icon.png">
+        <meta property="og:locale" content="ja_JP">
+        <meta property="og:site_name" content="もちさん | LINE着せ替えのデモ">
+        <link rel="canonical" href="">
+        <meta name="author" content="もちさん">
+        
+        <meta name="theme-color" content="#FFEAD8">
+        
+        <meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@motimoti_dev"><meta name="twitter:title" content="LINE着せ替えデモ">
+        <meta name="twitter:description" content="LINE着せ替えのデモページです！">
+        <meta name="twitter:image" content="icon.png">
+            
+        <link rel="icon" href="//motisan.info/i/32.png" sizes="32x32">
+        <link rel="icon" href="//motisan.info/i/192.png" sizes="192x192">
+        <link rel="apple-touch-icon-precomposed" href="//motisan.info/i/apple.png"><meta name="msapplication-TileImage" content="//motisan.info/i/ms.png">
+        <meta name="robots" content="max-image-preview:large">
+        <link rel="canonical" href="https://motisan.info/wp-animation-fadein-css/">
+        <link rel="icon" href="https://motisan.info/i/cropped-moti36-512x512-1-32x32.png" sizes="32x32">
+        <link rel="icon" href="https://motisan.info/i/cropped-moti36-512x512-1-192x192.png" sizes="192x192">
+        <link rel="apple-touch-icon" href="https://motisan.info/i/cropped-moti36-512x512-1-180x180.png">
+        <meta name="msapplication-TileImage" content="https://motisan.info/i/cropped-moti36-512x512-1-270x270.png">
+
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    </head>
+    <body style="background:#fffbd8;">
+        <img src="a_22.png" style="position: fixed;bottom: 53px;right: -50%;height: calc(100% - 80px);" id="talk-bg" class="hide"><!--talk background-->
+        <header style="background:#fff4aa;z-index:100;height:44px;width:100%;text-align:right;position: fixed;top:0">
+            <img src="header-icon.svg" style="height:32px;margin:6px;right:0;position: absolute;" id="header-svg">
+            <img src="header-icon.svg" style="height:32px;margin:6px;left:0;position: absolute;" id="header-svg2" class="hide">
+            <img src="header-icon.svg" style="height:32px;margin:6px;left:0;position: absolute;" id="header-svg3" class="hide" onclick="switchImg(1)"><!--戻るボタンとして使用-->
+        </header>
+        <img src="content-1.png" style="width:100%;" id="content-img" class="top-margin">
+        <div class="talk hide top-margin">
+            <div id="all-user">
+                <div class="talk-user" onclick="openUser(0)">
+                    <img src="user-0.png">
+                    <div>
+                        <name>もちさん</name>
+                        <span>こんにちは！</span>
+                    </div>
+                    <time>今日</time>
+                </div>
+                <div class="talk-user">
+                    <img src="a_20.png">
+                    <div>
+                        <name>アイコン未設定のユーザー</name>
+                        <span>未設定の場合の表示です！</span>
+                    </div>
+                    <time>はるか昔</time>
+                </div>
+                <div class="talk-user">
+                    <img src="a_21.png">
+                    <div>
+                        <name>アイコン未設定のグループ</name>
+                        <span>未設定の場合の表示です！</span>
+                    </div>
+                    <time>はるか昔</time>
+                </div>
+            </div>
+            <div id="user-0" class="hide users">
+                <a class="dialog" href="https://store.line.me/themeshop/product/9ceb9ed5-0bed-4c83-a492-e2ccd9d79823/ja" target="_blank">
+                    <img src="hello.png" height="190px">
+                </a>
+                <div class="dialog" height="34px">
+                    <img src="iie-talk.png" height="34px" style="position: absolute;right:0">
+                </div>
+                <a class="dialog" target="_blank" href="https://store.line.me/stickershop/product/22589423/ja">
+                    <img src="iie-talk2.png" height="175px" style="position: absolute;right:0;top:40px;">
+                </a>
+            </div>
+        </div>
+        <style>
+            .dialog{
+                display: block;
+                position: relative;
+                width: 100%;
+            }
+            .talk{
+                padding-top:1px;
+            }
+            .talk-user{
+                position: relative;
+                width:calc(100% - 30px);
+                margin:10px 15px;
+                height:50px;
+            }
+            .talk-user img{
+                border-radius:50%;
+                width:50px;
+                background:white;
+                position:absolute;
+                left:0;
+            }
+            .talk-user div{
+                position:absolute;
+                top:7px;
+                width:calc(100% - 100px);
+                left:63px;
+                overflow: hidden;
+            }
+            .talk-user name{
+                display:block;
+                font-weight: 700;
+                font-size:1.2rem;
+                color:#594836;
+            }
+            
+            .talk-user span{
+                display:block;
+                font-size:1.2rem;
+                font-weight: 700;
+                color:#c4ba78;
+            }
+            .talk-user time{
+                position:absolute;
+                right:0;
+                color:#c4ba78;
+            }
+            .users{
+                position: absolute;
+                z-index: 10000;
+                width: calc(100% - 20px);
+                top: 55px;
+                left: 10px;
+                overflow-y: scroll;
+                height: calc(100vh - 110px);
+                /*IE(Internet Explorer)・Microsoft Edgeへの対応*/
+                -ms-overflow-style: none;
+                /*Firefoxへの対応*/
+                scrollbar-width: none;
+            }
+
+            /*Google Chrome、Safariへの対応*/
+            .users::-webkit-scrollbar{
+            display: none;
+            }
+       </style>
+       <div class="voom hide">
+            <a href="https://store.line.me/themeshop/product/9ceb9ed5-0bed-4c83-a492-e2ccd9d79823/ja" target="_blank" style="text-decoration:none;">
+                <p style="margin:15px 15px 0 15px;color:gray;">着せ替え購入はこちらから↓</p>
+                <img src="icon.png" style="width:calc(100% - 30px);margin:15px;">
+            </a>
+        </div>
+        <img src="menu-1.png" style="width:100%;position: fixed;bottom: 0;right:0;" id="menu-img">
+        <div style='width:100%;position:fixed;bottom:0;right:0;height:66px;display:flex;'>
+            <div style='width:20%;height:66px;' onclick="switchImg(0)"></div>
+            <div style='width:20%;height:66px;' onclick="switchImg(1)"></div>
+            <div style='width:20%;height:66px;' onclick="switchImg(2)"></div>
+            <div style='width:20%;height:66px;' onclick="switchImg(3)"></div>
+            <div style='width:20%;height:66px;' onclick="switchImg(4)"></div>
+        </div>
+            <script>
+            let data = Array(
+                ["どうも！","LINE着せ替えを作りました！<br>このページはデモページです！実際の動きとは多少違いがあります！下の画像を押すと次へ進みます！","icon.png","demo-top.html","いいえ！"],
+                ["","","images/","",""],
+                ["","","images/","",""],
+                ["","","images/","",""],
+                ["","","images/","",""],
+            );
+            let dataImg = Array(
+                ["header-icon.svg","content-1.png","menu-1.png"],
+                ["header-icon2.png","content-2.png","menu-2.png","header-icon2-1.png"],
+                ["","content-3.png","menu-3.png"],
+                ["header-icon4.png","content-4.png","menu-4.png","header-icon4-1.png"],
+                ["","content-5.png","menu-5.png","header-icon5-1.png"]
+            );
+            function modalclose(){$(".modals").addClass("hide");}
+            function modalopen(row){
+                document.getElementById("modal-title").innerHTML = data[row][0];
+                document.getElementById("modal-text").innerHTML = data[row][1];
+                if(data[row][2] != ""){
+                    $("#modal-image").attr('src', data[row][2]);
+                    $("#modal-image").attr('alt', data[row][4]);
+                    $("#modal-link").attr('href', data[row][3]);
+                    $("#modal-link").attr('style', '');                    
+                }else{/*非表示*/
+                    $("#modal-link").attr('style', 'display:none;');
+                }
+                $(".modals").removeClass("hide");
+            }
+            function switchImg(row){
+                def();
+                if(row == 1){//talk
+                    talk(row);                    
+                }else if(row == 2){//voom
+                    voom(row);
+                }else if(row == 3 || row == 4){//ニュースかウォレットか
+                    newsWallet(row);
+                }else{//home
+                    home(row);
+                }
+            }
+            function def(){
+                $("#content-img").addClass('top-margin');
+                $(".talk").addClass('hide');
+                $(".voom").addClass('hide');
+                closeUser();
+            }
+            function home(row){
+                $("header").removeClass('hide');
+                $("#content-img").removeClass('hide');
+                $("#header-svg2").addClass('hide');
+                $("#header-svg").attr('src', dataImg[row][0]);
+                $("#content-img").attr('src', dataImg[row][1]);
+                $("#menu-img").attr('src', dataImg[row][2]);
+            }
+            function talk(row){
+                $("header").removeClass('hide');
+                $("#header-svg2").removeClass('hide');
+                $("#header-svg2").attr('src', dataImg[row][3]);
+                $("#header-svg").attr('src', dataImg[row][0]);
+                $("#content-img").addClass('hide');
+                $(".talk").removeClass('hide');
+                $("#menu-img").attr('src', dataImg[row][2]);
+            }
+            function voom(row){
+                $("#content-img").removeClass('top-margin');
+                $("header").addClass('hide');
+                $("#content-img").removeClass('hide');
+                $("#header-svg2").addClass('hide');
+                $(".voom").removeClass('hide');
+                $("#header-svg").attr('src', dataImg[row][0]);
+                $("#content-img").attr('src', dataImg[row][1]);
+                $("#menu-img").attr('src', dataImg[row][2]);
+            }
+            function newsWallet(row){
+                //console.log('news or wallet');
+                $("header").removeClass('hide');
+                $("#header-svg2").removeClass('hide');
+                $("#header-svg2").attr('src', dataImg[row][3]);
+                $("#content-img").removeClass('hide');
+                $("#header-svg").attr('src', dataImg[row][0]);
+                $("#content-img").attr('src', dataImg[row][1]);
+                $("#menu-img").attr('src', dataImg[row][2]);
+            }
+            let userData = Array(
+                ["#user-0","talk0.png","talk0-1.png"],
+                ["#user-1","talk1.png","talk0-1.png"],
+                ["#user-2","talk2.png","talk0-1.png"]
+            );
+            function openUser(user){
+                $(userData[user][0]).removeClass('hide');
+                $("#all-user").addClass('hide');
+                $("#talk-bg").removeClass('hide');
+                $("#header-svg2").addClass('hide');
+                $("#header-svg3").removeClass('hide');
+                $("#header-svg3").attr('src', userData[user][1]);
+                $("#header-svg").attr('src', userData[user][2]);
+            }
+            function closeUser(){
+                $("#talk-bg").addClass('hide');
+                $("#all-user").removeClass('hide');
+                $("#header-svg3").addClass('hide');
+                $("#user-0").addClass('hide');
+            }
+            </script>
+            <aside class="modal-parent modals hide">
+                <div class="modal modal-block" onclick="javascript:void(0);">
+                    <h2 style="margin:1rem 0;font-size:2rem;text-align:left;" id="modal-title"></h2>
+                    <p id="modal-text"></p>
+                    <a target="blank" id="modal-link" href="" style="">
+                        <img src="" class="moti-modal-icon" id="modal-image" alt="">
+                    </a>
+                    <div class="modal-bottom" onclick="modalclose()">戻る</div>
+                </div>
+            </aside>
+            <style>
+                html{font-size:62.5%}
+                body{margin:0;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;}
+                p{text-align:left;font-size:1.2rem}
+                .top-margin{margin-top:44px}
+                .hide{display: none;}
+.modal-parent{position:fixed;bottom:4rem;text-align: center;z-index:600;width:100%;}
+.modal-black{background-color: rgba(95, 91, 91, 0.74);z-index:500;position:fixed;top:0;left:0;height: 100vh;width:100vw;}
+.modal{background:white;width:80%;margin:0;border-radius:10px;padding:0 5%;max-width:500px;display:inline-block;}
+.modal-bottom{font-size:1.5rem;font-weight:bold;margin:1.2rem 0;text-align:center;color:#00c1e9;}
+.moti-modal-icon{width:100%;border-radius: 8px;}
+.outline-box{border:1px solid #c5c5c5;padding:5%;}
+.outline-box img{width:100%}
+h1{font-size:3rem;margin:0}
+h2{text-align:center;font-size:2.8rem}
+h3{text-align:center;font-size:2.4rem}
+            </style>
+    </body>
+</html>

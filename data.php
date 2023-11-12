@@ -158,7 +158,7 @@ $tools = [
         'date'=>'2023/10/03',
         'var'=>'1.0',
         'id'=>'cryoter',
-        'view'=>true
+        'view'=>false
     ],
     [
         //10
@@ -171,6 +171,19 @@ $tools = [
         'date'=>'2023/10/03',
         'var'=>'1.0',
         'id'=>'cryoter-decode',
+        'view'=>false
+    ],
+    [
+        //11
+        'title'=>'LINE着せ替えデモ',
+        'url'=>'./tools/line-theme1/line-demo.html',
+        'canonical'=>'https://tools.motisan.info/tools/crypter/decode.php',
+        'user'=>'m',
+        'description'=>'とてもやわらかいもちさんのテーマのデモです！',
+        'img'=>'i/line-theme1.png',
+        'date'=>'2023/11/12',
+        'var'=>'1.0',
+        'id'=>'line-theme1',
         'view'=>true
     ],
     /*

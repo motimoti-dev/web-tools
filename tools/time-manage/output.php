@@ -1041,14 +1041,14 @@ if(isset($_POST["add"])){
         //通常ここにはたどりつかないけど念のため
         session_start();
         unset($_SESSION["user_id"]);
-        header('Location: ./output.php');
+        header('Location: ./output');
         exit;
     }
 }else{
     //$status = "";
 }
 echo $form_status;
-
+print_r($_POST);
 function options($id_name,$hook_sync){
     $i = 1;
     foreach($hook_sync[$id_name] as $k_data){
@@ -1181,7 +1181,7 @@ function options($id_name,$hook_sync){
                         <?
                         if(!$login){
                             ?>
-                            <form class='time-manage' method="post" action="./output.php">
+                            <form class='time-manage' method="post" action="./output">
                                 <h2 style='border:none;padding:0'>時間管理ツール</h2>
                                 <p>時間は全て管理しましょう！</p>
                                 <div>
@@ -1203,7 +1203,7 @@ function options($id_name,$hook_sync){
                                 <p>ログイン完了後に入力候補と、行動履歴や分析ページへのリンクが現れます！</p>
                             </form>
                         <?}else{?>
-                            <form class='time-manage' method="post" action="./output.php">
+                            <form class='time-manage' method="post" action="./output">
                                 <h2 style='border:none;padding:0'>時間管理ツール</h2>
                                 <p>時間は全て管理しましょう！</p>
                                 <p><?=$userdata["usernickname"]?>としてログイン中です！</p>
@@ -1212,7 +1212,7 @@ function options($id_name,$hook_sync){
                             </form>
                         
                         
-                            <form class='time-manage' method="post" action="./output.php" onsubmit="CheckData()" id='timeform'>
+                            <form class='time-manage' method="post" action="./output" onsubmit="CheckData()" id='timeform'>
                                 <input type='hidden' name='add'>
                                 <input type='submit' value='送信' style='position: fixed;bottom: 20px;right:20px;border-radius:100px;padding:20px;background:#ffd799;font-weight:700;color: white;border:none;box-shadow:2px 3px 6px #ff441e26;'>
                                 <?//ログイン処理だけ行った場合過去の履歴が表示される

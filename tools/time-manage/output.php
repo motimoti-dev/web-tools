@@ -3,6 +3,696 @@
 //タイムゾーンを日本に
 date_default_timezone_set('Asia/Tokyo');
 
+/*
+''=>[//kidの個体番号
+    'name'=>'',//行動名
+    'hook'=>'',//一緒に実行されるフック
+    'nexthook'=>'',
+    'defalt'=>[
+        'public'=>true,
+    ]
+],               
+*/
+$hook_sync = [
+    'k1'=>[
+        '1'=>[//k1-1が行動IDになる
+            'name'=>'ゲーム',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '2'=>[
+            'name'=>'スマホをいじる',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '3'=>[
+            'name'=>'SNS',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '4'=>[
+            'name'=>'動画を見る',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '5'=>[
+            'name'=>'音楽を聞く',
+            'defaut'=>[
+                'public'=>true,
+            ]
+        ],
+        '6'=>[
+            'name'=>'瞑想',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>false,
+            ]
+        ],
+        '7'=>[
+            'name'=>'だらける',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '8'=>[
+            'name'=>'外出(移動を含む、移動時間を計測しない)',
+            'hook'=>'busy-status:2,local-status:1',//
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '9'=>[
+            'name'=>'やりたいこと(作業)',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '10'=>[
+            'name'=>'カラオケ',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '11'=>[
+            'name'=>'ニュースやラジオの視聴',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '12'=>[
+            'name'=>'入浴',//ofuro in
+            'hook'=>'busy-status:2,ofuro-status:2',
+            'nexthook'=>'ofuro-status:1',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '13'=>[
+            'name'=>'入浴(サウナを含む)',
+            'hook'=>'busy-status:2,ofuro-status:2',
+            'nexthook'=>'ofuro-status:1',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '14'=>[
+            'name'=>'日用品以外の買い物',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '15'=>[
+            'name'=>'スキンシップ',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '16'=>[
+            'name'=>'自慰行為',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>false,
+            ]
+        ],
+        '17'=>[
+            'name'=>'性行為',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>false,
+            ]
+        ],
+        '18'=>[
+            'name'=>'たばこ',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>false,
+            ]
+        ],
+        '19'=>[
+            'name'=>'ギャンブル',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '20'=>[
+            'name'=>'X スペース',
+            'hook'=>'busy-status:2,',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+    ],
+    'k2'=>[
+        '1'=>[
+            'name'=>'普段会わない友人との連絡',
+            'hook'=>'busy-status:1',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '2'=>[
+            'name'=>'報告目的の連絡、会話',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '3'=>[
+            'name'=>'家族との会話',
+            'hook'=>'busy-status:1',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '4'=>[
+            'name'=>'プレゼント選び',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '5'=>[
+            'name'=>'サプライズ',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '6'=>[
+            'name'=>'交流を作るための発信',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '7'=>[
+            'name'=>'初対面の人との交流',
+            'hook'=>'busy-status:1',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '8'=>[
+            'name'=>'接待',
+            'hook'=>'busy-status:1',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '9'=>[
+            'name'=>'',
+            'hook'=>'',
+            'nexthook'=>'',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '10'=>[
+            'name'=>'パーティ',
+            'hook'=>'busy-status:1',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '11'=>[
+            'name'=>'会食',
+            'hook'=>'busy-status:1',
+            'nexthook'=>'',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '12'=>[
+            'name'=>'サークル活動',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '13'=>[
+            'name'=>'趣味仲間との交流',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '14'=>[
+            'name'=>'会社の人との食事',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '15'=>[
+            'name'=>'恋人との会話、連絡',
+            'hook'=>'busy-status:1',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '16'=>[
+            'name'=>'友人との通話',
+            'hook'=>'busy-status:1',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '17'=>[
+            'name'=>'恋人との通話',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '18'=>[
+            'name'=>'家族との通話',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '19'=>[
+            'name'=>'その他の人との通話',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+    ],
+    'k3'=>[
+        '1'=>[
+            'name'=>'会社での仕事',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '2'=>[
+            'name'=>'個人事業',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '3'=>[
+            'name'=>'利益を生み出していない必要作業',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '4'=>[
+            'name'=>'今後の仕事のための準備や勉強',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '5'=>[
+            'name'=>'事務手続き',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '6'=>[
+            'name'=>'アルバイト',
+            'hook'=>'busy-status:1',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '7'=>[
+            'name'=>'派遣業',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '8'=>[
+            'name'=>'その他',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+    ],
+    'k4'=>[
+        '1'=>[
+            'name'=>'間食(お菓子)',
+            'hook'=>'meal-status:1,busy-status:1',
+            'nexthook'=>'meal-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '2'=>[
+            'name'=>'間食(その他)',
+            'hook'=>'meal-status:1,busy-status:1',
+            'nexthook'=>'meal-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '3'=>[
+            'name'=>'水分補給',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '4'=>[
+            'name'=>'朝ごはん',
+            'hook'=>'meal-status:1,busy-status:2',
+            'nexthook'=>'meal-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '5'=>[
+            'name'=>'昼ごはん',
+            'hook'=>'meal-status:1,busy-status:2',
+            'nexthook'=>'meal-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '6'=>[
+            'name'=>'夜ごはん',
+            'hook'=>'meal-status:1,busy-status:2',
+            'nexthook'=>'meal-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '7'=>[
+            'name'=>'食事(朝昼夜を定義しない)',
+            'hook'=>'meal-status:1,busy-status:2',
+            'nexthook'=>'meal-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '8'=>[
+            'name'=>'夜食',
+            'hook'=>'meal-status:1,busy-status:2',
+            'nexthook'=>'meal-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '9'=>[
+            'name'=>'料理',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+    ],
+    'k5'=>[
+        '1'=>[
+            'name'=>'仮眠',
+            'hook'=>'sleep-status:2,busy-status:2,sleep-op1:仮眠中',
+            'nexthook'=>'sleep-status:0,sleep-op1:',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '2'=>[
+            'name'=>'二度寝',
+            'hook'=>'sleep-status:2,busy-status:2,sleep-op1:二度寝中',
+            'nexthook'=>'sleep-status:0,sleep-op1:',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '3'=>[
+            'name'=>'三度寝',
+            'hook'=>'sleep-status:2,busy-status:2,sleep-op1:三度寝中',
+            'nexthook'=>'sleep-status:0,sleep-op1:',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '4'=>[
+            'name'=>'四度寝',
+            'hook'=>'sleep-status:2,busy-status:2,sleep-op1:四度寝中',
+            'nexthook'=>'sleep-status:0,sleep-op1:',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '5'=>[
+            'name'=>'五度寝',
+            'hook'=>'sleep-status:2,busy-status:2,sleep-op1:五度寝中',
+            'nexthook'=>'sleep-status:0,sleep-op1:',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '6'=>[
+            'name'=>'昼寝',
+            'hook'=>'sleep-status:2,busy-status:2,sleep-op1:昼寝中',
+            'nexthook'=>'sleep-status:0,sleep-op1:',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '7'=>[
+            'name'=>'睡眠(中途覚醒)',
+            'hook'=>'',
+            'nexthook'=>'',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '8'=>[
+            'name'=>'睡眠',
+            'hook'=>'sleep-status:2,busy-status:2,sleep-op1:就寝中',
+            'nexthook'=>'sleep-status:0,sleep-op1:',
+            'default'=>[
+                'public'=>true,
+            ]
+        ]
+    ],
+    'k6'=>[
+        '1'=>[
+            'name'=>'何もしない',
+            'hook'=>'busy-status:0',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '2'=>[
+            'name'=>'マイクロブレイク',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '3'=>[
+            'name'=>'マイクロブレイク(深呼吸)',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '4'=>[
+            'name'=>'マイクロブレイク(無)',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '5'=>[
+            'name'=>'マイクロブレイク(潜水反射)',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '6'=>[
+            'name'=>'マイクロブレイク(運動)',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '7'=>[
+            'name'=>'マイクロブレイク(歩く)',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '8'=>[
+            'name'=>'マイクロブレイク(軽食)',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '9'=>[
+            'name'=>'マイクロブレイク(コンビニ)',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+    ],
+    'k7'=>[
+        '1'=>[
+            'name'=>'移動',
+            'hook'=>'local-status:1,local-memo:移動中です！,busy-status:2',
+            'nexthook'=>'local-memo:',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '2'=>[
+            'name'=>'日用品や消耗品の買い物',
+            'hook'=>'local-memo:買い物中です！,busy-status:2',
+            'nexthook'=>'local-memo:',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '3'=>[
+            'name'=>'散髪',
+            'hook'=>'local-memo:髪をちょきちょきしています！,busy-status:2',
+            'nexthook'=>'local-memo:',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '4'=>[
+            'name'=>'着替え',
+            'hook'=>'busy-memo:着替えています！,busy-status:2',
+            'nexthook'=>'busy-memo:',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '5'=>[
+            'name'=>'自己投資',
+            'hook'=>'busy-memo:なにかしらの自己投資に時間を使っています！,busy-status:2',
+            'nexthook'=>'busy-memo:',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '6'=>[
+            'name'=>'日々の片付け',
+            'hook'=>'busy-memo:片付けをしています！,busy-status:2',
+            'nexthook'=>'busy-memo:',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '7'=>[
+            'name'=>'皿洗い',
+            'hook'=>'busy-memo:皿洗いをしています！,busy-status:2',
+            'nexthook'=>'busy-memo:',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '8'=>[
+            'name'=>'洗濯',
+            'hook'=>'busy-memo:洗濯をしています！,busy-status:2',
+            'nexthook'=>'busy-memo:',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '9'=>[
+            'name'=>'洗濯物を干す',
+            'hook'=>'busy-memo:洗濯ものを干しています！,busy-status:2',
+            'nexthook'=>'busy-memo:',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '10'=>[
+            'name'=>'洗濯物の回収',
+            'hook'=>'busy-memo:洗濯物の回収をしています！,busy-status:2',
+            'nexthook'=>'busy-memo:',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '11'=>[
+            'name'=>'洗濯物の収納',
+            'hook'=>'busy-memo:洗濯した物をしまっています！,busy-status:2',
+            'nexthook'=>'busy-memo:',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '12'=>[
+            'name'=>'スキンケア',
+            'hook'=>'busy-memo:顔を良くしています！,busy-status:2',
+            'nexthook'=>'busy-memo:',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '13'=>[
+            'name'=>'瞑想',
+            'hook'=>'busy-memo:瞑想しています！,busy-status:2',
+            'nexthook'=>'busy-memo:',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '14'=>[
+            'name'=>'歯磨き',
+            'hook'=>'busy-memo:歯を磨いています！,busy-status:2',
+            'nexthook'=>'busy-memo:',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '15'=>[
+            'name'=>'体をきれいにする目的のシャワー',
+            'hook'=>'busy-memo:シャワー中です！,busy-status:2',
+            'nexthook'=>'busy-memo:',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '16'=>[
+            'name'=>'外出準備',
+            'hook'=>'busy-memo:出かける準備をしています！,busy-status:2',
+            'nexthook'=>'busy-memo:',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '17'=>[
+            'name'=>'筋トレ',
+            'hook'=>'busy-memo:筋トレをしています！,busy-status:2',
+            'nexthook'=>'busy-memo:',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '18'=>[
+            'name'=>'宿題や課題などの勉強',
+            'hook'=>'busy-memo:宿題や課題などを消化しています！,busy-status:2',
+            'nexthook'=>'busy-memo:',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '18'=>[
+            'name'=>'自己投資目的の勉強',
+            'hook'=>'busy-memo:自己投資目的の勉強をしています！,busy-status:2',
+            'nexthook'=>'busy-memo:',
+            'default'=>[
+                'public'=>true,
+            ],
+        ]
+    ],
+];
+
 //送信されたデータに指定されたパラメータがなければfalseを返し、あればその値を出力する
 function post_value_check($key){
     if(isset($_POST[$key])){
@@ -108,6 +798,153 @@ if($login){// 入力されたIDとパスワードに一致するユーザーが�
         $login = false;
     }
 }
+function parm_data_add($formdata, $parameter, $parmname, $formdataname){
+    if(isset($formdata[$formdataname])){//送信されている
+        if($formdata[$formdataname] != ''){//空ではない
+            $parameter[$parmname] = $formdata[$formdataname];
+        }
+    }
+    return $parameter;
+}
+function do_get($formdata, $doget_url, $username){
+    $doget_status = '';
+    if(isset($formdata['time'])){
+        if(preg_match('/^[0-9]{2}:[0-9]{2}$/', $formdata['time'])){
+            //値がnullのまま維持されていたら送信されません、変更がある場合のみ書き換えが行われ最終的に送信されます！
+            $parameter = [
+                //'user' => ''
+                'time' => date('Y-m-d ').$formdata['time'],//date('yyyy-mm-dd ') + 
+                'actionid' => null,
+                'public' => true,
+                'action' => null,
+                'actiondetail' => null,
+                'selfevaluation' => null,
+                'wantdo' => null,
+                'memo' => null,
+                'whileaction' => null,
+                'hook' => null,
+                'nexthook' => null,
+                'busyness' => null,
+                'physicalcondition' => null,
+                'sleepiness' => null,
+                'physicaloption' => null,
+            ];
+            
+            /*
+            parameter:{
+                //'time':'2023-12-14',//間違っているとdafaltへ、指定しないと今を設定する例:2023-12-10 22:51
+                'actionid':'k1-10',
+                'actiondetail':'カラオケ館,フリータイム',
+                'actiondescription':'いつもよりも声が出なかった',
+                'user':'moti',
+                //'public':false,
+                //physicaloption
+                'selfevaluation':3,
+                'wantdo':'2',
+                'memo':'これはテスト',
+                'whileaction':'a1,a2',
+                'hook':'sleep-on'
+                'nexthook':
+            }
+            */
+            if(isset($formdata['kid'])){
+                $parameter['actionid'] = $formdata['kid'];
+            }elseif(isset($formdata['k'])){
+                //kidが明示されていない場合行動の種類だけを送信する
+                $parameter['actionid'] = $formdata['k'];
+                $doget_status .= '| kidが明示されていない場合行動の種類だけ保存します'; 
+            }else{
+                return '| kidも行動の種類も送信されていない'; 
+            }
+
+            if(isset($formdata['public'])){
+                if($formdata['public'] == 'on'){
+                    $doget_status .= '| 非公開として保存'; 
+                    $parameter['public'] = false;
+                }
+            }  
+            $add_data_list = [
+                ['actiondetail', 'actiondetail'],//行動の詳細//$paramname, $formdataname
+                ['memo','memo'],//memo
+                ['selfevaluation','se'],//その行動はプラスになるか
+                ['wantdo','wd'],//その行動はやりたいことか
+                ['busyness','b'],//忙しさ
+                ['whileaction','c'],//体調
+                ['sleepiness','sleepiness'],//眠気
+                ['energy','energy'],//エネルギー
+                ['hook','hook'],//hook
+                ['nexthook','nexthook'],//次の行動が実行されたときに実行されるフック
+            ];
+            foreach($add_data_list as $add_data){
+                //データが送信されてて空じゃなければその値を上書きする
+                $parameter = parm_data_add($formdata, $parameter, $add_data[0], $add_data[1]);
+            }
+
+            //-体調オプション//physicaloption
+            //生理痛0(なし),1(あり)//頭痛1(軽度)2(中程度)3(重度)//腹痛1(軽度)2(中程度)3(重度)//倦怠感
+            foreach(['co1','co2','co3','co4'] as $co){
+                if(isset($formdata[$co])){
+                    if($formdata[$co] != ''){//送信されていて値が空じゃない場合
+                        if($parameter['physicaloption'] != null){//すでに何かしらのオプションがある場合
+                            $parameter['physicaloption'] .= ','.$co.'-'.$formdata[$co];
+                        }else{
+                            $parameter['physicaloption'] = $co.'-'.$formdata[$co];
+                        }
+                    }
+                } 
+            }
+
+            foreach(['a1','a2','a3','a4','a5','a6','a7'] as $whileaction){ 
+                if(isset($formdata[$whileaction])){
+                    if($formdata[$whileaction] != ''){//送信されていて値が空じゃない場合
+                        if($parameter['whileaction'] != null){//すでに何かしらのオプションがある場合
+                            if($parameter['whileaction'] == 'on'){
+                                $parameter['whileaction'] .= ','.$whileaction;
+                            }
+                        }else{
+                            $parameter['whileaction'] = $whileaction;
+                        }
+                    }
+                }
+            }
+            //イラスト枠
+            if(isset($formdata['illust'])){
+                //hookにillust-count:数値
+                if(is_numeric($formdata['illust'])){
+                    if($parameter['hook'] != null){
+                        $parameter['hook'] .= ',illust-count:'.$formdata['illust'];
+                    }else{
+                        $parameter['hook'] = 'illust-count:'.$formdata['illust'];
+                    }   
+                }else{
+                    $doget_status = 'illust部分で数値以外を送信しているためillustの項目を変更するhookは追加していません。';         
+                }
+            }
+
+            //$doget_url .= ;
+            $parm_str = '?';
+            foreach($parameter as $key => $value){
+                if($value != null){
+                    $parm_str .= $key.'='.urlencode($value);
+                    if ($key === array_key_last($parameter)) {
+                        //最後だけの処理
+                    }else{
+                        $parm_str .= '&';
+                    }
+                }
+            }
+            $result = file_get_contents($doget_url.$parm_str);
+            //echo($result);
+            //echo($doget_url.$parm_str);
+        }else{
+            return '| timeの形式が正しくない為保存されませんでした。';    
+        }
+    }else{
+        return '| timeが未設定のため保存されませんでした。';
+    }
+    return $doget_status;
+}
+
 //ログイン中のデータ追加フォームが送信されたときの処理
 if(isset($_POST["add"])){
     //まずログインチェック
@@ -127,17 +964,29 @@ if(isset($_POST["add"])){
             if(file_exists("./data/".$userdata["uid"]))
             //そもそもuidのフォルダがあるかチェック
             {
-                $form_status = 'フォームを送信した状態で、ログイン済み、uidも存在し対応するディレクトリの作成も済んでいる';
                 //ある場合
+                $form_status = 'フォームを送信した状態で、ログイン済み、uidも存在し対応するディレクトリの作成も済んでいる';
+                $form_status .= '| urlを読み込んだ';
+                require( './data/'.$userdata["uid"].'/config.php' );
+                global $url;
+                //echo $url;
+                //print_r($_POST);
+
+                //時間がなければ送信をしない
+                $form_status .= do_get($_POST,$url,$userdata["usernickname"]);
+
                 if($userdata["lastupdate"] != '')
                 //前回のデータがあるかチェック
                 {
                     //あった場合
                     //取得処理
                     //直近のデータをいくつか取得
+
                     if(true)//TODO
                     //取得がうまくいった場合
                     {
+                        
+                        /*ここは使わない
                         //取得した最後のデータより今回の入力データがが後にあるかをチェック
                             //後にあった場合
                                 //送信されたデータに問題がないかチェックする
@@ -157,10 +1006,13 @@ if(isset($_POST["add"])){
                                 //前回のデータが未来ではないが、フォームで送信されたデータが前回のデータよりも前の時
                                     //ブラウザのタブを残してた時とかにそのまま入力するとなっちゃうので、難かしらのエラーメッセージをだし、保存されていないことをアラートする、フォームには送信したデータをそのまま入力した状態にしてあげる
                                     //エラーをだす、フォームをそのままの状態で今の時間でページを表示させる
+                        */
                     }else
                     //取得がうまくいかなかった場合
                     {
+                        /*ここは使わない
                         //状態をエラーログに出力
+                        */
                     }
                 }else
                 //前回のデータがなかった場合
@@ -195,22 +1047,31 @@ if(isset($_POST["add"])){
 }else{
     //$status = "";
 }
-echo $form_status;
+//echo $form_status;
 
-function options($button_list){
-    foreach($button_list as $button_data){
-        ?><input type='radio' name='kid' value="<?=$button_data[1]?>" id='<?=$button_data[1]?>'><label for='<?=$button_data[1]?>'><?=$button_data[0]?></label><?
+function options($id_name,$hook_sync){
+    $i = 1;
+    foreach($hook_sync[$id_name] as $k_data){
+        if(isset($k_data['name'])){
+            $input = "<input type='radio' name='kid' value='{$id_name}-{$i}' id='{$id_name}-{$i}'";
+            if(isset($k_data['hook'])){
+                $input .= " hook='{$k_data['hook']}'";
+            }
+            if(isset($k_data['nexthook'])){
+                $input .= " nexthook='{$k_data['nexthook']}'";
+            }
+            if(isset($k_data['default'])){
+                if(isset($k_data['default']['public'])){
+                    if(!$k_data['default']['public']){
+                        $input .= " public='false'";
+                    }
+                }
+            }
+            $input .= "><label for='{$id_name}-{$i}'>{$k_data['name']}</label>";
+            echo $input;
+        }
+        $i++;
     }
-}
-
-function add_json_data(){
-    //データ追加
-    $add_json_arr = [
-        'a'=>'',
-        'b'=>'',
-        'c'=>''
-    ];
-    return $add_json_arr;
 }
 ?><!DOCTYPE html>
 <html lang="ja">
@@ -305,6 +1166,17 @@ function add_json_data(){
                                 border-radius: 14px;
                                 background: #ffd799;
                             }
+                            .submit{
+                                font-size: 16px;
+                                width: 100%;
+                                border-radius: 100px;
+                                padding: 9px 20px;
+                                background: #ffd799;
+                                font-weight: 700;
+                                color: white;
+                                border: none;
+                                box-shadow: 2px 3px 6px #ff441e26;
+                            }
                         </style>
                         <?
                         if(!$login){
@@ -340,7 +1212,7 @@ function add_json_data(){
                             </form>
                         
                         
-                            <form class='time-manage' method="post" action="./output.php">
+                            <form class='time-manage' method="post" action="./output.php" onsubmit="CheckData()" id='timeform'>
                                 <input type='hidden' name='add'>
                                 <input type='submit' value='送信' style='position: fixed;bottom: 20px;right:20px;border-radius:100px;padding:20px;background:#ffd799;font-weight:700;color: white;border:none;box-shadow:2px 3px 6px #ff441e26;'>
                                 <?//ログイン処理だけ行った場合過去の履歴が表示される
@@ -350,9 +1222,15 @@ function add_json_data(){
                                 <p>日にちは必ず今日(Asia/Tokyo)で記録されます、過去の入力をここから修正することはできません。</p>
                                 <label>
                                     <span>time</span>
-                                    <input type='time' value="<?=date('H:i')?>" required><br>
+                                    <input type='time' value="<?=date('H:i')?>" name='time' required><br>
                                 </label>
                                 <h2>行動の種類(必須)</h2>
+                                <div>
+                                    <label for='public'>
+                                        <input type='checkbox' name='public' value="on" id='public'>
+                                        非公開で保存する
+                                    </label>
+                                </div>
                                 <script>
                                     function shortcode(kop){
                                         var kid;
@@ -397,134 +1275,38 @@ function add_json_data(){
                                 <div class='button-column'>
                                     <input type='radio' name='k' value='k1' id='k1' required><label for='k1'>娯楽</label>
                                     <input type='radio' name='k' value='k2' id='k2'><label for='k2'>人間関係</label>
-                                    <input type='radio' name='k' value='k3' id='k3'><label for='k3'>仕事</label>
+                                    <input type='radio' name='k' value='k3' id='k3'><label for='k3'>仕事＆作業</label>
                                     <input type='radio' name='k' value='k4' id='k4'><label for='k4'>食事</label>
                                     <input type='radio' name='k' value='k5' id='k5'><label for='k5'>睡眠</label>
-                                    <input type='radio' name='k' value='k6' id='k6'><label for='k6'>何もしない</label>
+                                    <input type='radio' name='k' value='k6' id='k6'><label for='k6'>休憩</label>
                                     <input type='radio' name='k' value='k7' id='k7'><label for='k7'>その他</label>
                                     <section class='k1option options' id='k1op'>
                                         <?//TODO:この項目は使用頻度によって場所が入れ替わるように設定する?>
-                                        <?$button_list = [
-                                            ['ゲーム','k1-1'],
-                                            ['スマホをいじる','k1-2'],
-                                            ['SNS','k1-3'],
-                                            ['動画を見る','k1-4'],
-                                            ['音楽を聞く','k1-5'],
-                                            ['瞑想','k1-6'],
-                                            ['だらける','k1-7'],
-                                            ['外出(移動を含む、移動時間を計測しない)','k1-8'],
-                                            ['やりたいこと(作業)','k1-9'],
-                                            ['カラオケ','k1-10'],
-                                            ['ニュースやラジオの視聴','k1-11'],
-                                            ['入浴','k1-12'],
-                                            ['入浴(サウナを含む)','k1-13'],
-                                            ['日用品以外の買い物','k1-14'],
-                                            ['スキンシップ','k1-15'],
-                                            ['自慰行為','k1-16'],
-                                            ['性行為','k1-17'],
-                                            ['たばこ','k1-18'],
-                                            ['ギャンブル','k1-19']
-                                        ];
-                                        options($button_list);?>
+                                        <?options('k1',$hook_sync)?>
                                     </section>
                                     <section class='k2option options' id='k2op'>
-                                        <?$button_list = [
-                                            ['普段会わない友人との連絡','k2-1'],
-                                            ['報告目的の連絡、会話','k2-2'],
-                                            ['家族との会話','k2-3'],
-                                            ['プレゼント選び','k2-4'],
-                                            ['サプライズ','k2-5'],
-                                            ['交流を作るための発信','k2-6'],
-                                            ['初対面の人との交流','k2-7'],
-                                            ['接待','k2-8'],
-                                            //['','k2-9'],
-                                            ['パーティ','k2-10'],
-                                            ['会食','k2-11'],
-                                            ['サークル活動','k2-12'],
-                                            ['趣味仲間との交流','k2-13'],
-                                            ['会社の人との食事','k2-14'],
-                                            ['恋人との会話、連絡','k2-15'],
-                                            ['友人との通話','k2-16'],
-                                            ['恋人との通話','k2-17'],
-                                            ['家族との通話','k2-18'],
-                                            ['その他の人との通話','k2-19']
-                                        ];
-                                        options($button_list);?>
+                                        <?options('k2',$hook_sync)?>
                                     </section>
                                     <section class='k3option options' id='k3op'>
-                                        <?$button_list = [
-                                            ['会社での仕事','k3-1'],
-                                            ['個人事業','k3-2'],
-                                            ['利益を生み出していない必要作業','k3-3'],
-                                            ['今後の仕事のための準備や勉強','k3-4'],
-                                            ['事務手続き','k3-5'],
-                                            ['アルバイト','k3-6'],
-                                            ['派遣業','k3-7'],
-                                            ['その他','k3-8']
-                                        ];
-                                        options($button_list);?>
+                                        <?options('k3',$hook_sync)?>
                                     </section>
                                     <section class='k4option options' id='k4op'>
-                                        <?$button_list = [
-                                            ['間食(お菓子)','k4-1'],
-                                            ['間食(その他)','k4-2'],
-                                            ['水分補給','k4-3'],
-                                            ['朝ごはん','k4-4'],
-                                            ['昼ごはん','k4-5'],
-                                            ['夜ごはん','k4-6'],
-                                            ['食事(朝昼夜を定義しない)','k4-7'],
-                                            ['夜食','k4-8'],
-                                            ['料理','k4-9']
-                                        ];
-                                        options($button_list);?>
+                                        <?options('k4',$hook_sync)?>
                                     </section>
                                     <section class='k5option options' id='k5op'>
-                                        <?$button_list = [
-                                            ['仮眠','k5-1'],
-                                            ['二度寝','k5-2'],
-                                            ['三度寝','k5-3'],
-                                            ['四度寝','k5-4'],
-                                            ['五度寝','k5-5'],
-                                            ['昼寝','k5-6'],
-                                            ['睡眠(中途覚醒)','k5-7'],
-                                            ['睡眠','k5-8']
-                                        ];
-                                        options($button_list);?>
+                                        <?options('k5',$hook_sync)?>
                                     </section>
                                     <section class='k6option options' id='k6op'>
-                                        <?$button_list = [
-                                            
-                                        ];
-                                        //options($button_list);?>
+                                        <?options('k6',$hook_sync)?>
                                     </section>
                                     <section class='k7option options' id='k7op'>
-                                        <?$button_list = [
-                                            ['移動','k7-1'],
-                                            ['日用品や消耗品の買い物','k7-2'],
-                                            ['散髪','k7-3'],
-                                            ['着替え','k7-4'],
-                                            ['自己投資','k7-5'],
-                                            ['日々の片付け','k7-6'],
-                                            ['皿洗い','k7-7'],
-                                            ['洗濯','k7-8'],
-                                            ['洗濯物を干す','k7-9'],
-                                            ['洗濯物の回収','k7-10'],
-                                            ['洗濯物の収納','k7-11'],
-                                            ['スキンケア','k7-12'],
-                                            ['瞑想','k7-13'],
-                                            ['歯磨き','k7-14'],
-                                            ['体をきれいにする目的のシャワー','k7-15'],
-                                            ['外出準備','k7-16'],
-                                            ['筋トレ','k7-17'],
-                                            ['宿題や課題などの勉強','k7-18'],
-                                            ['自己投資目的の勉強','k7-18']
-                                        ];
-                                        options($button_list);?>
+                                        <?options('k7',$hook_sync)?>
                                     </section>
                                 </div>
                                 <p>行動の詳細を書いてください([娯楽,ゲーム]の例.マリオカート)</p>
                                 <p>行動一覧に存在しない場合は種類を選んで詳細を記録</p>
-                                <input type='text' name='kname' placeholder="行動の(詳細)" id='kname'>
+                                <input type='text' name='actiondetail' placeholder="行動の(詳細)" id='actiondetail' style='margin-bottom:12px;width: calc(100% - 18px);'>
+                                <input type='text' name='memo' placeholder="メモ" id='memo' style='margin-bottom: 12px;width: calc(100% - 18px);'>
                                 <div class='button-column' id='a'>
                                     <?
                                     $button_list = [
@@ -540,24 +1322,26 @@ function add_json_data(){
                                         ?><input type='checkbox' name='<?=$button_data[1]?>' id='<?=$button_data[1]?>'><label for='<?=$button_data[1]?>'><?=$button_data[0]?></label><?
                                     }?>
                                 </div>
+                                <input type='submit' value='送信' class='submit'>
+                                <p>以下はオプションです、上記の送信ボタンとページ下部の送信ボタンは全く同じ挙動です。</p>
                                 <?//TODO:ながら作業の場合?>
                                 <?//TODO:連絡フォーム?>
                                 <?//ながら作業の項目を記録?>
                                 <h2>その行動はプラスになるか</h2>
                                 <p>直前に判断する自己評価を記録してください。</p>
                                 <div class='button-column'>
-                                    <input type='radio' name='l' value='1' id='l1'><label for='l1'>++</label>
-                                    <input type='radio' name='l' value='2' id='l2'><label for='l2'>&nbsp;+&nbsp;</label>
-                                    <input type='radio' name='l' value='3' id='l3'><label for='l3'>±0</label>
-                                    <input type='radio' name='l' value='4' id='l4'><label for='l4'>&nbsp;-&nbsp;</label>
-                                    <input type='radio' name='l' value='5' id='l5'><label for='l5'>--</label>
+                                    <input type='radio' name='se' value='1' id='se1'><label for='se1'>++</label>
+                                    <input type='radio' name='se' value='2' id='se2'><label for='se2'>&nbsp;+&nbsp;</label>
+                                    <input type='radio' name='se' value='3' id='se3'><label for='se3'>±0</label>
+                                    <input type='radio' name='se' value='4' id='se4'><label for='se4'>&nbsp;-&nbsp;</label>
+                                    <input type='radio' name='se' value='5' id='se5'><label for='se5'>--</label>
                                 </div>
                                 <h2>その行動はやりたいことか</h2>
                                 <p>やりたい事がどのぐらい続くか、どのくらいの割合あったかを見るためデータです！</p>
                                 <div class='button-column'>
-                                    <input type='radio' name='todo' value='1' id='todo1'><label for='todo1'>今やりたい事</label>
-                                    <input type='radio' name='todo' value='2' id='todo2'><label for='todo2'>今日やりたい事</label>
-                                    <input type='radio' name='todo' value='3' id='todo3'><label for='todo3'>いつかやりたかった事</label>
+                                    <input type='radio' name='wd' value='1' id='wd1'><label for='wd1'>今やりたい事</label>
+                                    <input type='radio' name='wd' value='2' id='wd2'><label for='wd2'>今日やりたい事</label>
+                                    <input type='radio' name='wd' value='3' id='wd3'><label for='wd3'>いつかやりたかった事</label>
                                 </div>
 
                                 <h2>忙しさ</h2>
@@ -623,13 +1407,15 @@ function add_json_data(){
                                 <details>
                                     <summary style='color: #3c3c3c91;font-weight:700;'>体調オプション</summary>
                                     <div class='button-column'>
-                                        <input type='checkbox' id='co1'><label for='co1'>生理中</label>
+                                        <input type='checkbox' id='co1' name='co1' value='1' ><label for='co1'>生理中</label>
 
                                         <input type='radio' name='co2' value='1' id='co2-1'><label for='co2-1'>頭痛(軽度)</label>
                                         <input type='radio' name='co2' value='2' id='co2-2'><label for='co2-2'>頭痛</label>
+                                        <input type='radio' name='co2' value='3' id='co2-3'><label for='co2-3'>頭痛(重度)</label>
 
                                         <input type='radio' name='co3' value='1' id='co3-1'><label for='co3-1'>腹痛(軽度)</label>
                                         <input type='radio' name='co3' value='2' id='co3-2'><label for='co3-2'>腹痛</label>
+                                        <input type='radio' name='co3' value='3' id='co3-3'><label for='co3-3'>腹痛(重度)</label>
 
                                         <input type='checkbox' id='co4'><label for='co4'>倦怠感</label>
                                     </div>
@@ -648,17 +1434,23 @@ function add_json_data(){
                                 <p>mi watchなどで計測可能な体力の総量</p>
                                 <label>
                                     <span>エネルギー</span>
-                                    <input name='energy' type='number' placeholder="">
+                                    <input name='energy' type='number' placeholder="" id='energy'>
                                 </label>
                                 <?/*起きたときに体力に合わせて、今日できることしないほうが好ましいことの提案を行ってくれる*/?>
-                                <h2>イラスト枠</h2>
-                                <p>現在の枠数:2/4<br>変更がある場合だけ入力</p>
-                                <label>
-                                    <span>illust</span>
-                                    <input name='illust' type='number' placeholder="">
-                                </label>
-                                <?//TODO:シークレットとか何かしらのstatusをつけたい?>
-                                <input type='submit' value='送信' style='font-size:20px;width:100%;border-radius:100px;padding:13px 20px;background:#ffd799;font-weight:700;color: white;border:none;box-shadow:2px 3px 6px #ff441e26;'>
+                                <details>
+                                    <summary style='color: #3c3c3c91;font-weight:700;'>hookとその他の項目</summary>
+                                    <h2>hook</h2>
+                                    <input type='text' name='hook' id='hook'>
+                                    <h2>nexthook</h2>
+                                    <input type='text' name='nexthook' id='nexthook'>
+                                    <h2>イラスト枠</h2>
+                                    <p>現在の枠数:2/4<br>変更がある場合だけ入力</p>
+                                    <label>
+                                        <span>illust</span>
+                                        <input name='illust' type='number' placeholder="">
+                                    </label>
+                                </details>
+                                <input type='submit' value='送信' class='submit'>
                             </form>
                         <?}?>
                     </section>
@@ -696,6 +1488,11 @@ function add_json_data(){
             if( idx >= 0 ) { // クリックしたボタンにチェックが入っていた場合
                 $(this).prop('checked', false); // チェックを外す
                 nowchecked.splice(idx,1); // nowcheckedからこのボタンのidを削除
+                if($(this).attr('name') == 'kid'){
+                    $('#public').attr('checked', false).prop('checked', false).change();
+                    $('#hook').val('');
+                    $('#nexthook').val('');
+                }
             } else { // チェックが入っていなかった場合
             // 同じname属性のラジオボタンをnowcheckedから削除する
             var name = $(this).attr('name');
@@ -709,7 +1506,54 @@ function add_json_data(){
                 nowchecked.push( $(this).attr('id') );
             }
         });
-        
+        //radioが変更されたらhookのところを書き換える
+        $(function(){
+            $( 'input[name="kid"]:radio' ).change( function() {
+                var radioval = $(this).val();
+                
+                //hook書き換え
+                if($('#' + radioval).attr('hook') != undefined){
+                    $('#hook').val($('#' + radioval).attr('hook'));
+                }else{
+                    $('#hook').val('');
+                }
+                if($('#' + radioval).attr('nexthook') != undefined){
+                    $('#nexthook').val($('#' + radioval).attr('nexthook'));
+                }else{
+                    $('#nexthook').val('');
+                }
+                //hook書き換え
+                if($('#' + radioval).attr('public') != undefined){
+                    if($('#' + radioval).attr('public') == 'false'){
+                        $('#public').attr('checked', true).prop('checked', true).change();
+                    }
+                }else{
+                    $('#public').attr('checked', false).prop('checked', false).change();
+                }
+            }); 
+        });
+
+        //kidの送信前にhook nexthook publicの値を含めてpostする
+        function CheckData(){
+            var element = document.getElementById( "timeform" ) ;
+
+            // form要素内のラジオボタングループ(name="kid")を取得
+            var radioNodeList = element.kid ;
+            var kid = radioNodeList.value ;
+
+            if ( kid === "" ) {
+                // 未選択状態
+            } else {
+                if($('#' + kid).attr('hook') != undefined){
+                    if(confirm('hookを設定しますか？' + $('#' + kid).attr('hook'))){                       
+                        return true; 
+                    }else{
+                        alert('キャンセルされました'); 
+                        return false; 
+                    }
+                }
+            }
+        }
     </script>
     </body>
 </html>

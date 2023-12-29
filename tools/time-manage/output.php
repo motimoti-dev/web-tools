@@ -934,7 +934,7 @@ function do_get($formdata, $doget_url, $username){
                 }
             }
             $result = file_get_contents($doget_url.$parm_str);
-            //echo($result);
+            echo($result);
             //echo($doget_url.$parm_str);
         }else{
             return '| timeの形式が正しくない為保存されませんでした。';    
@@ -1047,7 +1047,7 @@ if(isset($_POST["add"])){
 }else{
     //$status = "";
 }
-//echo $form_status;
+echo $form_status;
 
 function options($id_name,$hook_sync){
     $i = 1;

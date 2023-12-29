@@ -105,12 +105,21 @@ date_default_timezone_set('Asia/Tokyo');?>
                                                 //未設定のままにする
                                             }else{
                                                 if($cell != ''){
-                                                    $state_str = explode(',',$cell)[$state];
+                                                    if(is_numeric($state)){
+                                                        //todo ステータスを表す表記がないときの処理をしていない
+                                                        if(isset(explode(',',$cell)[$state])){
+                                                            $state_str = explode(',',$cell)[$state];
+                                                        }                                                        
+                                                        echo $state_str;
+                                                    }else{
+                                                        //ステータスが数字でもオンでもオフでもない場合はそのまま文字列として出力
+                                                        echo $state;
+                                                    }
+                                                    
                                                 }else{
                                                     //未設定のまま
                                                 }
                                             }
-                                            echo $state_str;
                                             break;
 
                                         case 4:
@@ -128,19 +137,19 @@ date_default_timezone_set('Asia/Tokyo');?>
                                             break;
 
                                         case 6:
-                                            //表示方法ってことになってるけど使わないかも
+                                            //id
                                             break;
 
                                         case 7:
-                                            //その他の情報1
+                                            //カウンター
                                             break;
 
                                         case 8:
-                                            //その他の情報2
+                                            //その他の情報1
                                             break;
 
                                         case 9:
-                                            //その他の情報3
+                                            //その他の情報2
                                             break;
 
                                         default:

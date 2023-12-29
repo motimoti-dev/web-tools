@@ -1,4 +1,5 @@
 <?include( dirname( __FILE__ , 3).'/data.php' );//設定
+$tool_id = 7;
 //データはsqliteに入れたいけど、スマホアプリ版とかはローカルで持たせたいので今はjsonで保存
 //タイムゾーンを日本に
 date_default_timezone_set('Asia/Tokyo');
@@ -752,7 +753,7 @@ if(isset($_POST["login"])){
     // ログアウト（セッションデータを削除）する
     session_start();
     unset($_SESSION["user_id"]);
-    header('Location: ./output.php');
+    header('Location: ./output');
     exit;
 }else{
     $status = "ログインフォームが送信されていない場合(すでにログイン中の場合、ログインに成功しリダイレクトされた場合も含む)";
@@ -768,7 +769,7 @@ if($login){// 入力されたIDとパスワードに一致するユーザーが�
     // ログイン中？（セッションにユーザーIDがある？）
     if (array_key_exists("user_id", $_SESSION)) {
         //header関数を使用し、リダイレクトされる、リロードでフォームをどうするか聞かれないために
-        header('Location: ./output.php');
+        header('Location: ./output');
         exit;
     }else{// ログアウト中？（セッションにユーザーIDがない？） 
         $login = false;
@@ -934,7 +935,7 @@ function do_get($formdata, $doget_url, $username){
                 }
             }
             $result = file_get_contents($doget_url.$parm_str);
-            echo($result);
+            //echo($result);
             //echo($doget_url.$parm_str);
         }else{
             return '| timeの形式が正しくない為保存されませんでした。';    
@@ -974,6 +975,8 @@ if(isset($_POST["add"])){
 
                 //時間がなければ送信をしない
                 $form_status .= do_get($_POST,$url,$userdata["usernickname"]);
+                header('Location: ./output.php');
+                exit;
 
                 if($userdata["lastupdate"] != '')
                 //前回のデータがあるかチェック
@@ -1047,8 +1050,7 @@ if(isset($_POST["add"])){
 }else{
     //$status = "";
 }
-echo $form_status;
-print_r($_POST);
+//echo $form_status;
 function options($id_name,$hook_sync){
     $i = 1;
     foreach($hook_sync[$id_name] as $k_data){
@@ -1076,11 +1078,33 @@ function options($id_name,$hook_sync){
 ?><!DOCTYPE html>
 <html lang="ja">
     <head>
+        <?//共用部分?>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="<?=$example[0]['title']?>">
+        <meta name="description" content="<?=$tools[$tool_id]['description']?>"> 
+        <title><?=$tools[$tool_id]['title']?></title>
+        <meta name='robots' content='index,follow'>
+        <meta property="og:title" content="<?=$tools[$tool_id]['title']?> | <?=$blog_info['name']?>">
+        <meta property="og:type" content="blog">
+        <meta property="og:description" content="<?=$tools[$tool_id]['description']?>">
+        <meta property="og:url" content="<?=$tools[$tool_id]['canonical']?>">
+        <meta property="og:image" content="//tools.motisan.info/<?=$tools[$tool_id]['img']?>">
+        <meta property="og:locale" content="ja_JP">
+        <meta property="og:site_name" content="<?=$blog_info['name']?>">
+        <link rel="canonical" href="<?=$tools[$tool_id]['canonical']?>">
+        <meta name="author" content="<?=$blog_info['author']?>">
+        <meta name="theme-color" content="<?=$blog_info['theme-color']?>">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="<?=$blog_info['twitter']?>">
+        <meta name="twitter:title" content="<?=$tools[$tool_id]['title']?> | <?=$blog_info['name']?>">
+        <meta name="twitter:description" content="<?=$tools[$tool_id]['description']?>">
+        <meta name="twitter:image" content="//tools.motisan.info/<?=$tools[$tool_id]['img']?>">
+        <link rel="icon" href="//motisan.info/i/32.png" sizes="32x32">
+        <link rel="icon" href="//motisan.info/i/192.png" sizes="192x192">
+        <link rel="apple-touch-icon-precomposed" href="//motisan.info/i/apple.png">
+        <meta name="msapplication-TileImage" content="//motisan.info/i/ms.png">
+        <?//END共用部分?>
         <script>document.documentElement.classList.remove('no-js')</script> 
-        <title><?=$example[0]['title']?></title>
         <link rel="stylesheet" href="https://tools.motisan.info/css/index-style.css" http-equiv="Cache-Control" content="no-cache">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     </head>
@@ -1222,7 +1246,7 @@ function options($id_name,$hook_sync){
                                 <p>日にちは必ず今日(Asia/Tokyo)で記録されます、過去の入力をここから修正することはできません。</p>
                                 <label>
                                     <span>time</span>
-                                    <input type='time' value="<?=date('H:i')?>" name='time' required><br>
+                                    <input type='time' value="<?=date('H:i')?>" name='time' id='time' required><div class='orange-button' onclick='$("#time").val(new Date().getHours().toString().padStart(2, "0") +":"+ new Date().getMinutes().toString().padStart(2, "0"));'>現在時刻</div><br>
                                 </label>
                                 <h2>行動の種類(必須)</h2>
                                 <div>
@@ -1254,7 +1278,7 @@ function options($id_name,$hook_sync){
                                     .shortcode label{
                                         margin-bottom:0;
                                     }
-                                    .shortcode div{
+                                    .orange-button{
                                         margin-left: 12px;
                                         user-select: none;
                                         padding: 9px 12px;
@@ -1268,7 +1292,7 @@ function options($id_name,$hook_sync){
                                 </style>
                                 <div class='shortcode'>
                                     <label><input type='text' name='kname' placeholder="(短縮コード)auto fill" id="shortcode"></label>
-                                    <div onclick="shortcode(document.getElementById('shortcode').value);">コードの反映</div>
+                                    <div onclick="shortcode(document.getElementById('shortcode').value);" class='orange-button'>コードの反映</div>
                                 </div>
                                 <?//トイレボタン?>
                                 <?//行動履歴からオートフィル?>

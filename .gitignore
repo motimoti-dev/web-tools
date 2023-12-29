@@ -1,4 +1,5 @@
 .ht*
+config.php
 tools/time-manage/data
 tools/status/config.php
 tools/status-update/config.php

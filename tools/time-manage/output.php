@@ -152,6 +152,26 @@ $hook_sync = [
                 'public'=>true,
             ]
         ],
+        '21'=>[
+            'name'=>'イラスト制作',
+            'hook'=>'busy-status:2,',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '22'=>[
+            'name'=>'歌う、ボイトレ、声出し',
+            'hook'=>'busy-status:2,',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '100'=>[
+            'name'=>'その他の娯楽',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
     ],
     'k2'=>[
         '1'=>[
@@ -210,9 +230,8 @@ $hook_sync = [
             ]
         ],
         '9'=>[
-            'name'=>'',
-            'hook'=>'',
-            'nexthook'=>'',
+            'name'=>'デート',
+            'hook'=>'busy-status:2',
             'default'=>[
                 'public'=>true,
             ]
@@ -287,6 +306,13 @@ $hook_sync = [
                 'public'=>true,
             ]
         ],
+        '100'=>[
+            'name'=>'その他の人間関係',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
     ],
     'k3'=>[
         '1'=>[
@@ -338,6 +364,41 @@ $hook_sync = [
             ]
         ],
         '8'=>[
+            'name'=>'動画編集',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '9'=>[
+            'name'=>'イラスト依頼',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '10'=>[
+            'name'=>'web制作',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '11'=>[
+            'name'=>'サーバー保守やweb系',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '12'=>[
+            'name'=>'記事編集',
+            'hook'=>'busy-status:2',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
+        '100'=>[
             'name'=>'その他',
             'default'=>[
                 'public'=>true,
@@ -537,6 +598,12 @@ $hook_sync = [
                 'public'=>true,
             ]
         ],
+        '10'=>[
+            'name'=>'食休み',
+            'default'=>[
+                'public'=>true,
+            ]
+        ],
     ],
     'k7'=>[
         '1'=>[
@@ -683,10 +750,25 @@ $hook_sync = [
                 'public'=>true,
             ]
         ],
-        '18'=>[
+        '19'=>[
             'name'=>'自己投資目的の勉強',
             'hook'=>'busy-memo:自己投資目的の勉強をしています！,busy-status:2',
             'nexthook'=>'busy-memo:',
+            'default'=>[
+                'public'=>true,
+            ],
+        ],
+        '20'=>[
+            'name'=>'脱毛',
+            'hook'=>'busy-memo:ぱちぱち中,busy-status:2',
+            'nexthook'=>'busy-memo:',
+            'default'=>[
+                'public'=>true,
+            ],
+        ],
+        '100'=>[
+            'name'=>'その他',
+            'hook'=>'busy-status:2',
             'default'=>[
                 'public'=>true,
             ],
@@ -799,6 +881,7 @@ if($login){// 入力されたIDとパスワードに一致するユーザーが�
         $login = false;
     }
 }
+
 function parm_data_add($formdata, $parameter, $parmname, $formdataname){
     if(isset($formdata[$formdataname])){//送信されている
         if($formdata[$formdataname] != ''){//空ではない
@@ -1363,9 +1446,12 @@ function options($id_name,$hook_sync){
                                 <h2>その行動はやりたいことか</h2>
                                 <p>やりたい事がどのぐらい続くか、どのくらいの割合あったかを見るためデータです！</p>
                                 <div class='button-column'>
-                                    <input type='radio' name='wd' value='1' id='wd1'><label for='wd1'>今やりたい事</label>
-                                    <input type='radio' name='wd' value='2' id='wd2'><label for='wd2'>今日やりたい事</label>
-                                    <input type='radio' name='wd' value='3' id='wd3'><label for='wd3'>いつかやりたかった事</label>
+                                    
+                                    <input type='radio' name='wd' value='1' id='wd1'><label for='wd1'>かなりやりたくないこと</label>
+                                    <input type='radio' name='wd' value='2' id='wd2'><label for='wd2'>できればやりたくないこと</label>
+                                    <input type='radio' name='wd' value='3' id='wd3'><label for='wd3'>今やりたい事</label>
+                                    <input type='radio' name='wd' value='4' id='wd4'><label for='wd4'>今日やりたい事</label>
+                                    <input type='radio' name='wd' value='5' id='wd5'><label for='wd5'>いつかやりたかった事</label>
                                 </div>
 
                                 <h2>忙しさ</h2>
